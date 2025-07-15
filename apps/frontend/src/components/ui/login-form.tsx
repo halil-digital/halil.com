@@ -15,7 +15,7 @@ export function LoginForm() {
         Connectez-vous à votre compte
       </h2>
 
-      <form className="my-8" onSubmit={handleSubmit}>
+      <form className="mt-8" onSubmit={handleSubmit}>
         <LabelInputContainer className="mb-4">
           <Label htmlFor="email">Adresse mail</Label>
           <Input id="email" placeholder="exemple@halil.com" type="email" />
@@ -25,15 +25,12 @@ export function LoginForm() {
           <Input id="password" placeholder="••••••••" type="password" />
         </LabelInputContainer>
         <button
-          className="group/btn relative block h-10 w-full rounded-md bg-gradient-to-br from-black to-neutral-600 font-medium text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:bg-zinc-800 dark:from-zinc-900 dark:to-zinc-900 dark:shadow-[0px_1px_0px_0px_#27272a_inset,0px_-1px_0px_0px_#27272a_inset] cursor-pointer"
+          className="group/btn relative block h-10 w-full rounded-md bg-black hover:bg-primary/90 font-medium text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:bg-zinc-800 dark:from-zinc-900 dark:to-zinc-900 dark:shadow-[0px_1px_0px_0px_#27272a_inset,0px_-1px_0px_0px_#27272a_inset] cursor-pointer"
           type="submit"
         >
           Se connecter
         </button>
       </form>
-      <p className="text-center text-sm">
-        Vous n&apos;avez pas de compte ? C&apos;est dommage.
-      </p>
     </div>
   );
 }
