@@ -13,7 +13,13 @@ import { products } from "@/data/products";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-export default function ProductPage({ params }: { params: { slug: string } }) {
+type ProductPageProps = {
+  params: {
+    slug: string;
+  };
+};
+
+export default function ProductPage({ params }: ProductPageProps) {
   const product = products.find((p) => p.slug === params.slug);
   if (!product) return notFound();
 
