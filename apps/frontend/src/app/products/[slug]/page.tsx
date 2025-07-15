@@ -13,14 +13,15 @@ import { products } from "@/data/products";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-type ProductPageProps = {
-  params: {
-    slug: string;
-  };
-};
+type ProductPageProps = Promise<{ slug: string }>;
 
-export default function ProductPage({ params }: ProductPageProps) {
-  const product = products.find((p) => p.slug === params.slug);
+export default async function ProductPage({
+  params,
+}: {
+  params: ProductPageProps;
+}) {
+  const { slug } = await params;
+  const product = products.find((p) => p.slug === slug);
   if (!product) return notFound();
 
   return (
