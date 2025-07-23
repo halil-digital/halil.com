@@ -48,16 +48,19 @@ export function Footer() {
       <div className="bg-foreground/20 absolute top-0 left-1/2 h-px w-1/3 -translate-x-1/2 -translate-y-1/2 rounded-full blur" />
 
       <div className="grid w-full gap-8 xl:grid-cols-3 xl:gap-8">
+        {/* Conteneur pour HALIL */}
         <AnimatedContainer className="space-y-4">
           <span className="text-lg font-semibold">HALIL</span>
           <p className="mt-8 text-sm md:mt-0">Vous avez besoin d&apos;aide ?</p>
-          <p className="mt-8 font-bold md:mt-0 mb-0">06 06 06 06 06</p>
+          {/* Bloc pour le numéro de téléphone */}
+          <div className="mt-8 font-bold md:mt-0 mb-0">06 06 06 06 06</div>
           <p className="text-sm">Contactez maintenant</p>
           <p className="mt-8 text-sm md:mt-0">
             © {new Date().getFullYear()} halil.com. Tous droits réservés.
           </p>
         </AnimatedContainer>
 
+        {/* Section pour les liens du footer */}
         <div className="mt-10 grid grid-cols-2 gap-8 md:grid-cols-4 xl:col-span-2 xl:mt-0">
           {footerLinks.map((section, index) => (
             <AnimatedContainer key={section.label} delay={0.1 + index * 0.1}>
