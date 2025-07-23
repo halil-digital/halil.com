@@ -47,30 +47,32 @@ export function Footer() {
     <footer className="bg-black text-white md:rounded-t-6xl relative w-full mx-auto flex flex-col items-center justify-center border-t bg-[radial-gradient(35%_128px_at_50%_0%,theme(backgroundColor.white/8%),transparent)] px-6 py-12 lg:py-16">
       <div className="bg-foreground/20 absolute top-0 left-1/2 h-px w-1/3 -translate-x-1/2 -translate-y-1/2 rounded-full blur" />
 
-      <div className="flex w-full flex-col xl:flex-row">
-        {/* Bloc HALIL */}
-        <AnimatedContainer className="flex flex-col space-y-4 xl:w-1/3">
-          <span className="text-lg font-semibold">HALIL</span>
-          <p className="text-sm">Vous avez besoin d&apos;aide ?</p>
-          <p className="font-bold">06 06 06 06 06</p>
-          <p className="text-sm">Contactez maintenant</p>
-          <p className="text-sm mt-8">
-            © {new Date().getFullYear()} halil.com. Tous droits réservés.
-          </p>
+      <div className="grid w-full gap-8 xl:grid-cols-3 xl:gap-8">
+        <AnimatedContainer>
+          <div className="space-y-4">
+            <span className="text-lg font-semibold">HALIL</span>
+            <p className="mt-8 text-sm md:mt-0">
+              Vous avez besoin d&apos;aide ?
+            </p>
+            <p className="mt-8 font-bold md:mt-0 mb-0">06 06 06 06 06</p>
+            <p className="text-sm">Contactez maintenant</p>
+            <p className="mt-8 text-sm md:mt-0">
+              © {new Date().getFullYear()} halil.com. Tous droits réservés.
+            </p>
+          </div>
         </AnimatedContainer>
 
-        {/* Liens du footer */}
-        <div className="mt-10 flex flex-wrap gap-8 md:gap-12 xl:mt-0 xl:w-2/3">
+        <div className="mt-10 grid grid-cols-2 gap-8 md:grid-cols-4 xl:col-span-2 xl:mt-0">
           {footerLinks.map((section, index) => (
             <AnimatedContainer key={section.label} delay={0.1 + index * 0.1}>
-              <div className="min-w-[120px]">
+              <div className="mb-10 md:mb-0">
                 <h3 className="text-xs font-bold">{section.label}</h3>
-                <ul className="mt-4 space-y-2 text-sm text-white">
+                <ul className="text-white mt-4 space-y-2 text-sm">
                   {section.links.map((link) => (
                     <li key={link.title}>
                       <a
                         href={link.href}
-                        className="inline-flex items-center transition-all duration-300 hover:text-muted-foreground"
+                        className="hover:text-muted-foreground inline-flex items-center transition-all duration-300"
                       >
                         {link.icon && <link.icon className="me-1 size-4" />}
                         {link.title}
