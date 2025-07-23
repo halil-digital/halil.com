@@ -47,7 +47,7 @@ export function Footer() {
     <footer className="bg-black text-white md:rounded-t-6xl relative w-full mx-auto flex flex-col items-center justify-center border-t bg-[radial-gradient(35%_128px_at_50%_0%,theme(backgroundColor.white/8%),transparent)] px-6 py-12 lg:py-16">
       <div className="bg-foreground/20 absolute top-0 left-1/2 h-px w-1/3 -translate-x-1/2 -translate-y-1/2 rounded-full blur" />
 
-      <div className="flex w-full flex-col xl:flex-row xl:justify-between xl:gap-16">
+      <div className="flex w-full flex-col xl:flex-row">
         {/* Bloc HALIL */}
         <AnimatedContainer className="flex flex-col space-y-4 xl:w-1/3">
           <span className="text-lg font-semibold">HALIL</span>
