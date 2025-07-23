@@ -1,4 +1,4 @@
-import { Menu } from "lucide-react";
+import { Menu, PhoneCall } from "lucide-react";
 
 import {
   Accordion,
@@ -80,8 +80,8 @@ const Navbar = ({
   },
 }: Navbar1Props) => {
   return (
-    <section className="py-4 mx-20">
-      <div className="container max-w-none w-full">
+    <section className=" bg-[#ebc834]">
+      <div className="container max-w-none w-full py-4 px-20">
         <nav className="hidden justify-between lg:flex">
           <div className="flex items-center gap-6">
             <a href={logo.url} className="flex items-center gap-2">
@@ -98,7 +98,14 @@ const Navbar = ({
               </NavigationMenu>
             </div>
           </div>
-          <div className="flex gap-2 items-center">
+          <div className="flex gap-4 items-center">
+            <span className="flex items-center gap-2 text-sm">
+              <PhoneCall size={16} />
+              Vous pouvez nous contacter{" "}
+              <a href="tel:+33606060606">
+                <b>06 06 06 06 06</b>
+              </a>
+            </span>
             <Button asChild variant={"default"}>
               <Link href={auth.login.url}>{auth.login.text}</Link>
             </Button>
@@ -155,6 +162,7 @@ const Navbar = ({
                     </div>
                   )}
                   <div className="flex flex-col gap-3">
+                    <span>Vous pouvez nous contacter 06 06 06 06 06</span>
                     <Button asChild variant={"default"}>
                       <Link href={auth.login.url}>{auth.login.text}</Link>
                     </Button>
@@ -207,7 +215,7 @@ const renderMenuItem = (item: MenuItem) => {
   return (
     <a
       key={item.title}
-      className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-accent-foreground"
+      className="bg-[#ebc834] group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-[#e9d990] hover:text-accent-foreground"
       href={item.url}
     >
       {item.title}

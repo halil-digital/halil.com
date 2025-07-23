@@ -1,3 +1,4 @@
+import AdBar from "@/components/adbar";
 import { Faq } from "@/components/faq";
 import { Footer } from "@/components/footer-section";
 import { Navbar } from "@/components/navbar";
@@ -7,6 +8,7 @@ import { Hero } from "@/components/ui/landing-hero";
 export default function Home() {
   return (
     <div>
+      <AdBar />
       <Navbar />
       <Hero />
       <div className="flex flex-col items-center justify-center mx-20">

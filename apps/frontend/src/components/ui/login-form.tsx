@@ -1,12 +1,16 @@
 "use client";
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { Input } from "./input";
 import { Label } from "./label";
 
 export function LoginForm() {
+  const router = useRouter();
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    router.push("/dashboard");
     console.log("Form submitted");
   };
   return (

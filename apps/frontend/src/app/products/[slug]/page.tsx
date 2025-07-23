@@ -66,43 +66,39 @@ export default async function ProductPage({
               Catégorie : <b>{product.category}</b>
             </p>
 
-            {product.weight &&
-              product.certificate &&
-              product.storage_conditions && (
-                <div className="bg-gray-50 p-6 rounded-xl border mt-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
-                    {product.weight && (
-                      <div className="flex flex-col items-center">
-                        <span className="text-xl mb-2">⚖️</span>
-                        <p className="text-sm text-gray-500">Poids</p>
-                        <p className="text-lg font-semibold text-gray-800">
-                          {product.weight}
-                        </p>
-                      </div>
-                    )}
-                    {product.certificate && (
-                      <div className="flex flex-col items-center">
-                        <span className="text-xl mb-2">📜</span>
-                        <p className="text-sm text-gray-500">Certificat</p>
-                        <p className="text-lg font-semibold text-gray-800">
-                          {product.certificate}
-                        </p>
-                      </div>
-                    )}
-                    {product.storage_conditions && (
-                      <div className="flex flex-col items-center">
-                        <span className="text-xl mb-2">❄️</span>
-                        <p className="text-sm text-gray-500">
-                          Conditions de stockage
-                        </p>
-                        <p className="text-lg font-semibold text-gray-800">
-                          {product.storage_conditions}
-                        </p>
-                      </div>
-                    )}
+            <div className="bg-gray-50 p-6 rounded-xl border mt-6">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+                {product.weight && (
+                  <div className="flex flex-col items-center">
+                    <span className="text-xl mb-2">⚖️</span>
+                    <p className="text-sm text-gray-500">Poids</p>
+                    <p className="text-lg font-semibold text-gray-800">
+                      {product.weight}
+                    </p>
                   </div>
-                </div>
-              )}
+                )}
+                {product.certificate && (
+                  <div className="flex flex-col items-center">
+                    <span className="text-xl mb-2">📜</span>
+                    <p className="text-sm text-gray-500">Certificat</p>
+                    <p className="text-lg font-semibold text-gray-800">
+                      {product.certificate}
+                    </p>
+                  </div>
+                )}
+                {product.storage_conditions && (
+                  <div className="flex flex-col items-center">
+                    <span className="text-xl mb-2">❄️</span>
+                    <p className="text-sm text-gray-500">
+                      Conditions de stockage
+                    </p>
+                    <p className="text-lg font-semibold text-gray-800">
+                      {product.storage_conditions}
+                    </p>
+                  </div>
+                )}
+              </div>
+            </div>
 
             <div className="space-y-1">
               <p className="text-sm text-gray-500">
