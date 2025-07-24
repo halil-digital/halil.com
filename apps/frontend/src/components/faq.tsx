@@ -48,6 +48,35 @@ const faqItems = [
       "Pour passer commande chez HALIL, contactez nous par téléphone au 06 06 06 06 06.",
     ],
   },
+  {
+    id: "faq-3",
+    question: "Quel est le délai de livraison de nos produits ?",
+    answer: [
+      "Nous garantissons un délai de livraison de 24 heures après la validation de votre commande, afin d'assurer une réception rapide et efficace.",
+    ],
+  },
+  {
+    id: "faq-4",
+    question:
+      "Quels sont les modes de paiement acceptés et les délais de règlement ?",
+    answer: [
+      "Nous acceptons les paiements par virement bancaire, chèque ou en espèces. Le règlement peut être effectué dans un délai maximum de 45 jours.",
+    ],
+  },
+  {
+    id: "faq-5",
+    question: "Nos produits sont-ils certifiés halal ?",
+    answer: [
+      "Oui, l’ensemble de nos produits sont certifiés halal. Nous nous engageons à respecter les normes les plus strictes pour garantir une consommation conforme aux exigences religieuses.",
+    ],
+  },
+  {
+    id: "faq-6",
+    question: "Comment nos produits sont-ils conditionnés ?",
+    answer: [
+      "os produits sont conditionnés avec le plus grand soin, dans le respect strict de la chaîne du froid. Cela permet de préserver leur fraîcheur, leur qualité et leur sécurité alimentaire jusqu’à la livraison",
+    ],
+  },
 ];
 
 const Faq = ({

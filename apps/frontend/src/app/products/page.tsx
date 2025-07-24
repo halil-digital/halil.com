@@ -6,6 +6,7 @@ import { products } from "@/data/products";
 import Link from "next/link";
 import { useState } from "react";
 
+import AdBar from "@/components/adbar";
 import { Footer } from "@/components/footer-section";
 import { Navbar } from "@/components/navbar";
 import {
@@ -49,6 +50,7 @@ export default function ProductsPage() {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <AdBar />
       <Navbar />
 
       <main className="flex-1">
