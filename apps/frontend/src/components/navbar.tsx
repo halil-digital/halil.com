@@ -72,7 +72,7 @@ const Navbar = ({
       title: "Tous les produits",
       url: "/products",
     },
-    { title: "Nous contacter", url: "mailto:contact@halil.com" },
+    { title: "Nous contacter", url: "mailto:sasuhalill@gmail.com" },
   ],
   mobileExtraLinks = [],
   auth = {

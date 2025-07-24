@@ -27,7 +27,9 @@ const footerLinks: FooterSection[] = [
   },
   {
     label: "Nous contacter",
-    links: [{ title: "contact@halil.com", href: "mailto:contact@halil.com" }],
+    links: [
+      { title: "sasuhalill@gmail.com", href: "mailto:sasuhalill@gmail.com" },
+    ],
   },
   {
     label: "Réseaux sociaux",
