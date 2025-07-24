@@ -74,7 +74,7 @@ const faqItems = [
     id: "faq-6",
     question: "Comment nos produits sont-ils conditionnés ?",
     answer: [
-      "os produits sont conditionnés avec le plus grand soin, dans le respect strict de la chaîne du froid. Cela permet de préserver leur fraîcheur, leur qualité et leur sécurité alimentaire jusqu’à la livraison",
+      "Nos produits sont conditionnés avec le plus grand soin, dans le respect strict de la chaîne du froid. Cela permet de préserver leur fraîcheur, leur qualité et leur sécurité alimentaire jusqu’à la livraison",
     ],
   },
 ];
