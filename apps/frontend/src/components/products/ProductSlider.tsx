@@ -1,7 +1,7 @@
 "use client";
 
 import { Product, products } from "@/data/products";
-import { useEffect, useRef } from "react";
+import Image from "next/image";
 
 const productNamesToShow = [
   "Excellence, Frites 9/9 mm",
@@ -31,56 +31,61 @@ function findProductByName(
   );
 }
 
-export default function HorizontalProductSlider() {
-  const sliderRef = useRef<HTMLDivElement>(null);
-
+export default function DoubleLineProductSlider() {
   const matchedProducts = productNamesToShow
     .map((name) => findProductByName(name, products))
     .filter(Boolean) as Product[];
 
-  useEffect(() => {
-    const slider = sliderRef.current;
-    if (!slider) return;
+  if (!matchedProducts.length) return null;
 
-    let animationFrameId: number;
-    let scrollLeft = 0;
-    const speed = 0.8;
+  const half = Math.ceil(matchedProducts.length / 2);
+  const line1 = matchedProducts.slice(0, half);
+  const line2 = matchedProducts.slice(half);
 
-    function animate() {
-      scrollLeft += speed;
-      if (scrollLeft >= (slider as HTMLDivElement).scrollWidth / 2) {
-        scrollLeft = 0;
-      }
-      (slider as HTMLDivElement).scrollLeft = scrollLeft;
-      animationFrameId = requestAnimationFrame(animate);
-    }
-    animate();
-
-    return () => cancelAnimationFrame(animationFrameId);
-  }, []);
-
-  if (matchedProducts.length === 0) return <p>Chargement...</p>;
-
-  const productsToShow = [...matchedProducts, ...matchedProducts];
+  const repeat = (arr: Product[]) => [...arr, ...arr];
 
   return (
-    <div
-      ref={sliderRef}
-      className="flex overflow-x-hidden w-full gap-4 md:gap-20 xl:gap-40 py-20 box-border"
-    >
-      {productsToShow.map((product, idx) => (
-        <div
-          key={idx + product.id}
-          className="flex-shrink-0 w-[150px] h-[150px]"
-        >
-          <img
-            src={product.images[0]}
-            alt={product.name}
-            className="w-full h-full object-contain"
-            loading="lazy"
-          />
+    <div>
+      <article className="relative overflow-hidden whitespace-nowrap bg-white py-4">
+        <div className="absolute inset-y-0 left-0 bg-gradient-to-l from-transparentBlack to-fullBlack pointer-events-none"></div>
+        <div className="flex items-center animate-forward gap-16">
+          {repeat(line1).map((product, idx) => (
+            <div
+              key={`${product.id}-line1-${idx}`}
+              className="inline-block flex-shrink-0"
+            >
+              <Image
+                src={product.images[0]}
+                alt={product.name}
+                width={150}
+                height={150}
+              />
+            </div>
+          ))}
         </div>
-      ))}
+        <div className="absolute inset-y-0 right-0 w-64 bg-gradient-to-r from-transparentBlack to-fullBlack z-10 pointer-events-none"></div>
+      </article>
+
+      <article className="relative overflow-hidden whitespace-nowrap bg-white py-4">
+        <div className="absolute inset-y-0 left-0 bg-gradient-to-l from-transparentBlack to-fullBlack pointer-events-none"></div>
+        <div className="flex items-center animate-backward gap-16 overflow-hidden">
+          {repeat(line2).map((product, idx) => (
+            <div
+              key={`${product.id}-line2-${idx}`}
+              className="inline-block flex-shrink-0"
+            >
+              <Image
+                src={product.images[0]}
+                alt={product.name}
+                width={150}
+                height={150}
+                layout="fixed"
+              />
+            </div>
+          ))}
+        </div>
+        <div className="absolute inset-y-0 right-0 w-64 bg-gradient-to-r from-transparentBlack to-fullBlack z-10 pointer-events-none"></div>
+      </article>
     </div>
   );
 }
