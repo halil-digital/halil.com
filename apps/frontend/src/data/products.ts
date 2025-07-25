@@ -222,7 +222,10 @@ export const products: Product[] = [
     name: "Antalya, 18 Dürüm 30 CM",
     slug: "antalya-18-durum-30-cm",
     category: "Tortillas et Pains",
-    images: ["/images/products/antalya-18-durum-30-cm-600x591.jpg"],
+    images: [
+      "/images/products/antalya-18-durum-30-cm-600x591.jpg",
+      "/images/products/tortillas.png",
+    ],
     description: "Tortilla wraps pour kebab, taco, wrap",
     certificate: "",
     storage_conditions: "Ambiante",

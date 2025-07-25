@@ -103,7 +103,7 @@ const Navbar = ({
               <PhoneCall size={16} />
               Vous pouvez nous contacter{" "}
               <a href="tel:+33606060606">
-                <b>06 06 06 06 06</b>
+                <b>06 20 35 76 67</b>
               </a>
             </span>
             <Button asChild variant={"default"}>
@@ -162,7 +162,13 @@ const Navbar = ({
                     </div>
                   )}
                   <div className="flex flex-col gap-3">
-                    <span>Vous pouvez nous contacter 06 06 06 06 06</span>
+                    <span className="flex items-center gap-2 text-xs">
+                      <PhoneCall size={13} />
+                      Vous pouvez nous contacter{" "}
+                      <a href="tel:+33606060606">
+                        <b>06 20 35 76 67</b>
+                      </a>
+                    </span>
                     <Button asChild variant={"default"}>
                       <Link href={auth.login.url}>{auth.login.text}</Link>
                     </Button>

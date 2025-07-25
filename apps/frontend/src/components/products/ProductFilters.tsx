@@ -16,7 +16,7 @@ export function ProductFilters({
   onBrandChange,
 }: Props) {
   return (
-    <div className="p-4 border rounded-md shadow-sm space-y-6">
+    <div className="p-4 border rounded-md shadow-sm space-y-6 bg-white">
       <div>
         <h2 className="text-lg font-semibold mb-2">Catégories</h2>
         <select

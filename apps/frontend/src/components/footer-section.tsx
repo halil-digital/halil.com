@@ -19,8 +19,10 @@ const footerLinks: FooterSection[] = [
   {
     label: "Entreprise",
     links: [
+      { title: "Page d’accueil", href: "/" },
       { title: "FAQs", href: "/#faqs" },
       { title: "À propos de nous", href: "/about" },
+      { title: "Catalogues / Produits", href: "/products" },
       { title: "Politique de confidentialité", href: "/privacy" },
       { title: "Conditions d'utilisation", href: "/terms" },
     ],
@@ -56,10 +58,12 @@ export function Footer() {
             <p className="mt-8 text-sm md:mt-0">
               Vous avez besoin d&apos;aide ?
             </p>
-            <p className="mt-8 font-bold md:mt-0 mb-0">06 06 06 06 06</p>
+            <p className="mt-8 font-bold md:mt-0 mb-0">06 20 35 76 67</p>
+            <p className="font-bold mb-0">07 81 35 09 09</p>
             <p className="text-sm">Contactez maintenant</p>
             <p className="mt-8 text-sm md:mt-0">
-              © {new Date().getFullYear()} halil.com. Tous droits réservés.
+              Copyright © {new Date().getFullYear()} halil.com. Tous droits
+              réservés.
             </p>
           </div>
         </AnimatedContainer>
