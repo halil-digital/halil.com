@@ -19,7 +19,7 @@ function Feature() {
               <p className="text-lg max-w-xl lg:max-w-full leading-relaxed tracking-tight text-muted-foreground  text-left">
                 Découvrez HALIL, un acteur majeur en Île‑de‑France dans la
                 distribution alimentaire spécialisée pour la restauration.
-                Fondée en 1999, HALIL Distribution ne cesse de croître pour
+                Fondée en 1998, HALIL Distribution ne cesse de croître pour
                 mieux répondre aux besoins de ses clients.
               </p>
             </div>
