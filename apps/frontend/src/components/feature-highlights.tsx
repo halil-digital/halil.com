@@ -14,7 +14,7 @@ export default function FeatureHighlights() {
 
         <div className="flex flex-col items-center space-y-4">
           <Boxes size={80} strokeWidth={1.5} />
-          <h3 className="text-xl font-bold">Beaucoup de stock</h3>
+          <h3 className="text-xl font-bold">Large disponibilité</h3>
           <p>Une large gamme de produits alimentaires</p>
         </div>
 
