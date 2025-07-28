@@ -45,7 +45,7 @@ const faqItems = [
     id: "faq-2",
     question: "Comment puis-je passer commande chez HALIL ?",
     answer: [
-      "Pour passer commande chez HALIL, contactez nous par téléphone au 06 06 06 06 06.",
+      "Pour passer commande chez HALIL, contactez nous par téléphone au 06 20 35 76 67 / 07 81 35 09 09.",
     ],
   },
   {
