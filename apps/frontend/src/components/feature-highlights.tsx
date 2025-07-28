@@ -5,7 +5,7 @@ import { Boxes, CreditCard, Star, Truck } from "lucide-react";
 export default function FeatureHighlights() {
   return (
     <section className="bg-[#ebc834] py-12 w-full">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-white text-center w-full px-4 md:px-20">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 text-white text-center w-full px-4 md:px-20">
         <div className="flex flex-col items-center space-y-4">
           <Truck size={80} strokeWidth={1.5} />
           <h3 className="text-xl font-bold">Livraison rapide</h3>
