@@ -1,6 +1,7 @@
 "use client";
 import { GithubIcon, LinkedinIcon } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
+import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
 import React from "react";
 
@@ -48,7 +49,10 @@ const footerLinks: FooterSection[] = [
 
 export function Footer() {
   return (
-    <footer className="bg-black text-white md:rounded-t-6xl relative w-full mx-auto flex flex-col items-center justify-center border-t bg-[radial-gradient(35%_128px_at_50%_0%,theme(backgroundColor.white/8%),transparent)] px-6 py-12 lg:py-16">
+    <footer
+      id="footer"
+      className="bg-black text-white md:rounded-t-6xl relative w-full mx-auto flex flex-col items-center justify-center border-t bg-[radial-gradient(35%_128px_at_50%_0%,theme(backgroundColor.white/8%),transparent)] px-6 py-12 lg:py-16"
+    >
       <div className="bg-foreground/20 absolute top-0 left-1/2 h-px w-1/3 -translate-x-1/2 -translate-y-1/2 rounded-full blur" />
 
       <div className="grid w-full gap-8 xl:grid-cols-3 xl:gap-8">
@@ -58,8 +62,12 @@ export function Footer() {
             <p className="mt-8 text-sm md:mt-0">
               Vous avez besoin d&apos;aide ?
             </p>
-            <p className="mt-8 font-bold md:mt-0 mb-0">06 20 35 76 67</p>
-            <p className="font-bold mb-0">07 81 35 09 09</p>
+            <Link href="tel:06 20 35 76 67">
+              <p className="mt-8 font-bold md:mt-0 mb-0">06 20 35 76 67</p>
+            </Link>
+            <Link href="tel:07 81 35 09 09">
+              <p className="font-bold mb-0">07 81 35 09 09</p>
+            </Link>
             <p className="text-sm">Contactez maintenant</p>
             <p className="mt-8 text-sm md:mt-0">
               Copyright © {new Date().getFullYear()} halil.com. Tous droits

@@ -16,13 +16,24 @@ import { products } from "@/data/products";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 export default function ProductPage() {
   const params = useParams();
   const slug = params?.slug as string;
 
+  const [href, setHref] = useState("#footer");
   const product = useMemo(() => products.find((p) => p.slug === slug), [slug]);
+
+  useEffect(() => {
+    const isMobile =
+      /iPhone|iPad|iPod|Android|webOS|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      );
+    if (isMobile) {
+      setHref("tel:+33620357667");
+    }
+  }, []);
 
   const initialActiveProduct = useMemo(() => {
     if (!product) return null;
@@ -230,9 +241,10 @@ export default function ProductPage() {
               <p className="text-sm text-gray-500">
                 Ce produit vous intéresse ?
               </p>
-              <Link href="tel:+336 20 35 76 67">
+              <Link href={href}>
                 <Button className="bg-[#ebc834] hover:bg-[#dfca70] text-black">
-                  Contactez-nous au 06 20 35 76 67
+                  Contactez-nous
+                  <span className="hidden"> au 06 20 35 76 67</span>
                 </Button>
               </Link>
             </div>

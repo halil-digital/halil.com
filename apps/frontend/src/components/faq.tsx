@@ -65,9 +65,9 @@ const faqItems = [
   },
   {
     id: "faq-5",
-    question: "Nos produits sont-ils certifiés halal ?",
+    question: "Nos produits sont-ils certifiés Halal ?",
     answer: [
-      "Oui, l’ensemble de nos produits sont certifiés halal. Nous nous engageons à respecter les normes les plus strictes pour garantir une consommation conforme aux exigences religieuses.",
+      "Oui, l’ensemble de nos produits sont certifiés Halal Achahada. Nous nous engageons à respecter les normes les plus strictes pour garantir une consommation conforme aux exigences religieuses.",
     ],
   },
   {
