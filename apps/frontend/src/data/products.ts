@@ -23,7 +23,7 @@ export const products: Product[] = [
     certificate: "",
     storage_conditions: "-18°C",
     weight: "2,5 KG",
-    package: "4x2,5 KG",
+    package: "10 KG",
   },
   {
     id: "2",
@@ -71,7 +71,7 @@ export const products: Product[] = [
     certificate: "",
     storage_conditions: "-18°C",
     weight: "2,5 KG",
-    package: "4x2,5 KG",
+    package: "10 KG",
   },
   {
     id: "6",
@@ -131,7 +131,7 @@ export const products: Product[] = [
     certificate: "",
     storage_conditions: "-18°C",
     weight: "2,5 KG",
-    package: "4x2,5 KG",
+    package: "10 KG",
   },
   {
     id: "11",
@@ -155,7 +155,7 @@ export const products: Product[] = [
     certificate: "",
     storage_conditions: "-18°C",
     weight: "2,5 KG",
-    package: "4x2,5 KG",
+    package: "10 KG",
   },
   {
     id: "13",
@@ -167,7 +167,7 @@ export const products: Product[] = [
     certificate: "",
     storage_conditions: "-18°C",
     weight: "2,5 KG",
-    package: "4x2,5 KG",
+    package: "10 KG",
   },
   {
     id: "14",
@@ -179,7 +179,7 @@ export const products: Product[] = [
     certificate: "",
     storage_conditions: "-18°C",
     weight: "2,5 KG",
-    package: "4x2,5 KG",
+    package: "10 KG",
   },
   {
     id: "18",
@@ -551,7 +551,7 @@ export const products: Product[] = [
     certificate: "",
     storage_conditions: "-18°C",
     weight: "2,5 KG",
-    package: "4x2,5 KG",
+    package: "10 KG",
   },
   {
     id: "83",
@@ -575,7 +575,7 @@ export const products: Product[] = [
     certificate: "",
     storage_conditions: "-18°C",
     weight: "1 KG",
-    package: "",
+    package: "10 KG",
   },
   {
     id: "85",
@@ -587,7 +587,7 @@ export const products: Product[] = [
     certificate: "",
     storage_conditions: "-18°C",
     weight: "2,5 KG",
-    package: "4x2,5 KG",
+    package: "10 KG",
   },
   {
     id: "86",
@@ -707,7 +707,7 @@ export const products: Product[] = [
     certificate: "",
     storage_conditions: "-18°C",
     weight: "2,5 KG",
-    package: "4x2,5 KG",
+    package: "10 KG",
   },
   {
     id: "96",
@@ -719,7 +719,7 @@ export const products: Product[] = [
     certificate: "",
     storage_conditions: "-18°C",
     weight: "2,5 KG",
-    package: "4x2,5 KG",
+    package: "10 KG",
   },
   {
     id: "97",
@@ -731,7 +731,7 @@ export const products: Product[] = [
     certificate: "",
     storage_conditions: "-18°C",
     weight: "2,5 KG",
-    package: "4X2.5KG",
+    package: "10 KG",
   },
   {
     id: "98",
@@ -745,7 +745,7 @@ export const products: Product[] = [
     certificate: "",
     storage_conditions: "-18°C",
     weight: "2,5 KG",
-    package: "4X2.5 KG",
+    package: "10 KG",
   },
   {
     id: "99",
@@ -965,6 +965,7 @@ export const products: Product[] = [
     certificate: "",
     storage_conditions: "",
     weight: "2,5 KG",
+    package: "10 KG",
   },
   {
     id: "185",
@@ -976,6 +977,7 @@ export const products: Product[] = [
     certificate: "",
     storage_conditions: "",
     weight: "2,5 KG",
+    package: "10 KG",
   },
   {
     id: "186",
@@ -987,6 +989,7 @@ export const products: Product[] = [
     certificate: "",
     storage_conditions: "",
     weight: "2,5 KG",
+    package: "10 KG",
   },
   {
     id: "187",
@@ -998,6 +1001,7 @@ export const products: Product[] = [
     certificate: "",
     storage_conditions: "",
     weight: "2,5 KG",
+    package: "10 KG",
   },
   {
     id: "188",
@@ -1173,18 +1177,18 @@ export const products: Product[] = [
   },
   {
     id: "203",
-    name: "Daim, Chocolate Cake with Crunchy Caramel",
-    slug: "daim-chocolate-cake-with-crunchy-caramel",
+    name: "Almondy, Tarte au Daim",
+    slug: "almondy-tarte-au-daim",
     category: "Dessert",
     images: [
-      "/images/products/daim-chocolate-cake-with-crunchy-caramel-600x590.jpg",
+      "/images/products/almondy-tarte-au-daim.png",
       "/images/products/daim-chocolate-cake-with-crunchy-caramel.webp",
     ],
     description: "",
     certificate: "",
     storage_conditions: "-18°C",
     weight: "1 KG",
-    package: "6 x 1 KG",
+    package: "",
   },
   {
     id: "204",
@@ -1272,7 +1276,7 @@ export const products: Product[] = [
   },
   {
     id: "211",
-    name: "Lamb Weston, Rösti Round",
+    name: "Lamb Weston, Rösti (Galette de pomme de terre)",
     slug: "lamb-weston-rosti-round",
     category: "Spécialités",
     images: ["/images/products/lamb-weston-rosti-round-600x681.jpg"],
@@ -1294,7 +1298,7 @@ export const products: Product[] = [
     certificate: "",
     storage_conditions: "-18°C",
     weight: "2 KG",
-    package: "4 x 2,5 KG",
+    package: "10 KG",
   },
   {
     id: "213",
@@ -1397,7 +1401,10 @@ export const products: Product[] = [
     name: "Pochettes à Kebab",
     slug: "pochettes-a-kebab",
     category: "Emballages",
-    images: ["/images/products/Pochettes-a-Kebab-600x900.png"],
+    images: [
+      "/images/products/pochettes-a-kebab.png",
+      "/images/products/pochettes-a-kebab-2.png",
+    ],
     description: "",
     certificate: "",
     storage_conditions: "",
@@ -1413,7 +1420,7 @@ export const products: Product[] = [
     description: "",
     certificate: "",
     storage_conditions: "+2°C/+4°C",
-    weight: "1,75 KG",
+    weight: "5 KG",
     package: "4 x 1,75 KG",
   },
   {
@@ -1583,7 +1590,7 @@ export const products: Product[] = [
     name: "Colona, Sauces 1 L",
     slug: "colona-sauces-1-l",
     category: "Sauces",
-    images: ["/images/products/colona-algerienne-1-l-600x928.jpg"],
+    images: ["/images/products/colona-tomato-ketchup-1-l-600x928.jpg"],
     description: "",
     certificate: "",
     storage_conditions: "",

@@ -230,9 +230,9 @@ export default function ProductPage() {
               <p className="text-sm text-gray-500">
                 Ce produit vous intéresse ?
               </p>
-              <Link href="">
+              <Link href="tel:+336 20 35 76 67">
                 <Button className="bg-[#ebc834] hover:bg-[#dfca70] text-black">
-                  Contactez-nous
+                  Contactez-nous au 06 20 35 76 67
                 </Button>
               </Link>
             </div>
