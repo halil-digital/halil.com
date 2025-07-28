@@ -900,7 +900,7 @@ export const products: Product[] = [
     name: "Sac Kraft Flat",
     slug: "sac-kraft-flat",
     category: "Emballages",
-    images: ["/images/products/sac-kraft-flat-600x400.jpg"],
+    images: ["/images/products/sac-kraft-flat-600x400.webp"],
     description: "",
     certificate: "",
     storage_conditions: "",
