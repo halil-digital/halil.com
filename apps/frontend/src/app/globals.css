@@ -175,11 +175,11 @@
 
 @layer utilities {
   .animate-forward {
-    animation: forward 40s linear infinite;
+    animation: forward 30s linear infinite;
   }
 
   .animate-backward {
-    animation: backward 40s linear infinite;
+    animation: backward 30s linear infinite;
   }
 
   @keyframes forward {
@@ -187,7 +187,7 @@
       transform: translateX(100%);
     }
     100% {
-      transform: translateX(-100%);
+      transform: translateX(0%);
     }
   }
 
