@@ -200,3 +200,61 @@
     }
   }
 }
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Animation de défilement continu de droite à gauche */
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* On déplace de 25% car on a dupliqué 4 fois les produits */
+    transform: translateX(-25%);
+  }
+}
+
+/* Animation de défilement continu de gauche à droite */
+@keyframes scrollRight {
+  0% {
+    transform: translateX(-25%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Responsive : ajustement des tailles sur mobile */
+@media (max-width: 768px) {
+  .w-44 {
+    width: 8rem;
+  }
+  .h-44 {
+    height: 8rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .w-44 {
+    width: 6rem;
+  }
+  .h-44 {
+    height: 6rem;
+  }
+}

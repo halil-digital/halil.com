@@ -86,7 +86,7 @@ const Faq = ({
   supportHeading = "Vous avez d'autres questions ?",
   supportDescription = "Notre équipe est là pour répondre à toutes vos questions. Contactez-nous pour une assistance personnalisée.",
   supportButtonText = "Contactez-nous",
-  supportButtonUrl = "mailto:exemple@halil.com",
+  supportButtonUrl = "mailto:sasuhalill@gmail.com",
 }: Faq3Props) => {
   return (
     <section className="py-32" id="faqs">
