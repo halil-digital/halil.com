@@ -1,6 +1,6 @@
 "use client";
 
-import { Boxes, CreditCard, Star, Truck } from "lucide-react";
+import { Boxes, CreditCard, Phone, Truck } from "lucide-react";
 
 export default function FeatureHighlights() {
   return (
@@ -19,9 +19,9 @@ export default function FeatureHighlights() {
         </div>
 
         <div className="flex flex-col items-center space-y-4">
-          <Star size={80} strokeWidth={1.5} />
-          <h3 className="text-xl font-bold">Top budget top qualité</h3>
-          <p>Des articles de qualité à prix attractifs</p>
+          <Phone size={80} strokeWidth={1.5} />
+          <h3 className="text-xl font-bold">Service client</h3>
+          <p>À vos côtés 7j / 7 !</p>
         </div>
 
         <div className="flex flex-col items-center space-y-4">

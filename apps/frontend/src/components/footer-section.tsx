@@ -16,6 +16,13 @@ interface FooterSection {
   links: FooterLink[];
 }
 
+const logo = {
+  url: "/",
+  alt: "HALIL logo",
+  title: "",
+  src: "/images/halil-distribution-logo.png",
+};
+
 const footerLinks: FooterSection[] = [
   {
     label: "Entreprise",
@@ -58,7 +65,14 @@ export function Footer() {
       <div className="grid w-full gap-8 xl:grid-cols-3 xl:gap-8">
         <AnimatedContainer>
           <div className="space-y-4">
-            <span className="text-lg font-semibold">HALIL</span>
+            <span className="text-lg font-semibold">
+              <a href={logo.url} className="flex items-center gap-2">
+                {logo.src && (
+                  <img src={logo.src} className="w-30" alt={logo.alt} />
+                )}
+                <span className="text-lg font-semibold">{logo.title}</span>
+              </a>
+            </span>
             <p className="mt-8 text-sm md:mt-0">
               Vous avez besoin d&apos;aide ?
             </p>

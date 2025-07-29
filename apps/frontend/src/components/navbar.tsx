@@ -60,8 +60,9 @@ interface Navbar1Props {
 const Navbar = ({
   logo = {
     url: "/",
-    alt: "logo",
-    title: "HALIL",
+    alt: "HALIL logo",
+    title: "",
+    src: "/images/halil-distribution-logo.png",
   },
   menu = [
     {
@@ -86,7 +87,7 @@ const Navbar = ({
           <div className="flex items-center gap-6">
             <a href={logo.url} className="flex items-center gap-2">
               {logo.src && (
-                <img src={logo.src} className="w-8" alt={logo.alt} />
+                <img src={logo.src} className="w-20" alt={logo.alt} />
               )}
               <span className="text-lg font-semibold">{logo.title}</span>
             </a>
