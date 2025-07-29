@@ -68,7 +68,7 @@ export function Footer() {
             <span className="text-lg font-semibold">
               <a href={logo.url} className="flex items-center gap-2">
                 {logo.src && (
-                  <img src={logo.src} className="w-30" alt={logo.alt} />
+                  <img src={logo.src} className="w-20" alt={logo.alt} />
                 )}
                 <span className="text-lg font-semibold">{logo.title}</span>
               </a>
