@@ -55,7 +55,8 @@ export default function ProductPage() {
   const showDetailsBox =
     activeProduct.weight ||
     activeProduct.certificate ||
-    activeProduct.storage_conditions;
+    activeProduct.storage_conditions ||
+    activeProduct.size;
 
   const scrollLeft = () => {
     if (thumbnailRef.current) {
@@ -200,6 +201,15 @@ export default function ProductPage() {
                       <p className="text-sm text-gray-500">Poids</p>
                       <p className="font-semibold text-gray-800">
                         {activeProduct.weight}
+                      </p>
+                    </div>
+                  )}
+                  {activeProduct.size && (
+                    <div className="flex flex-col items-center">
+                      <span className="text-xl mb-2">📏</span>
+                      <p className="text-sm text-gray-500">Taille</p>
+                      <p className="font-semibold text-gray-800">
+                        {activeProduct.size}
                       </p>
                     </div>
                   )}

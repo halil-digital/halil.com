@@ -10,6 +10,7 @@ export interface Product {
   weight?: string;
   package?: string;
   variants?: Product[];
+  size?: string;
 }
 
 export const products: Product[] = [
@@ -252,7 +253,7 @@ export const products: Product[] = [
     name: "Box Hamburger",
     slug: "box-hamburger",
     category: "Emballages",
-    images: ["/images/products/box-hamburger-600x496.jpg"],
+    images: ["/images/products/box-hamburger-600x496.png"],
     description: "",
     certificate: "",
     storage_conditions: "",
@@ -1551,11 +1552,12 @@ export const products: Product[] = [
     slug: "gant-noir-nitrile-non-pourdre",
     category: "Emballages",
     images: ["/images/products/gant-noir-nitrile-non-pourdre.png"],
-    description: "M - L - XL",
+    description: "",
     certificate: "",
     storage_conditions: "",
     weight: "",
     package: "",
+    size: "M - L - XL",
   },
   {
     id: "37-V",
