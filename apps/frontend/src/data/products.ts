@@ -1518,7 +1518,7 @@ export const products: Product[] = [
   },
   {
     id: "229",
-    name: "Barquettes de Frites",
+    name: "Barquettes de Frites 375 GR - 500GR - 750GR",
     slug: "barquettes-de-frites",
     category: "Emballages",
     images: [
