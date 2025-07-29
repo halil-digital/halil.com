@@ -173,31 +173,12 @@
   }
 }
 
-@layer utilities {
-  .animate-forward {
-    animation: forward 30s linear infinite;
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
   }
-
-  .animate-backward {
-    animation: backward 30s linear infinite;
-  }
-
-  @keyframes forward {
-    0% {
-      transform: translateX(100%);
-    }
-    100% {
-      transform: translateX(0%);
-    }
-  }
-
-  @keyframes backward {
-    0% {
-      transform: translateX(-100%);
-    }
-    100% {
-      transform: translateX(100%);
-    }
+  100% {
+    transform: translateX(0);
   }
 }
 
@@ -210,33 +191,23 @@
   }
 }
 
-@keyframes slideInFromLeft {
+/* Défilement continu gauche vers droite */
+@keyframes scrollRight {
   0% {
-    transform: translateX(-100%);
+    transform: translateX(0);
   }
   100% {
-    transform: translateX(0);
+    transform: translateX(100%);
   }
 }
 
-/* Animation de défilement continu de droite à gauche */
+/* Défilement continu droite vers gauche */
 @keyframes scrollLeft {
   0% {
     transform: translateX(0);
   }
   100% {
-    /* On déplace de 25% car on a dupliqué 4 fois les produits */
-    transform: translateX(-25%);
-  }
-}
-
-/* Animation de défilement continu de gauche à droite */
-@keyframes scrollRight {
-  0% {
-    transform: translateX(-25%);
-  }
-  100% {
-    transform: translateX(0);
+    transform: translateX(-100%);
   }
 }
 

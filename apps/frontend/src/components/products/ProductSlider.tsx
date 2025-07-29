@@ -53,7 +53,7 @@ export default function DoubleLineProductSlider() {
   const line1 = matchedProducts.slice(0, half);
   const line2 = matchedProducts.slice(half);
 
-  const repeat = (arr: Product[]) => [...arr, ...arr];
+  const repeat = (arr: Product[]) => [...arr, ...arr, ...arr, ...arr];
 
   const repeatedLine1 = repeat(line1);
   const repeatedLine2 = repeat(line2);
@@ -106,7 +106,7 @@ export default function DoubleLineProductSlider() {
             className={`flex items-center gap-8 ${
               isEntering
                 ? "animate-[slideInFromLeft_2s_ease-out_forwards]"
-                : "animate-[scrollRight_25s_linear_infinite]"
+                : "animate-[scrollRight_30s_linear_infinite]"
             }`}
             style={{
               transform: isEntering ? "translateX(-100%)" : "translateX(0)",
