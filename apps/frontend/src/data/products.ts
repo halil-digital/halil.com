@@ -1533,7 +1533,7 @@ export const products: Product[] = [
   },
   {
     id: "230",
-    name: "Pompe a sauce 3L INOX",
+    name: "Pompe à sauce 3L INOX",
     slug: "pompe-a-sauce-3-l-inox",
     category: "Emballages",
     images: [

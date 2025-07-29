@@ -56,6 +56,7 @@ export default function ProductPage() {
     activeProduct.weight ||
     activeProduct.certificate ||
     activeProduct.storage_conditions ||
+    activeProduct.package ||
     activeProduct.size;
 
   const scrollLeft = () => {
