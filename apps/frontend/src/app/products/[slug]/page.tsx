@@ -193,12 +193,12 @@ export default function ProductPage() {
 
             {showDetailsBox && (
               <div className="bg-gray-50 p-6 rounded-xl border mt-6">
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 text-center">
                   {activeProduct.weight && (
                     <div className="flex flex-col items-center">
                       <span className="text-xl mb-2">⚖️</span>
                       <p className="text-sm text-gray-500">Poids</p>
-                      <p className="text-lg font-semibold text-gray-800">
+                      <p className="font-semibold text-gray-800">
                         {activeProduct.weight}
                       </p>
                     </div>
@@ -207,7 +207,7 @@ export default function ProductPage() {
                     <div className="flex flex-col items-center">
                       <span className="text-xl mb-2">📜</span>
                       <p className="text-sm text-gray-500">Certificat</p>
-                      <p className="text-lg font-semibold text-gray-800">
+                      <p className="font-semibold text-gray-800">
                         {activeProduct.certificate}
                       </p>
                     </div>
@@ -218,7 +218,7 @@ export default function ProductPage() {
                       <p className="text-sm text-gray-500">
                         Conditions de stockage
                       </p>
-                      <p className="text-lg font-semibold text-gray-800">
+                      <p className="font-semibold text-gray-800">
                         {activeProduct.storage_conditions}
                       </p>
                     </div>
@@ -227,7 +227,7 @@ export default function ProductPage() {
                     <div className="flex flex-col items-center">
                       <span className="text-xl mb-2">📦</span>
                       <p className="text-sm text-gray-500">Carton</p>
-                      <p className="text-lg font-semibold text-gray-800">
+                      <p className="font-semibold text-gray-800">
                         {activeProduct.package}
                       </p>
                     </div>
