@@ -1103,8 +1103,8 @@ export const products: Product[] = [
   },
   {
     id: "194",
-    name: "Chicken Nuggets",
-    slug: "chicken-nuggets",
+    name: "Ekin, Chicken Nuggets",
+    slug: "ekin-chicken-nuggets",
     category: "Volailles",
     images: [
       "/images/products/ulas-nuggets-600x600.jpg",
