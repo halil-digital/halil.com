@@ -216,7 +216,11 @@ export default function ProductPage() {
                   )}
                   {activeProduct.certificate && (
                     <div className="flex flex-col items-center">
-                      <span className="text-xl mb-2">📜</span>
+                      <span className="text-xl mb-2">
+                        {activeProduct.certificate.toLowerCase().includes("bio")
+                          ? "♻️ "
+                          : "📜"}
+                      </span>
                       <p className="text-sm text-gray-500">Certificat</p>
                       <p className="font-semibold text-gray-800">
                         {activeProduct.certificate}
