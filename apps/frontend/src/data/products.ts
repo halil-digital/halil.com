@@ -960,18 +960,6 @@ export const products: Product[] = [
     package: "",
   },
   {
-    id: "183",
-    name: "Sauce au Cheddar",
-    slug: "sauce-au-cheddar",
-    category: "Produits Laitiers",
-    images: ["/images/products/sauce-au-cheddar-600x600.jpg"],
-    description: "Prête à l’emploi, nappante & gourmande",
-    certificate: "",
-    storage_conditions: "",
-    weight: "1 KG",
-    package: "",
-  },
-  {
     id: "184",
     name: "Excellence, Frites 9/9 mm",
     slug: "excellence-frites-9-9-mm",
@@ -1535,7 +1523,7 @@ export const products: Product[] = [
   },
   {
     id: "229",
-    name: "Barquettes de Frites 375 GR - 500GR - 750GR",
+    name: "Barquettes de Frites\n375 GR - 500GR - 750GR",
     slug: "barquettes-de-frites",
     category: "Emballages",
     images: [
