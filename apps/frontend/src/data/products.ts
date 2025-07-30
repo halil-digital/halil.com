@@ -1070,8 +1070,8 @@ export const products: Product[] = [
   },
   {
     id: "192",
-    name: "Ekin, Tomato Ketchup",
-    slug: "ekin-tomato-ketchup",
+    name: "Tomato Ketchup",
+    slug: "tomato-ketchup",
     category: "Sauces",
     images: ["/images/products/altin-tomato-ketchup-5-kg.jpg"],
     description: "",
@@ -1160,8 +1160,8 @@ export const products: Product[] = [
   },
   {
     id: "201",
-    name: "Ekin, Chicken Burger",
-    slug: "ekin-chicken-burger",
+    name: "Factory, Chicken Burger",
+    slug: "factory-chicken-burger",
     category: "Volailles",
     images: ["/images/products/factory-chicken-burger-768x576.jpg"],
     description: "Préfrites et surgelées",
@@ -1199,8 +1199,8 @@ export const products: Product[] = [
   },
   {
     id: "204",
-    name: "Ekin, Pain Sandwich",
-    slug: "ekin-pain-sandwich",
+    name: "Pain Sandwich",
+    slug: "pain-sandwich",
     category: "Tortillas et Pains",
     images: ["/images/products/Ekin-Pain-Sandwich-768x512.png"],
     description: "",
