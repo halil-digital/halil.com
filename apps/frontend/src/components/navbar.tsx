@@ -87,7 +87,7 @@ const Navbar = ({
           <div className="flex items-center gap-6">
             <a href={logo.url} className="flex items-center gap-2">
               {logo.src && (
-                <img src={logo.src} className="w-15" alt={logo.alt} />
+                <img src={logo.src} className="w-17" alt={logo.alt} />
               )}
               <span className="text-lg font-semibold">{logo.title}</span>
             </a>

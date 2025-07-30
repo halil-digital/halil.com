@@ -12,6 +12,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
+import ZoomImage from "@/components/zoom-image";
 import { products } from "@/data/products";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
@@ -101,10 +102,9 @@ export default function ProductPage() {
         <div className="flex flex-col md:flex-row gap-12">
           {/* Image principale + miniatures */}
           <div className="md:w-1/2 w-full">
-            <img
+            <ZoomImage
               src={activeProduct.images[selectedImageIndex]}
               alt={activeProduct.name}
-              className="w-full max-h-[500px] min-h-[500px] object-contain rounded-lg shadow-lg"
             />
 
             {activeProduct.images.length > 1 && (

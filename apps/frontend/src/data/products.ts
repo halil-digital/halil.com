@@ -2025,7 +2025,7 @@ export const products: Product[] = [
   },
   {
     id: "102-V",
-    name: "Nawhal’s, Sauces",
+    name: "Nawhal’s, Sauces 1L",
     slug: "nawhals-sauces",
     category: "Sauces",
     images: ["/images/products/nawhal_s-algerienne-950-ml.jpg"],
