@@ -1,5 +1,6 @@
 import { Product } from "@/data/products";
 import Link from "next/link";
+import { Fragment } from "react";
 
 export function ProductCard({ product }: { product: Product }) {
   return (
@@ -16,7 +17,12 @@ export function ProductCard({ product }: { product: Product }) {
 
         {/* Titre produit */}
         <h2 className="text-black mt-4 text-xs xl:text-sm font-bold text-center leading-tight uppercase px-2 min-h-[2rem]">
-          {product.name}
+          {product.name.split("\n").map((line, index) => (
+            <Fragment key={index}>
+              {line}
+              <br />
+            </Fragment>
+          ))}
         </h2>
       </div>
     </Link>

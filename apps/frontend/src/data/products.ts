@@ -518,7 +518,7 @@ export const products: Product[] = [
   },
   {
     id: "79",
-    name: "Les Broches de Poulet",
+    name: "Les Broches de Poulet\n7-10-15-20-25-30-40-50 KG",
     slug: "les-broches-de-poulet",
     category: "Volailles",
     images: [
@@ -533,7 +533,7 @@ export const products: Product[] = [
   },
   {
     id: "80",
-    name: "Les Broches de Poulet et Dinde 7-10-15-20-25-30 KG",
+    name: "Les Broches de Poulet et Dinde\n7-10-15-20-25-30 KG",
     slug: "les-broches-de-poulet-et-dinde",
     category: "Volailles",
     images: ["/images/products/les-broches-de-poulet-et-dinde-600x559.jpg"],
@@ -545,7 +545,7 @@ export const products: Product[] = [
   },
   {
     id: "81",
-    name: "Les Broches de Veau et Dinde 7-10-15-20-25-30 KG",
+    name: "Les Broches de Veau et Dinde\n7-10-15-20-25-30 KG",
     slug: "les-broches-de-veau-et-dinde",
     category: "Volailles",
     images: ["/images/products/les-broches-de-veau-et-dinde-600x559.jpg"],
@@ -1046,7 +1046,7 @@ export const products: Product[] = [
     description: "",
     certificate: "Halal, certifié par Achahada",
     storage_conditions: "-18°C",
-    weight: "45-80-100-180GR",
+    weight: "5 KG",
     package: "",
   },
   {
@@ -1438,7 +1438,10 @@ export const products: Product[] = [
     name: "Sauce Fromagère/Tacos",
     slug: "sauce-fromagere-tacos",
     category: "Produits Laitiers",
-    images: ["/images/products/sauce-fromagere-tacos-768x513.jpg"],
+    images: [
+      "/images/products/sauce-fromagere-tacos.png",
+      "/images/products/sauce-fromagere-tacos-768x513.jpg",
+    ],
     description: "",
     certificate: "",
     storage_conditions: "+2°C/+4°C",
@@ -1579,9 +1582,9 @@ export const products: Product[] = [
     slug: "cuisse-de-poulet-10-kg",
     category: "Volailles",
     images: [
-      "/images/products/cuisse-de-poulet-10-kg.webp",
       "/images/products/cuisse-de-poulet-10-kg-carton.png",
       "/images/products/cuisse-de-poulet-10-kg-2.png",
+      "/images/products/cuisse-de-poulet-10-kg.webp",
     ],
     description: "",
     certificate: "Halal, certifié par Achahada",
