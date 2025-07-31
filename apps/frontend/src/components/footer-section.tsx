@@ -20,7 +20,7 @@ const logo = {
   url: "/",
   alt: "HALIL logo",
   title: "",
-  src: "/images/halil-distribution-logo.png",
+  src: "/images/halil-distribution-logo-white.png",
 };
 
 const footerLinks: FooterSection[] = [
