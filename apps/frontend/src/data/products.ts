@@ -1026,7 +1026,7 @@ export const products: Product[] = [
     id: "189",
     name: "Ekin, Cordon Bleu",
     slug: "ekin-cordon-bleu",
-    category: "Viandes",
+    category: "Volailles",
     images: [
       "/images/products/ekin-cordon-bleu.png",
       "/images/products/cordon-bleu.png",

@@ -82,8 +82,8 @@ const Navbar = ({
 }: Navbar1Props) => {
   return (
     <section className=" bg-[#ebc834]">
-      <div className="container max-w-none w-full py-4 px-20">
-        <nav className="hidden justify-between lg:flex">
+      <div className="container max-w-none w-full py-2 px-20">
+        <nav className="hidden justify-between lg:flex ">
           <div className="flex items-center gap-6">
             <a href={logo.url} className="flex items-center gap-2">
               {logo.src && (
@@ -126,7 +126,7 @@ const Navbar = ({
                   <Menu className="size-4" />
                 </Button>
               </SheetTrigger>
-              <SheetContent className="overflow-y-auto">
+              <SheetContent className="overflow-y-auto bg-[#ebc834]">
                 <SheetHeader>
                   <SheetTitle>
                     <a href={logo.url} className="flex items-center gap-2">

@@ -4,7 +4,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 
 interface FaqItem {
@@ -121,27 +120,11 @@ const Faq = ({
             </AccordionItem>
           ))}
         </Accordion>
-        <div className="mx-auto flex max-w-4xl flex-col items-center rounded-lg bg-accent p-4 text-center md:rounded-xl md:p-6 lg:p-8">
-          <div className="relative">
-            <Avatar className="absolute mb-4 size-16 origin-bottom -translate-x-[60%] scale-[80%] border md:mb-5">
-              <AvatarImage src="https://shadcnblocks.com/images/block/avatar-2.webp" />
-              <AvatarFallback>SU</AvatarFallback>
-            </Avatar>
-            <Avatar className="absolute mb-4 size-16 origin-bottom translate-x-[60%] scale-[80%] border md:mb-5">
-              <AvatarImage src="https://shadcnblocks.com/images/block/avatar-3.webp" />
-              <AvatarFallback>SU</AvatarFallback>
-            </Avatar>
-            <Avatar className="mb-4 size-16 border md:mb-5">
-              <AvatarImage src="https://shadcnblocks.com/images/block/avatar-1.webp" />
-              <AvatarFallback>SU</AvatarFallback>
-            </Avatar>
-          </div>
+        <div className="bg-[#ebc834] mx-auto flex max-w-4xl flex-col items-center rounded-lg p-4 text-center md:rounded-xl md:p-6 lg:p-8">
           <h3 className="mb-2 max-w-3xl font-semibold lg:text-lg">
             {supportHeading}
           </h3>
-          <p className="mb-8 max-w-3xl text-muted-foreground lg:text-lg">
-            {supportDescription}
-          </p>
+          <p className="mb-8 max-w-3xl lg:text-lg">{supportDescription}</p>
           <div className="flex w-full flex-col justify-center gap-2 sm:flex-row">
             <Button className="w-full sm:w-auto" asChild>
               <a href={supportButtonUrl} target="_blank">
