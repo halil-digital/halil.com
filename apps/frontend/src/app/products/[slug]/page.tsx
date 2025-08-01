@@ -2,13 +2,11 @@ import { products } from "@/data/products";
 import type { Metadata } from "next";
 import ProductPage from "./ProductPage";
 
-type Props = {
-  params: {
-    slug: string;
-  };
-};
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
   const product = products.find((p) => p.slug === params.slug);
 
   if (!product) {
@@ -24,6 +22,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function Page({ params }: Props) {
+export default function Page({ params }: { params: { slug: string } }) {
   return <ProductPage slug={params.slug} />;
 }
