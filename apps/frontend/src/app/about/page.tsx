@@ -1,15 +1,13 @@
-import AdBar from "@/components/adbar";
-import { Footer } from "@/components/footer-section";
-import { Navbar } from "@/components/navbar";
-import { Hero } from "@/components/ui/about-hero";
+import type { Metadata } from "next";
+import AboutPage from "./PageAbout";
 
-export default function Home() {
-  return (
-    <div>
-      <AdBar />
-      <Navbar />
-      <Hero />
-      <Footer />
-    </div>
-  );
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: `À propos | HALIL`,
+    description: `Découvrez HALIL.`,
+  };
+}
+
+export default async function Page() {
+  return <AboutPage />;
 }

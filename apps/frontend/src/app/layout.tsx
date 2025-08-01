@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "HALIL",
+  title: "Page d'accueil | HALIL",
   description: "HALIL grossiste alimentaire",
 };
 
