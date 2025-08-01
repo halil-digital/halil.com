@@ -7,8 +7,8 @@ export default function ZoomImage({ src, alt }: { src: string; alt: string }) {
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const { left, top, width, height } =
       e.currentTarget.getBoundingClientRect();
-    const x = ((e.clientX - left) / width) * 50;
-    const y = ((e.clientY - top) / height) * 50;
+    const x = ((e.clientX - left) / width) * 100;
+    const y = ((e.clientY - top) / height) * 100;
     setBackgroundPosition(`${x}% ${y}%`);
   };
 
@@ -22,7 +22,7 @@ export default function ZoomImage({ src, alt }: { src: string; alt: string }) {
         isHovering
           ? {
               backgroundImage: `url(${src})`,
-              backgroundSize: "200%",
+              backgroundSize: "100%",
               backgroundPosition,
             }
           : {}
