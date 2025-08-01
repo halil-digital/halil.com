@@ -490,7 +490,7 @@ export const products: Product[] = [
   },
   {
     id: "77",
-    name: "Harissa",
+    name: "Harissa 12 pièces",
     slug: "harissa",
     category: "Sauces",
     images: [
@@ -1446,7 +1446,7 @@ export const products: Product[] = [
     certificate: "Halal, certifié par Achahada",
     storage_conditions: "-18°C",
     weight: "2,5 KG",
-    package: "4 x 2,5 KG",
+    package: "4 x 2,5 KG (10KG)",
   },
   {
     id: "224",
@@ -1458,7 +1458,7 @@ export const products: Product[] = [
     certificate: "Halal, certifié par Achahada",
     storage_conditions: "-18°C",
     weight: "2,5 KG",
-    package: "4 x 2,5 KG",
+    package: "4 x 2,5 KG (10KG)",
   },
   {
     id: "225",
@@ -1494,7 +1494,7 @@ export const products: Product[] = [
   },
   {
     id: "227",
-    name: "Box Sandwich Blanche - 200 Pièces",
+    name: "Box Sandwich Blanche\n200 Pièces",
     slug: "box-sandwich-blanche-200-pieces",
     category: "Emballages",
     images: [
@@ -1553,7 +1553,7 @@ export const products: Product[] = [
   },
   {
     id: "231",
-    name: "Gant Noir nitrile non pourdre",
+    name: "Gant Noir nitrile non poudré",
     slug: "gant-noir-nitrile-non-pourdre",
     category: "Emballages",
     images: ["/images/products/gant-noir-nitrile-non-pourdre.png"],

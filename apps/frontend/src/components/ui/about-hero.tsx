@@ -22,7 +22,7 @@ function Hero() {
                 et fiable de produits alimentaires
               </span>
             </h1>
-            <p className="text-lg md:text-xl leading-relaxed tracking-tight text-muted-foreground max-w-2xl text-center">
+            <p className="px-2 text-lg md:text-xl leading-relaxed tracking-tight text-muted-foreground max-w-2xl text-center">
               Fondée en 1998 à Paris, HALIL distribue des produits alimentaires
               pour les professionnels de la restauration. Son catalogue comprend
               viandes, surgelés, pains et sauces. Fiable et réactive, HALIL est

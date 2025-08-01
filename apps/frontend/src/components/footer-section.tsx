@@ -73,9 +73,7 @@ export function Footer() {
                 <span className="text-lg font-semibold">{logo.title}</span>
               </a>
             </span>
-            <p className="mt-8 text-sm md:mt-0">
-              Vous avez besoin d&apos;aide ?
-            </p>
+            <p className="mt-8 text-sm mb-0">Vous avez besoin d&apos;aide ?</p>
             <Link href="tel:06 20 35 76 67">
               <p className="mt-8 font-bold md:mt-0 mb-0">06 20 35 76 67</p>
             </Link>

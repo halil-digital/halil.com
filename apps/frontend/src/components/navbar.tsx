@@ -100,7 +100,7 @@ const Navbar = ({
             </div>
           </div>
           <div className="flex gap-4 items-center">
-            <span className="flex items-center gap-2 text-md">
+            <span className="flex items-center gap-2 text-sm">
               <PhoneCall size={16} />
               Vous pouvez nous contacter{" "}
               <a href="tel:+33606060606">
