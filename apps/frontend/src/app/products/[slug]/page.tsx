@@ -24,6 +24,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function Page() {
-  return <ProductPage />;
+export default function Page({ params }: Props) {
+  return <ProductPage slug={params.slug} />;
 }

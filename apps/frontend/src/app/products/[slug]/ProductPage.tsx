@@ -16,14 +16,11 @@ import ZoomImage from "@/components/zoom-image";
 import { products } from "@/data/products";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
-import { useParams } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 
-export default function ProductPage() {
-  const params = useParams();
-  const slug = params?.slug as string;
-
+export default function ProductPage({ slug }: { slug: string }) {
   const [href, setHref] = useState("#footer");
+
   const product = useMemo(() => products.find((p) => p.slug === slug), [slug]);
 
   useEffect(() => {
