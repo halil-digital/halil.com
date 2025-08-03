@@ -20,6 +20,18 @@ const productNamesToShow = [
   "Factory, Sweet Barbecue",
   "Factory, BIG BURGER",
   "Filets de Poulet (Frais)",
+  "Nubi, Tiramisu Chocolat Caramel",
+  "Sofra, Ayran",
+  "Nubi, Tiramisu Chocolat Noisette Spéculoos",
+  "Factory, Lamelles de Kebab Poulet",
+  "Ekin, Cordon Bleu",
+  "Factory, 18 Dürüm",
+  "Nubi, Tiramisu Cookies & Cream",
+  "Almondy, Tarte au Daim",
+  "Ekin, Frites Présalé 6/6 mm",
+  "Colona, Sauce Salade",
+  "Ekin, Steack Haché Façon Bouchère",
+  "Falafels",
 ];
 
 function findProductByName(
@@ -37,11 +49,13 @@ const matchedProducts = productNamesToShow
   .filter(Boolean) as Product[];
 
 export function ProductSlider() {
+  const firstHalf = matchedProducts.slice(0, matchedProducts.length / 2 - 1);
+  const secondHalf = matchedProducts.slice(matchedProducts.length / 2);
   return (
     <div className="h-[400px] flex flex-col justify-center gap-4">
       <div className="flex items-center space-x-4 mx-auto w-full max-w-max">
         <InfiniteSlider direction="horizontal">
-          {matchedProducts.map((product) => (
+          {firstHalf.map((product) => (
             <div
               key={product.id}
               className="flex items-center aspect-square w-[120px] rounded-[4px]"
@@ -59,7 +73,7 @@ export function ProductSlider() {
       </div>
       <div className="flex items-center space-x-4 mx-auto w-full max-w-max">
         <InfiniteSlider direction="horizontal" reverse>
-          {matchedProducts.map((product) => (
+          {secondHalf.map((product) => (
             <div
               key={product.id}
               className="flex items-center aspect-square w-[120px] rounded-[4px]"
