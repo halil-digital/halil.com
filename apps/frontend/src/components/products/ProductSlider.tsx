@@ -13,8 +13,10 @@ const productNamesToShow = [
   "Les Broches de Poulet et Dinde",
   "Harissa",
   "Excellence, Huile de Tournesol",
+  "Sac Kraft Flat",
   "Colona, Sauce Pimentée",
   "Antalya, 18 Dürüm 30 CM",
+  "Box Sandwich Kraft / Recyclable",
   "Factory, Algérienne",
   "Factory, Samouraï",
   "Factory, Sweet Barbecue",
@@ -32,6 +34,13 @@ const productNamesToShow = [
   "Colona, Sauce Salade",
   "Ekin, Steack Haché Façon Bouchère",
   "Falafels",
+  "Factory, Steak Haché",
+  "Pain Hamburger 1004",
+  "Teker, Cubes de Poulet Curry",
+  "Nawhal’s, Sauces 1L",
+  "Colona, Sauces 5 L",
+  "Bobine Essuie Tout x6",
+  "Tomato Ketchup",
 ];
 
 function findProductByName(

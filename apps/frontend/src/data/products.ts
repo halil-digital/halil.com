@@ -1043,7 +1043,7 @@ export const products: Product[] = [
     slug: "sofra-ayran",
     category: "Produits Laitiers",
     images: [
-      "/images/products/sofra-ayran-250-ml.png",
+      "/images/products/sofra-ayran-250-ml-500x500.png",
       "/images/products/sofra-ayran-20-x-250-ml.png",
       "/images/products/sofra-ayran-carton.png",
     ],
