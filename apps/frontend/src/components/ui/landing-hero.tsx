@@ -27,9 +27,8 @@ function Hero() {
 
   return (
     <div
-      className="mx-0 relative bg-cover md:bg-center bg-no-repeat"
+      className="mx-0 relative flex justify-center items-center bg-no-repeat bg-cover md:bg-center bg-none md:bg-[url('/images/bg-hero.png')]"
       style={{
-        backgroundImage: "url('/images/bg-hero.png')",
         height: "calc(100vh - 4rem)",
       }}
     >
@@ -40,7 +39,7 @@ function Hero() {
               Bienvenue sur notre site
             </Button>
           </div>
-          <div className="flex gap-4 flex-col">
+          <div className="flex gap-4 flex-col px-4">
             <h1 className="text-5xl md:text-7xl max-w-2xl tracking-tighter text-center font-regular">
               <span className="text-spektr-cyan-50">
                 Distribution de produits

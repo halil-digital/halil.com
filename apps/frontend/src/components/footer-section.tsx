@@ -1,5 +1,5 @@
 "use client";
-import { GithubIcon, LinkedinIcon } from "lucide-react";
+import { LinkedinIcon } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
@@ -43,14 +43,7 @@ const footerLinks: FooterSection[] = [
   },
   {
     label: "Réseaux sociaux",
-    links: [
-      { title: "LinkedIn", href: "#", icon: LinkedinIcon },
-      {
-        title: "Github",
-        href: "https://github.com/halil-digital",
-        icon: GithubIcon,
-      },
-    ],
+    links: [{ title: "LinkedIn", href: "#", icon: LinkedinIcon }],
   },
 ];
 
@@ -62,7 +55,7 @@ export function Footer() {
     >
       <div className="bg-foreground/20 absolute top-0 left-1/2 h-px w-1/3 -translate-x-1/2 -translate-y-1/2 rounded-full blur" />
 
-      <div className="grid w-full gap-8 xl:grid-cols-3 xl:gap-8">
+      <div className="w-full flex flex-col-reverse xl:grid xl:grid-cols-3 xl:gap-8">
         <AnimatedContainer>
           <div className="space-y-4">
             <span className="text-lg font-semibold">
@@ -75,20 +68,20 @@ export function Footer() {
             </span>
             <p className="mt-8 text-sm mb-0">Vous avez besoin d&apos;aide ?</p>
             <Link href="tel:06 20 35 76 67">
-              <p className="mt-8 font-bold md:mt-0 mb-0">06 20 35 76 67</p>
+              <p className="mt-0 font-bold mb-0">06 20 35 76 67</p>
             </Link>
             <Link href="tel:07 81 35 09 09">
               <p className="font-bold mb-0">07 81 35 09 09</p>
             </Link>
             <p className="text-sm">Contactez maintenant</p>
-            <p className="mt-8 text-sm md:mt-0">
+            <p className="mt-0 text-sm">
               Copyright © {new Date().getFullYear()} halil.com. Tous droits
               réservés.
             </p>
           </div>
         </AnimatedContainer>
 
-        <div className="mt-10 grid grid-cols-2 gap-8 md:grid-cols-4 xl:col-span-2 xl:mt-0">
+        <div className="mt-0 grid grid-cols-2 gap-8 md:grid-cols-4 xl:col-span-2 xl:mt-0">
           {footerLinks.map((section, index) => (
             <AnimatedContainer key={section.label} delay={0.1 + index * 0.1}>
               <div className="mb-10 md:mb-0">

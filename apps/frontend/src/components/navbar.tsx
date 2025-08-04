@@ -82,7 +82,7 @@ const Navbar = ({
 }: Navbar1Props) => {
   return (
     <section className=" bg-[#ebc834]">
-      <div className="container max-w-none w-full py-2 px-20">
+      <div className="container max-w-none w-full py-2 px-10 md:px-20">
         <nav className="hidden justify-between lg:flex ">
           <div className="flex items-center gap-6">
             <a href={logo.url} className="flex items-center gap-2">
@@ -103,7 +103,7 @@ const Navbar = ({
             <span className="flex items-center gap-2 text-sm">
               <PhoneCall size={16} />
               Vous pouvez nous contacter{" "}
-              <a href="tel:+33606060606">
+              <a href="tel:+33620357667">
                 <b>06 20 35 76 67</b>
               </a>
             </span>
@@ -116,10 +116,16 @@ const Navbar = ({
           <div className="flex items-center justify-between">
             <a href={logo.url} className="flex items-center gap-2">
               {logo.src && (
-                <img src={logo.src} className="w-8" alt={logo.alt} />
+                <img src={logo.src} className="w-12" alt={logo.alt} />
               )}
               <span className="text-lg font-semibold">{logo.title}</span>
             </a>
+            <span className="flex items-center gap-2 text-xs whitespace-nowrap">
+              <PhoneCall size={13} />
+              <a href="tel:+33620357667">
+                <b>06 20 35 76 67</b>
+              </a>
+            </span>
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant="outline" size="icon">
@@ -131,7 +137,7 @@ const Navbar = ({
                   <SheetTitle>
                     <a href={logo.url} className="flex items-center gap-2">
                       {logo.src && (
-                        <img src={logo.src} className="w-8" alt={logo.alt} />
+                        <img src={logo.src} className="w-12" alt={logo.alt} />
                       )}
                       <span className="text-lg font-semibold">
                         {logo.title}
@@ -163,10 +169,10 @@ const Navbar = ({
                     </div>
                   )}
                   <div className="flex flex-col gap-3">
-                    <span className="flex items-center gap-2 text-xs">
+                    <span className="flex items-center gap-2 text-xs whitespace-nowrap">
                       <PhoneCall size={13} />
                       Vous pouvez nous contacter{" "}
-                      <a href="tel:+33606060606">
+                      <a href="tel:+33620357667">
                         <b>06 20 35 76 67</b>
                       </a>
                     </span>
