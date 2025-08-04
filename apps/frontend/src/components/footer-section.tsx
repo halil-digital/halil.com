@@ -82,26 +82,49 @@ export function Footer() {
         </AnimatedContainer>
 
         <div className="mt-0 grid grid-cols-2 gap-8 md:grid-cols-4 xl:col-span-2 xl:mt-0">
-          {footerLinks.map((section, index) => (
-            <AnimatedContainer key={section.label} delay={0.1 + index * 0.1}>
-              <div className="mb-10 md:mb-0">
-                <h3 className="text-xs font-bold">{section.label}</h3>
-                <ul className="text-white mt-4 space-y-2 text-sm">
-                  {section.links.map((link) => (
-                    <li key={link.title}>
-                      <a
-                        href={link.href}
-                        className="hover:text-muted-foreground inline-flex items-center transition-all duration-300"
-                      >
-                        {link.icon && <link.icon className="me-1 size-4" />}
-                        {link.title}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </AnimatedContainer>
-          ))}
+          <AnimatedContainer delay={0.1}>
+            <div className="mb-10 md:mb-0">
+              <h3 className="text-xs font-bold">Entreprise</h3>
+              <ul className="text-white mt-4 space-y-2 text-sm">
+                {footerLinks[0].links.map((link) => (
+                  <li key={link.title}>
+                    <a
+                      href={link.href}
+                      className="hover:text-muted-foreground inline-flex items-center transition-all duration-300"
+                    >
+                      {link.icon && <link.icon className="me-1 size-4" />}
+                      {link.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </AnimatedContainer>
+
+          <div className="flex flex-col md:flex-row gap-10">
+            {[footerLinks[1], footerLinks[2]].map((section, index) => (
+              <AnimatedContainer key={section.label} delay={0.2 + index * 0.1}>
+                <div className="mb-10 md:mb-0">
+                  <h3 className="text-xs font-bold whitespace-nowrap">
+                    {section.label}
+                  </h3>
+                  <ul className="text-white mt-4 space-y-2 text-sm">
+                    {section.links.map((link) => (
+                      <li key={link.title}>
+                        <a
+                          href={link.href}
+                          className="hover:text-muted-foreground inline-flex items-center transition-all duration-300"
+                        >
+                          {link.icon && <link.icon className="me-1 size-4" />}
+                          {link.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </AnimatedContainer>
+            ))}
+          </div>
         </div>
       </div>
     </footer>

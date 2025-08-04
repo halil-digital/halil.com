@@ -120,8 +120,8 @@ const Navbar = ({
               )}
               <span className="text-lg font-semibold">{logo.title}</span>
             </a>
-            <span className="flex items-center gap-2 text-xs whitespace-nowrap">
-              <PhoneCall size={13} />
+            <span className="flex items-center gap-1 text-sm whitespace-nowrap">
+              <PhoneCall size={13} strokeWidth={2.5} />
               <a href="tel:+33620357667">
                 <b>06 20 35 76 67</b>
               </a>
@@ -137,7 +137,7 @@ const Navbar = ({
                   <SheetTitle>
                     <a href={logo.url} className="flex items-center gap-2">
                       {logo.src && (
-                        <img src={logo.src} className="w-12" alt={logo.alt} />
+                        <img src={logo.src} className="w-17" alt={logo.alt} />
                       )}
                       <span className="text-lg font-semibold">
                         {logo.title}
