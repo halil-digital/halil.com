@@ -523,7 +523,7 @@ export const products: Product[] = [
     category: "Volailles",
     images: [
       "/images/products/les-broches-de-poulet-600x559.jpg",
-      "/images/products/les-broches-de-poulet-carton-600x559.png",
+      "/images/products/les-broches-de-poulet-2.png",
     ],
     description: "",
     certificate: "Halal, certifié par Achahada",
@@ -1467,6 +1467,7 @@ export const products: Product[] = [
     category: "Emballages",
     images: [
       "/images/products/serviettes-2.jpg",
+      "/images/products/serviettes-33x33-carton.png",
       "/images/products/serviettes-600x600.jpg",
     ],
     description: "33 x 33 CM",
@@ -1482,6 +1483,7 @@ export const products: Product[] = [
     category: "Emballages",
     images: [
       "/images/products/200-Box-Sandwich-Kraft-1-600x600.png",
+      "/images/products/box-sandwich-kraft-carton.png",
       "/images/products/200-Box-Sandwich-Kraft-2-600x600.png",
       "/images/products/200-Box-Sandwich-Kraft-3-600x600.png",
     ],
