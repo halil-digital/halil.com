@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 const sliderImages = [
-  "/images/landing-image-2.png",
+  "/images/landing-image-3.png",
   "/images/landing-image-1.png",
 ];
 
@@ -106,7 +106,7 @@ function Hero() {
               </span>
             </h1>
 
-            <p className="text-lg md:text-xl leading-relaxed tracking-tight text-white max-w-2xl text-center">
+            <p className="text-lg md:text-xl leading-relaxed tracking-tight max-w-2xl text-center">
               HALIL, commerce de gros de produits alimentaire, aide les
               professionnels à simplifier leur approvisionnement avec une
               distribution efficace et adaptée à leurs besoins en Île‑de‑France
