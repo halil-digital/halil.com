@@ -774,7 +774,7 @@ export const products: Product[] = [
     name: "Maestrella, Mozarella 100%",
     slug: "maestrella-mozarella-100",
     category: "Produits Laitiers",
-    images: ["/images/products/maestrella-mozarella-100_-600x667.jpg"],
+    images: ["/images/products/maestrella-mozarella-100_-600x667.png"],
     description: "",
     certificate: "",
     storage_conditions: "+2°C/+4°C",

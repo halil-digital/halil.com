@@ -37,10 +37,10 @@ function Hero() {
       </div>
 
       <div
-        className="mx-0 relative bg-cover md:bg-center bg-no-repeat hidden md:block"
+        className="mx-0 relative bg-cover md:bg-center hidden md:block"
         style={{
           backgroundImage: "url('/images/bg-about.png')",
-          height: "calc(100vh - 4rem)",
+          height: "calc(100vh - 6.5rem)",
         }}
       >
         <div className="container mx-auto">

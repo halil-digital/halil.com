@@ -59,7 +59,7 @@ function Hero() {
       className="relative flex justify-center items-center bg-cover bg-center transition-all duration-1000"
       style={{
         backgroundImage: `url(${sliderImages[currentSlide]})`,
-        height: "calc(100vh - 6.4rem)",
+        height: "calc(100vh - 20rem)",
       }}
     >
       {/* Barre de progression */}
@@ -74,7 +74,7 @@ function Hero() {
       </div>
 
       <div className="container mx-auto z-10">
-        <div className="flex gap-8 py-20 lg:py-40 items-center justify-center flex-col">
+        <div className="flex gap-8 items-center justify-center flex-col">
           <div>
             <Button variant="secondary" size="sm" className="gap-4">
               Bienvenue sur notre site
@@ -106,7 +106,7 @@ function Hero() {
               </span>
             </h1>
 
-            <p className="text-lg md:text-xl leading-relaxed tracking-tight max-w-2xl text-center">
+            <p className="text-lg md:text-xl leading-relaxed tracking-tight max-w-2xl text-center text-white">
               HALIL, commerce de gros de produits alimentaire, aide les
               professionnels à simplifier leur approvisionnement avec une
               distribution efficace et adaptée à leurs besoins en Île‑de‑France
