@@ -14,7 +14,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <ProductSlider />
-      <div className="flex flex-col items-center justify-center mx-20">
+      <div className="flex flex-col items-center justify-center mx-10 md:mx-20">
         <Feature />
         <FeatureHighlights />
         <Faq />

@@ -83,28 +83,32 @@ export default function ProductsPage() {
       <Navbar />
 
       <main className="flex-1">
-        <div className="px-4 md:px-20 py-12 bg-[#faf4ee]">
-          <h1 className="text-4xl font-bold text-center mb-4">
-            Tous nos produits
-          </h1>
+        <div className=" bg-[#faf4ee]">
+          <div className="px-4 md:px-20 py-20 bg-[url('/images/banniere-catalogue.png')] bg-cover bg-center text-white">
+            <h1 className="text-5xl font-bold text-center mb-4">
+              Notre catalogue
+            </h1>
 
-          <div className="flex justify-center mb-10">
-            <Breadcrumb>
-              <BreadcrumbList>
-                <BreadcrumbItem>
-                  <BreadcrumbLink asChild>
-                    <Link href="/">Accueil</Link>
-                  </BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator />
-                <BreadcrumbItem>
-                  <BreadcrumbPage>Produits</BreadcrumbPage>
-                </BreadcrumbItem>
-              </BreadcrumbList>
-            </Breadcrumb>
+            <div className="flex justify-center">
+              <Breadcrumb>
+                <BreadcrumbList>
+                  <BreadcrumbItem>
+                    <BreadcrumbLink className="hover:text-white" asChild>
+                      <Link href="/">Accueil</Link>
+                    </BreadcrumbLink>
+                  </BreadcrumbItem>
+                  <BreadcrumbSeparator />
+                  <BreadcrumbItem>
+                    <BreadcrumbPage className="text-white">
+                      Produits
+                    </BreadcrumbPage>
+                  </BreadcrumbItem>
+                </BreadcrumbList>
+              </Breadcrumb>
+            </div>
           </div>
 
-          <div className="flex flex-col md:flex-row gap-8">
+          <div className="flex flex-col md:flex-row gap-8 px-4 md:px-20 py-12">
             <div className="md:w-1/4 w-full md:sticky md:top-10 h-fit">
               <ProductFilters
                 categories={availableCategories}

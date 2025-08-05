@@ -4,7 +4,12 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { MoveRight } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+
+const sliderImages = [
+  "/images/landing-image-2.png",
+  "/images/landing-image-1.png",
+];
 
 function Hero() {
   const [titleNumber, setTitleNumber] = useState(0);
@@ -14,25 +19,61 @@ function Hero() {
   );
   const titleColors = ["green", "blue", "#ebc834"];
 
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [progressKey, setProgressKey] = useState(0);
+  const sliderInterval = useRef<NodeJS.Timeout | null>(null);
+
+  const startSliderTimer = () => {
+    if (sliderInterval.current) clearInterval(sliderInterval.current);
+    sliderInterval.current = setInterval(() => {
+      setCurrentSlide((prev) => {
+        const next = (prev + 1) % sliderImages.length;
+        setProgressKey((k) => k + 1);
+        return next;
+      });
+    }, 10000);
+  };
+
+  useEffect(() => {
+    startSliderTimer();
+    return () => {
+      if (sliderInterval.current) clearInterval(sliderInterval.current);
+    };
+  }, []);
+
+  const handleSlideChange = (index: number) => {
+    setCurrentSlide(index);
+    setProgressKey((k) => k + 1);
+    startSliderTimer();
+  };
+
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      if (titleNumber === titles.length - 1) {
-        setTitleNumber(0);
-      } else {
-        setTitleNumber(titleNumber + 1);
-      }
+      setTitleNumber((prev) => (prev + 1) % titles.length);
     }, 2000);
     return () => clearTimeout(timeoutId);
-  }, [titleNumber, titles]);
+  }, [titleNumber]);
 
   return (
     <div
-      className="mx-0 relative flex justify-center items-center bg-no-repeat bg-cover md:bg-center bg-none md:bg-[url('/images/bg-hero.png')]"
+      className="relative flex justify-center items-center bg-cover bg-center transition-all duration-1000"
       style={{
-        height: "calc(100vh - 4rem)",
+        backgroundImage: `url(${sliderImages[currentSlide]})`,
+        height: "calc(100vh - 6.4rem)",
       }}
     >
-      <div className="container mx-auto">
+      {/* Barre de progression */}
+      <div className="absolute top-0 left-0 w-full h-1 bg-transparent z-20 overflow-hidden">
+        <motion.div
+          key={progressKey}
+          className="h-full bg-[#ebc834]"
+          initial={{ width: 0 }}
+          animate={{ width: "100%" }}
+          transition={{ duration: 10, ease: "linear" }}
+        />
+      </div>
+
+      <div className="container mx-auto z-10">
         <div className="flex gap-8 py-20 lg:py-40 items-center justify-center flex-col">
           <div>
             <Button variant="secondary" size="sm" className="gap-4">
@@ -55,14 +96,8 @@ function Hero() {
                     transition={{ type: "spring", stiffness: 50 }}
                     animate={
                       titleNumber === index
-                        ? {
-                            y: 0,
-                            opacity: 1,
-                          }
-                        : {
-                            y: titleNumber > index ? -150 : 150,
-                            opacity: 0,
-                          }
+                        ? { y: 0, opacity: 1 }
+                        : { y: titleNumber > index ? -150 : 150, opacity: 0 }
                     }
                   >
                     {title}
@@ -71,12 +106,13 @@ function Hero() {
               </span>
             </h1>
 
-            <p className="text-lg md:text-xl leading-relaxed tracking-tight text-muted-foreground max-w-2xl text-center">
+            <p className="text-lg md:text-xl leading-relaxed tracking-tight text-white max-w-2xl text-center">
               HALIL, commerce de gros de produits alimentaire, aide les
               professionnels à simplifier leur approvisionnement avec une
               distribution efficace et adaptée à leurs besoins en Île‑de‑France
             </p>
           </div>
+
           <div className="flex flex-row gap-3">
             <Button size="lg" variant="outline">
               <Link href={"about"} className="flex items-center gap-2">
@@ -91,8 +127,23 @@ function Hero() {
               <Link href={"products"}>Voir nos produits</Link>
             </Button>
           </div>
+
+          {/* Points de navigation */}
+          <div className="flex gap-2 mt-6">
+            {sliderImages.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => handleSlideChange(index)}
+                className={`w-3 h-3 rounded-full cursor-pointer ${
+                  currentSlide === index ? "bg-white" : "bg-white/50"
+                }`}
+              />
+            ))}
+          </div>
         </div>
       </div>
+
+      {/* Overlay de fond pour meilleur contraste */}
     </div>
   );
 }
