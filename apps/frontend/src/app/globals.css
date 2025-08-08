@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "leaflet/dist/leaflet.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -228,4 +229,9 @@
   .h-44 {
     height: 6rem;
   }
+}
+
+.leaflet-pane,
+.leaflet-container {
+  z-index: 0 !important;
 }
