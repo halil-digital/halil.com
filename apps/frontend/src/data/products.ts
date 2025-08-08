@@ -1590,6 +1590,22 @@ export const products: Product[] = [
     size: "",
   },
   {
+    id: "233",
+    name: "ELIF, Adana Kebab 5 kg  (63 x 80g)",
+    slug: "elif-adana-kebab-5-kg",
+    category: "Viandes",
+    images: [
+      "/images/products/elif-adana-kebab-5-kg-1.png",
+      "/images/products/elif-adana-kebab-5-kg-2.png",
+    ],
+    description: "",
+    certificate: "Halal, certifié par Achahada",
+    storage_conditions: "-18°C",
+    weight: "5 KG",
+    package: "",
+    size: "",
+  },
+  {
     id: "37-V",
     name: "Colona, Sauces 5 L",
     slug: "colona-sauces-5-l",
