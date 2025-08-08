@@ -1,9 +1,13 @@
-import { ApiAdresseResponse } from "@/payload/response/address-response";
-
 export type AddressSuggestion = {
   label: string;
   lat: number;
   lon: number;
+};
+
+type NominatimResult = {
+  display_name: string;
+  lat: string;
+  lon: string;
 };
 
 export async function searchAdresse(
@@ -11,19 +15,15 @@ export async function searchAdresse(
 ): Promise<AddressSuggestion[]> {
   if (query.length < 3) return [];
 
-  const res = await fetch(
-    `https://api-adresse.data.gouv.fr/search/?q=${encodeURIComponent(
-      query
-    )}&limit=5`
-  );
+  const res = await fetch(`/api/searchAddress?q=${encodeURIComponent(query)}`);
 
   if (!res.ok) throw new Error("Erreur lors de la récupération des adresses");
 
-  const data: ApiAdresseResponse = await res.json();
+  const data = await res.json();
 
-  return data.features.map((f) => ({
-    label: f.properties.label,
-    lat: f.geometry.coordinates[1],
-    lon: f.geometry.coordinates[0],
+  return data.map((item: NominatimResult) => ({
+    label: item.display_name,
+    lat: parseFloat(item.lat),
+    lon: parseFloat(item.lon),
   }));
 }

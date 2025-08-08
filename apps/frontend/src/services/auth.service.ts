@@ -1,7 +1,7 @@
 import { LoginCredentials } from "@/payload/request/login-credentials";
 import { LoginResponse } from "@/payload/response/login-response";
 
-const API_URL = process.env.API_URL || "http://localhost:8080";
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export async function loginUser(
   credentials: LoginCredentials
@@ -10,6 +10,7 @@ export async function loginUser(
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      "ngrok-skip-browser-warning": "true",
     },
     body: JSON.stringify(credentials),
   });

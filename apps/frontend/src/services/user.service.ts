@@ -1,15 +1,16 @@
 import { User } from "@/models/user.model";
 
-const API_BASE_URL = process.env.API_URL || "http://localhost:8080";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export function getAuthHeaders(): HeadersInit {
   const token = localStorage.getItem("token");
+  const headers: HeadersInit = {
+    "ngrok-skip-browser-warning": "true",
+  };
   if (token) {
-    return {
-      Authorization: `Bearer ${token}`,
-    };
+    headers.Authorization = `Bearer ${token}`;
   }
-  return {};
+  return headers;
 }
 
 export async function getAuthenticatedUser(): Promise<User> {

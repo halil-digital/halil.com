@@ -15,6 +15,7 @@ export function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [checkedToken, setCheckedToken] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -41,10 +42,13 @@ export function LoginForm() {
   };
 
   useEffect(() => {
-    if (isTokenValid()) {
-      router.replace("/dashboard");
+    if (!checkedToken) {
+      if (isTokenValid()) {
+        router.replace("/dashboard");
+      }
+      setCheckedToken(true);
     }
-  }, [router]);
+  }, [checkedToken, router]);
 
   return (
     <div className="shadow-input shadow-[0_4px_12px_0_rgba(0,0,0,0.1)] mx-auto my-5 w-full max-w-md rounded-none bg-white p-4 md:rounded-2xl md:p-8 dark:bg-black">

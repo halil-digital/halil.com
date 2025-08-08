@@ -19,9 +19,10 @@ export default function ClientMap({ clients }: Props) {
       client: Client
     ): Promise<GeocodedClient | null> => {
       const query = encodeURIComponent(client.address);
-      const url = `https://nominatim.openstreetmap.org/search?format=json&q=${query}`;
+      const url = `/api/searchAddress?q=${query}`; // <-- appel local à ton API Next.js
       try {
         const res = await fetch(url);
+        if (!res.ok) throw new Error("Erreur API interne");
         const data = await res.json();
         if (data.length === 0) return null;
         return {

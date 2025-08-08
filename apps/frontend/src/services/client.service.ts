@@ -2,7 +2,7 @@ import { Client } from "@/models/client.model";
 import { SendClient } from "@/payload/request/send-client";
 import { getAuthHeaders } from "./user.service";
 
-const API_BASE_URL = process.env.API_URL || "http://localhost:8080";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export async function getAllClients(): Promise<Client[]> {
   const headers: HeadersInit = {
