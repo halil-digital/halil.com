@@ -20,7 +20,7 @@ export async function loginUser(
     if (errorData.detail == "Bad credentials") {
       throw new Error("Email ou mot de passe invalide");
     }
-    throw new Error(errorData.detail);
+    throw new Error("Une erreur s'est produite. Veuillez réessayer plus tard");
   }
 
   return res.json();

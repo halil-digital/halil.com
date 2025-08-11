@@ -62,7 +62,7 @@ export default function ClientMap({ clients }: Props) {
   const center: [number, number] = [48.8566, 2.3522]; // Paris lat,long
 
   return (
-    <div className="w-full h-[600px] rounded shadow border z-10">
+    <div className="w-full h-full rounded shadow border z-10">
       <MapContainer
         center={center}
         zoom={11}

@@ -1,6 +1,8 @@
 package com.halil.api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,14 +18,40 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Name is mandatory")
     private String name;
 
+    @NotBlank(message = "Address is mandatory")
     private String address;
 
     private String phone;
 
     private String email;
 
-    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
-    private List<DeliveryNote> deliveryNotes;
+    private String manager;
+
+    private String main_contact;
+
+    private String accountant;
+
+    private String accountant_phone;
+
+    private String commercial;
+
+    private String note;
+
+    @Column(nullable = false)
+    private boolean isOpen = false;
+
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnoreProperties("client")
+    private List<Task> tasks;
+
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnoreProperties("client")
+    private List<Appointment> appointments;
+
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnoreProperties("client")
+    private List<OpeningHours> openingHours;
 }

@@ -1,30 +1,31 @@
 package com.halil.api.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import java.util.List;
+import java.time.LocalTime;
 
 @Entity
-@Table(name = "delivery_note")
+@Table(name = "task")
 @Getter
 @Setter
-public class DeliveryNote  {
-
+public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private LocalDate deliveryDate;
+    private String note;
 
-    private String status;
+    private LocalDate date;
+
+    private LocalTime hour;
 
     @ManyToOne
     @JoinColumn(name = "client_id")
+    @JsonIgnoreProperties("tasks")
     private Client client;
-
-    @OneToMany(mappedBy = "deliveryNote", cascade = CascadeType.ALL)
-    private List<DeliveryLine> deliveryLines;
 }

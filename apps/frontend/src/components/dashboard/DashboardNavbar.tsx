@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { User } from "@/models/user.model";
 import { LogOut, Menu } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 interface Props {
@@ -18,14 +19,14 @@ export default function DashboardNavbar({ user, onLogout }: Props) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="border-b p-4 bg-white shadow-sm">
-      <div className="flex justify-between items-center max-w-7xl mx-auto">
-        {/* Left nav - links */}
-        <div className="hidden md:flex space-x-6">
+    <nav className="border-b border-gray-400 bg-white">
+      <div className="flex justify-between items-center max-w-7xl mx-auto p-1">
+        {/* Desktop nav links */}
+        <div className="hidden md:flex items-center space-x-6">
           <NavLinks />
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile menu button */}
         <div className="md:hidden">
           <Button variant="ghost" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             <Menu />
@@ -43,7 +44,7 @@ export default function DashboardNavbar({ user, onLogout }: Props) {
 
       {/* Mobile nav links */}
       {isMenuOpen && (
-        <div className="flex flex-col md:hidden mt-4 space-y-2 px-2">
+        <div className="flex flex-col md:hidden border-t border-gray-300 bg-white p-2 space-y-2">
           <NavLinks />
         </div>
       )}
@@ -52,14 +53,33 @@ export default function DashboardNavbar({ user, onLogout }: Props) {
 }
 
 function NavLinks() {
+  const pathname = usePathname();
+
+  const links = [
+    { href: "/dashboard/clients", label: "CLIENTS" },
+    { href: "/dashboard/tasks", label: "TÂCHES" },
+    { href: "/dashboard/appointments", label: "RDV" },
+    { href: "/dashboard/options", label: "OPTIONS" },
+  ];
+
   return (
     <>
-      <Link
-        href="/dashboard/clients"
-        className="font-semibold text-[#ebc834] hover:underline"
-      >
-        Clients
-      </Link>
+      {links.map((link) => {
+        const isActive = pathname.startsWith(link.href);
+        return (
+          <Link
+            key={link.href}
+            href={link.href}
+            className={`uppercase text-sm font-semibold tracking-wide px-2 py-1 rounded ${
+              isActive
+                ? "bg-gray-200 text-[#006680]"
+                : "text-[#006680] hover:underline"
+            }`}
+          >
+            {link.label}
+          </Link>
+        );
+      })}
     </>
   );
 }

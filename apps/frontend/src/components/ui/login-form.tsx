@@ -32,12 +32,8 @@ export function LoginForm() {
       localStorage.setItem("token", response.token);
       localStorage.setItem("tokenExpiration", expirationTime.toString());
       router.push("/dashboard");
-    } catch (err: unknown) {
-      if (err instanceof Error) {
-        setError(err.message);
-      } else {
-        setError("Une erreur inattendue est survenue");
-      }
+    } catch {
+      setError("Une erreur s'est produite. Veuillez réessayer plus tard");
     }
   };
 
@@ -86,7 +82,7 @@ export function LoginForm() {
           Se connecter
         </button>
         {error && (
-          <div className="flex justify-center items-center bg-red-200 mt-2 p-2 rounded-xs text-red-500 gap-1">
+          <div className="flex items-center bg-red-200 mt-2 p-2 rounded-xs text-red-500 gap-1">
             <CircleX size={16} />
             <p className="text-sm">{error}</p>
           </div>

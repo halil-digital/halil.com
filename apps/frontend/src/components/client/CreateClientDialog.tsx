@@ -10,7 +10,7 @@ import {
 import { SendClient } from "@/payload/request/send-client";
 import { AddressSuggestion } from "@/services/address.service";
 import { createClient } from "@/services/client.service";
-import { Plus } from "lucide-react";
+import { UserPlus } from "lucide-react";
 import { useState } from "react";
 import AutoCompletedAddress from "../address/AutoCompletedAddress";
 
@@ -22,12 +22,21 @@ export default function CreateClientDialog({ onClientCreated }: Props) {
   const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState<SendClient>({
     name: "",
+    address: "",
     email: "",
     phone: "",
-    address: "",
+    manager: "",
+    main_contact: "",
+    accountant: "",
+    accountant_phone: "",
+    commercial: "",
+    note: "",
+    open: true,
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
@@ -43,9 +52,27 @@ export default function CreateClientDialog({ onClientCreated }: Props) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!formData.name.trim() || !formData.address.trim()) {
+      alert("Le nom et l'adresse sont obligatoires");
+      return;
+    }
+
     try {
       await createClient(formData);
-      setFormData({ name: "", email: "", phone: "", address: "" });
+      setFormData({
+        name: "",
+        address: "",
+        email: "",
+        phone: "",
+        manager: "",
+        main_contact: "",
+        accountant: "",
+        accountant_phone: "",
+        commercial: "",
+        note: "",
+        open: true,
+      });
       setOpen(false);
       onClientCreated();
     } catch (err: unknown) {
@@ -58,9 +85,9 @@ export default function CreateClientDialog({ onClientCreated }: Props) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <button className="flex items-center gap-1 px-4 py-2 bg-[#ebc834] hover:bg-[#dfca70] text-white rounded cursor-pointer">
-          <Plus size={20} />
-          Ajouter un client
+        <button className="flex flex-col items-center text-sm font-medium px-4 py-2 hover:text-[#dfca70] cursor-pointer">
+          <UserPlus />
+          Nouveau client
         </button>
       </DialogTrigger>
 
@@ -76,7 +103,7 @@ export default function CreateClientDialog({ onClientCreated }: Props) {
             value={formData.name}
             onChange={handleChange}
             required
-            placeholder="Nom"
+            placeholder="Nom *"
             className="w-full border px-3 py-2 rounded"
           />
 
@@ -93,21 +120,92 @@ export default function CreateClientDialog({ onClientCreated }: Props) {
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            required
             placeholder="Téléphone"
             className="w-full border px-3 py-2 rounded"
           />
+
           <input
             type="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
-            required
             placeholder="Email"
             className="w-full border px-3 py-2 rounded"
           />
 
-          <div className="flex justify-end">
+          <input
+            type="text"
+            name="manager"
+            value={formData.manager}
+            onChange={handleChange}
+            placeholder="Manager"
+            className="w-full border px-3 py-2 rounded"
+          />
+
+          <input
+            type="text"
+            name="main_contact"
+            value={formData.main_contact}
+            onChange={handleChange}
+            placeholder="Contact principal"
+            className="w-full border px-3 py-2 rounded"
+          />
+
+          <input
+            type="text"
+            name="accountant"
+            value={formData.accountant}
+            onChange={handleChange}
+            placeholder="Comptable"
+            className="w-full border px-3 py-2 rounded"
+          />
+
+          <input
+            type="text"
+            name="accountant_phone"
+            value={formData.accountant_phone}
+            onChange={handleChange}
+            placeholder="Téléphone comptable"
+            className="w-full border px-3 py-2 rounded"
+          />
+
+          <input
+            type="text"
+            name="commercial"
+            value={formData.commercial}
+            onChange={handleChange}
+            placeholder="Commercial"
+            className="w-full border px-3 py-2 rounded"
+          />
+
+          <textarea
+            name="note"
+            value={formData.note}
+            onChange={handleChange}
+            placeholder="Note"
+            className="w-full border px-3 py-2 rounded resize-y"
+            rows={4}
+          />
+
+          <div className="flex items-center gap-2">
+            <label className="text-sm font-medium">Client ouvert:</label>
+            <select
+              name="open"
+              value={formData.open ? "true" : "false"}
+              onChange={(e) =>
+                setFormData((prev) => ({
+                  ...prev,
+                  open: e.target.value === "true",
+                }))
+              }
+              className="border px-3 py-2 rounded"
+            >
+              <option value="true">Oui</option>
+              <option value="false">Non</option>
+            </select>
+          </div>
+
+          <div className="flex justify-center">
             <button
               type="submit"
               className="px-4 py-2 bg-[#ebc834] text-white rounded hover:bg-[#dfca70] cursor-pointer"

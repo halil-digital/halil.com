@@ -4,13 +4,16 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export function getAuthHeaders(): HeadersInit {
   const token = localStorage.getItem("token");
-  const headers: HeadersInit = {
-    "ngrok-skip-browser-warning": "true",
-  };
-  if (token) {
-    headers.Authorization = `Bearer ${token}`;
+
+  if (!token) {
+    window.location.href = "/login";
+    throw new Error("Token manquant");
   }
-  return headers;
+
+  return {
+    "ngrok-skip-browser-warning": "true",
+    Authorization: `Bearer ${token}`,
+  };
 }
 
 export async function getAuthenticatedUser(): Promise<User> {

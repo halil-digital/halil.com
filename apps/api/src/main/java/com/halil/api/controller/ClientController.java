@@ -1,7 +1,14 @@
 package com.halil.api.controller;
 
+import com.halil.api.dto.OpeningHoursDTO;
+import com.halil.api.model.Appointment;
 import com.halil.api.model.Client;
+import com.halil.api.model.OpeningHours;
+import com.halil.api.model.Task;
+import com.halil.api.service.AppointmentService;
 import com.halil.api.service.ClientService;
+import com.halil.api.service.OpeningHoursService;
+import com.halil.api.service.TaskService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
@@ -14,9 +21,15 @@ import java.util.List;
 public class ClientController {
 
     private final ClientService clientService;
+    private final AppointmentService appointmentService;
+    private final TaskService taskService;
+    private final OpeningHoursService openingHoursService;
 
-    public ClientController(ClientService clientService) {
+    public ClientController(ClientService clientService, AppointmentService appointmentService, TaskService taskService, OpeningHoursService openingHoursService) {
         this.clientService = clientService;
+        this.appointmentService = appointmentService;
+        this.taskService = taskService;
+        this.openingHoursService = openingHoursService;
     }
 
     @GetMapping
@@ -70,5 +83,23 @@ public class ClientController {
             problemDetail.setDetail(e.getMessage());
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(problemDetail);
         }
+    }
+
+    @GetMapping("/{id}/appointments")
+    public List<Appointment> getAppointmentsByClient(@PathVariable Long id) {
+        return appointmentService.getAppointmentsByClient(id);
+    }
+
+    @GetMapping("/{id}/tasks")
+    public List<Task> getTasksByClient(@PathVariable Long id) {
+        return taskService.getTasksByClient(id);
+    }
+
+    @PutMapping("/{id}/opening-hours")
+    public List<OpeningHours> updateOpeningHours(
+            @PathVariable Long id,
+            @RequestBody List<OpeningHoursDTO> hoursList
+    ) {
+        return openingHoursService.updateOpeningHours(id, hoursList);
     }
 }

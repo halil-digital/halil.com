@@ -1,5 +1,3 @@
-"use client";
-
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -12,10 +10,16 @@ import { Client } from "@/models/client.model";
 import { deleteClient } from "@/services/client.service";
 import { ColumnDef } from "@tanstack/react-table";
 import { MoreHorizontal } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
 import UpdateClientDialog from "./UpdateClientDialog";
 
-function ActionsCell({ client }: { client: Client }) {
+type ActionsCellProps = {
+  client: Client;
+  onClientUpdated?: () => void;
+};
+
+export function ActionsCell({ client, onClientUpdated }: ActionsCellProps) {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   return (
@@ -24,6 +28,7 @@ function ActionsCell({ client }: { client: Client }) {
         client={client}
         open={isDialogOpen}
         onOpenChange={setIsDialogOpen}
+        onClientUpdated={onClientUpdated}
       />
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
@@ -34,10 +39,17 @@ function ActionsCell({ client }: { client: Client }) {
 
         <DropdownMenuContent align="end">
           <DropdownMenuLabel>Actions</DropdownMenuLabel>
-          <DropdownMenuItem onClick={() => setIsDialogOpen(true)}>
+          <DropdownMenuItem className="cursor-pointer">
+            <Link href={`/dashboard/clients/${client.id}`}>Voir plus</Link>
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            className="cursor-pointer"
+            onClick={() => setIsDialogOpen(true)}
+          >
             Modifier
           </DropdownMenuItem>
           <DropdownMenuItem
+            className="cursor-pointer"
             onClick={async () => {
               const confirmed = window.confirm(
                 `Voulez-vous vraiment supprimer le client "${client.name}" ?`
@@ -45,6 +57,7 @@ function ActionsCell({ client }: { client: Client }) {
               if (!confirmed) return;
               try {
                 await deleteClient(client.id);
+                if (onClientUpdated) onClientUpdated();
               } catch (error) {
                 if (error instanceof Error) {
                   alert("Erreur : " + error.message);
@@ -60,18 +73,10 @@ function ActionsCell({ client }: { client: Client }) {
   );
 }
 
-export const columns: ColumnDef<Client>[] = [
+export const columns = (onClientUpdated?: () => void): ColumnDef<Client>[] => [
   {
     accessorKey: "name",
     header: "Nom",
-  },
-  {
-    accessorKey: "email",
-    header: "Email",
-  },
-  {
-    accessorKey: "phone",
-    header: "Téléphone",
   },
   {
     accessorKey: "address",
@@ -79,6 +84,8 @@ export const columns: ColumnDef<Client>[] = [
   },
   {
     id: "actions",
-    cell: ({ row }) => <ActionsCell client={row.original} />,
+    cell: ({ row }) => (
+      <ActionsCell client={row.original} onClientUpdated={onClientUpdated} />
+    ),
   },
 ];

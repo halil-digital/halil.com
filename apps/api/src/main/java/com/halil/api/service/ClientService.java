@@ -36,6 +36,13 @@ public class ClientService {
             existingClient.setEmail(updatedClient.getEmail());
             existingClient.setPhone(updatedClient.getPhone());
             existingClient.setAddress(updatedClient.getAddress());
+            existingClient.setManager(updatedClient.getManager());
+            existingClient.setMain_contact(updatedClient.getMain_contact());
+            existingClient.setAccountant(updatedClient.getAccountant());
+            existingClient.setAccountant_phone(updatedClient.getAccountant_phone());
+            existingClient.setCommercial(updatedClient.getCommercial());
+            existingClient.setNote(updatedClient.getNote());
+            existingClient.setOpen(updatedClient.isOpen());
             return clientRepository.save(existingClient);
         }).orElseThrow(() -> new RuntimeException("Cannot found the client with this id : " + id));
     }

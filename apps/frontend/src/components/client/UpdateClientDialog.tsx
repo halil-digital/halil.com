@@ -17,35 +17,59 @@ type Props = {
   client: Client;
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  onClientUpdated?: () => void;
 };
 
 export default function UpdateClientDialog({
   client,
   open,
   onOpenChange,
+  onClientUpdated,
 }: Props) {
   const [formData, setFormData] = useState<SendClient>({
-    name: client.name,
-    email: client.email,
-    phone: client.phone,
-    address: client.address,
+    name: client.name || "",
+    address: client.address || "",
+    email: client.email || "",
+    phone: client.phone || "",
+    manager: client.manager || "",
+    main_contact: client.main_contact || "",
+    accountant: client.accountant || "",
+    accountant_phone: client.accountant_phone || "",
+    commercial: client.commercial || "",
+    note: client.note || "",
+    open: client.isOpen ?? true,
   });
 
-  // Reset formData si le client change ou le dialog s'ouvre
   useEffect(() => {
     if (open) {
       setFormData({
-        name: client.name,
-        email: client.email,
-        phone: client.phone,
-        address: client.address,
+        name: client.name || "",
+        address: client.address || "",
+        email: client.email || "",
+        phone: client.phone || "",
+        manager: client.manager || "",
+        main_contact: client.main_contact || "",
+        accountant: client.accountant || "",
+        accountant_phone: client.accountant_phone || "",
+        commercial: client.commercial || "",
+        note: client.note || "",
+        open: client.isOpen ?? true,
       });
     }
   }, [client, open]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    const { name, value, type } = e.target;
+
+    if (type === "select-one" && (value === "true" || value === "false")) {
+      setFormData((prev) => ({ ...prev, [name]: value === "true" }));
+    } else {
+      setFormData((prev) => ({ ...prev, [name]: value }));
+    }
   };
 
   const handleAdresseSelect = (addr: AddressSuggestion) => {
@@ -60,6 +84,7 @@ export default function UpdateClientDialog({
     try {
       await updateClient(client.id, formData);
       onOpenChange(false);
+      if (onClientUpdated) onClientUpdated();
     } catch (err: unknown) {
       if (err instanceof Error) {
         alert("Erreur : " + err.message);
@@ -81,9 +106,10 @@ export default function UpdateClientDialog({
             value={formData.name}
             onChange={handleChange}
             required
-            placeholder="Nom"
+            placeholder="Nom *"
             className="w-full border px-3 py-2 rounded"
           />
+
           <AutoCompletedAddress
             value={formData.address}
             onChange={(val) =>
@@ -91,24 +117,96 @@ export default function UpdateClientDialog({
             }
             onSelect={handleAdresseSelect}
           />
+
           <input
             type="text"
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            required
             placeholder="Téléphone"
             className="w-full border px-3 py-2 rounded"
           />
+
           <input
             type="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
-            required
             placeholder="Email"
             className="w-full border px-3 py-2 rounded"
           />
+
+          <input
+            type="text"
+            name="manager"
+            value={formData.manager}
+            onChange={handleChange}
+            placeholder="Manager"
+            className="w-full border px-3 py-2 rounded"
+          />
+
+          <input
+            type="text"
+            name="main_contact"
+            value={formData.main_contact}
+            onChange={handleChange}
+            placeholder="Contact principal"
+            className="w-full border px-3 py-2 rounded"
+          />
+
+          <input
+            type="text"
+            name="accountant"
+            value={formData.accountant}
+            onChange={handleChange}
+            placeholder="Comptable"
+            className="w-full border px-3 py-2 rounded"
+          />
+
+          <input
+            type="text"
+            name="accountant_phone"
+            value={formData.accountant_phone}
+            onChange={handleChange}
+            placeholder="Téléphone comptable"
+            className="w-full border px-3 py-2 rounded"
+          />
+
+          <input
+            type="text"
+            name="commercial"
+            value={formData.commercial}
+            onChange={handleChange}
+            placeholder="Commercial"
+            className="w-full border px-3 py-2 rounded"
+          />
+
+          <textarea
+            name="note"
+            value={formData.note}
+            onChange={handleChange}
+            placeholder="Note"
+            className="w-full border px-3 py-2 rounded resize-y"
+            rows={4}
+          />
+
+          <div className="flex items-center">
+            <label className="text-sm font-medium w-32">Client ouvert:</label>
+            <select
+              name="open"
+              value={formData.open ? "true" : "false"}
+              onChange={(e) =>
+                setFormData((prev) => ({
+                  ...prev,
+                  open: e.target.value == "true",
+                }))
+              }
+              className="border px-3 py-2 rounded"
+            >
+              <option value="true">Oui</option>
+              <option value="false">Non</option>
+            </select>
+          </div>
 
           <div className="flex justify-end">
             <button

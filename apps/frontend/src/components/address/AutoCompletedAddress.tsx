@@ -1,6 +1,7 @@
 "use client";
 
-import { AddressSuggestion, searchAdresse } from "@/services/address.service";
+import { AddressSuggestion } from "@/models/address.model";
+import { searchAddress } from "@/services/address.service";
 import { useEffect, useState } from "react";
 
 type Props = {
@@ -22,7 +23,7 @@ export default function AutoCompletedAddress({
     const timeout = setTimeout(async () => {
       if (value.length >= 3 && /^[a-zA-Z0-9]/.test(value)) {
         try {
-          const results = await searchAdresse(value);
+          const results = await searchAddress(value);
           setSuggestions(results);
           setError("");
         } catch (err) {
@@ -60,8 +61,9 @@ export default function AutoCompletedAddress({
           onChange(e.target.value);
           setShowList(true);
         }}
-        placeholder="Tapez une adresse..."
+        placeholder="Tapez une adresse... *"
         className="w-full border px-3 py-2 rounded"
+        required
       />
       {showList && suggestions.length > 0 && (
         <ul className="absolute z-50 bg-white border w-full max-h-48 overflow-y-auto shadow-lg">

@@ -1,5 +1,7 @@
 import { Client } from "@/models/client.model";
+import { OpeningHours } from "@/models/opening-hours.model";
 import { SendClient } from "@/payload/request/send-client";
+import { SendOpeningHours } from "@/payload/request/send-opening-hours";
 import { getAuthHeaders } from "./user.service";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
@@ -95,6 +97,35 @@ export async function updateClient(
   if (!res.ok) {
     const errorBody = await res.json();
     const errorMessage = errorBody?.detail || "Failed to update client.";
+    throw new Error(errorMessage);
+  }
+
+  return res.json();
+}
+
+export async function updateOpeningHours(
+  clientId: number,
+  payload: SendOpeningHours[]
+): Promise<OpeningHours[]> {
+  const headers: HeadersInit = {
+    ...getAuthHeaders(),
+    "Content-Type": "application/json",
+  };
+
+  const res = await fetch(`${API_BASE_URL}/clients/${clientId}/opening-hours`, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(payload),
+  });
+
+  if (!res.ok) {
+    let errorMessage = "Failed to update opening hours.";
+    try {
+      const errorBody = await res.json();
+      if (errorBody?.detail) {
+        errorMessage = errorBody.detail;
+      }
+    } catch {}
     throw new Error(errorMessage);
   }
 

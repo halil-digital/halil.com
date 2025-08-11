@@ -1,6 +1,13 @@
 export interface SendClient {
   name: string;
   address: string;
-  phone: string;
-  email: string;
+  email?: string;
+  phone?: string;
+  manager?: string;
+  main_contact?: string;
+  accountant?: string;
+  accountant_phone?: string;
+  commercial?: string;
+  note?: string;
+  open?: boolean;
 }
