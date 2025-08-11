@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function LoginPage() {
   return (
-    <div className="h-screen bg-[#ebc834]">
+    <div className="h-screen">
       <div className="h-full flex flex-col items-center justify-center">
         <h1 className="mb-7 text-lg font-semibold">Portail HALIL</h1>
         <Link href={"/"}>

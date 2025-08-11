@@ -47,7 +47,7 @@ export function LoginForm() {
   }, [checkedToken, router]);
 
   return (
-    <div className="shadow-input shadow-[0_4px_12px_0_rgba(0,0,0,0.1)] mx-auto my-5 w-full max-w-md rounded-none bg-white p-4 md:rounded-2xl md:p-8 dark:bg-black">
+    <div className="shadow-input shadow-[0_4px_12px_0_rgba(0,0,0,0.1)] mx-auto my-5 w-full max-w-md rounded-none bg-white p-4 md:rounded-md md:p-8 dark:bg-black">
       <h2 className="text-xl font-bold text-neutral-800 dark:text-neutral-200 text-center">
         Connectez-vous à votre compte
       </h2>
