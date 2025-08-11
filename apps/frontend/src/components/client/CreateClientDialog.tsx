@@ -7,8 +7,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { AddressSuggestion } from "@/models/address.model";
 import { SendClient } from "@/payload/request/send-client";
-import { AddressSuggestion } from "@/services/address.service";
 import { createClient } from "@/services/client.service";
 import { UserPlus } from "lucide-react";
 import { useState } from "react";

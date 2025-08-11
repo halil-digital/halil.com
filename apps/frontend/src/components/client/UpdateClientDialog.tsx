@@ -8,10 +8,10 @@ import {
 } from "@/components/ui/dialog";
 import { Client } from "@/models/client.model";
 import { SendClient } from "@/payload/request/send-client";
-import { AddressSuggestion } from "@/services/address.service";
 import { updateClient } from "@/services/client.service";
 import { useEffect, useState } from "react";
 import AutoCompletedAddress from "../address/AutoCompletedAddress";
+import { AddressSuggestion } from "@/models/address.model";
 
 type Props = {
   client: Client;
