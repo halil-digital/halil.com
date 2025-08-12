@@ -1,10 +1,10 @@
 "use client";
 
 import { Client } from "@/models/client.model";
-import { getAllClients } from "@/services/client.service";
+import { getAllClients, searchClients } from "@/services/client.service";
 import { ArrowUpAz, Map, Search } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ClientTable from "./ClientTable";
 import CreateClientDialog from "./CreateClientDialog";
 
@@ -13,17 +13,43 @@ export default function ClientList() {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [searchActive, setSearchActive] = useState(false);
+  const [isSorted, setIsSorted] = useState(false); // État pour tri ABC
 
-  const fetchClients = () => {
+  // Ref pour debounce
+  const debounceTimeout = useRef<NodeJS.Timeout | null>(null);
+
+  const fetchClients = (query = "") => {
     setLoading(true);
-    getAllClients()
+
+    const fetchFn = query.trim() ? searchClients : getAllClients;
+
+    fetchFn(query)
       .then(setClients)
       .finally(() => setLoading(false));
   };
 
+  // Au montage, charge tous les clients
   useEffect(() => {
     fetchClients();
   }, []);
+
+  // Dès que la recherche change, debounce et lance la recherche
+  useEffect(() => {
+    if (debounceTimeout.current) clearTimeout(debounceTimeout.current);
+
+    debounceTimeout.current = setTimeout(() => {
+      fetchClients(search);
+    }, 500); // 500 ms de délai
+
+    return () => {
+      if (debounceTimeout.current) clearTimeout(debounceTimeout.current);
+    };
+  }, [search]);
+
+  // Trie les clients par nom si isSorted est vrai
+  const displayedClients = isSorted
+    ? [...clients].sort((a, b) => a.name.localeCompare(b.name))
+    : clients;
 
   return (
     <div className="space-y-4">
@@ -38,12 +64,17 @@ export default function ClientList() {
           <Search />
           <span>Rechercher</span>
         </button>
-        <button className="flex flex-col items-center px-4 py-2 text-sm hover:text-[#dfca70] font-medium transition cursor-pointer">
+        <button
+          onClick={() => setIsSorted(!isSorted)} // toggle tri ABC
+          className={`flex flex-col items-center px-4 py-2 text-sm hover:text-[#dfca70] font-medium transition cursor-pointer ${
+            isSorted ? "text-[#dfca70]" : ""
+          }`}
+        >
           <ArrowUpAz />
           <span>ABC</span>
         </button>
         {/* Passe fetchClients au dialogue de création */}
-        <CreateClientDialog onClientCreated={fetchClients} />
+        <CreateClientDialog onClientCreated={() => fetchClients(search)} />
       </div>
 
       {/* Barre de recherche visible uniquement si searchActive */}
@@ -53,13 +84,14 @@ export default function ClientList() {
             <div className="relative bg-white">
               <input
                 type="text"
-                placeholder="Rechercher..."
+                placeholder="Rechercher par nom..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 className="w-80 h-10 pl-3 pr-3 border border-gray-400 border-r-0 text-sm focus:outline-none focus:ring-1 focus:ring-[#006680] focus:border-[#006680]"
               />
             </div>
             <button
+              onClick={() => fetchClients(search)}
               className="h-10 px-3 bg-[#006680] text-white hover:bg-[#008099] transition-colors border border-[#006680]"
               title="Rechercher"
             >
@@ -71,7 +103,7 @@ export default function ClientList() {
 
       <div className="flex justify-between items-center m-0 p-2">
         <div>
-          <span>Tous les {clients.length} clients</span>
+          <span>Tous les {displayedClients.length} clients</span>
         </div>
         <Link
           href="/dashboard/clients/map"
@@ -82,11 +114,14 @@ export default function ClientList() {
         </Link>
       </div>
 
-      {/* Passe clients et fetchClients à ClientTable */}
+      {/* Passe clients triés (ou non) et fetchClients à ClientTable */}
       {loading ? (
         <p>Chargement...</p>
       ) : (
-        <ClientTable onClientUpdated={fetchClients} />
+        <ClientTable
+          clients={displayedClients}
+          onClientUpdated={() => fetchClients(search)}
+        />
       )}
     </div>
   );

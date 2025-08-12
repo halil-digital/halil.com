@@ -6,12 +6,12 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { AddressSuggestion } from "@/models/address.model";
 import { Client } from "@/models/client.model";
 import { SendClient } from "@/payload/request/send-client";
 import { updateClient } from "@/services/client.service";
 import { useEffect, useState } from "react";
 import AutoCompletedAddress from "../address/AutoCompletedAddress";
-import { AddressSuggestion } from "@/models/address.model";
 
 type Props = {
   client: Client;
@@ -31,6 +31,8 @@ export default function UpdateClientDialog({
     address: client.address || "",
     email: client.email || "",
     phone: client.phone || "",
+    phone2: client.phone2 || "",
+    landline_phone: client.landline_phone || "",
     manager: client.manager || "",
     main_contact: client.main_contact || "",
     accountant: client.accountant || "",
@@ -47,6 +49,8 @@ export default function UpdateClientDialog({
         address: client.address || "",
         email: client.email || "",
         phone: client.phone || "",
+        phone2: client.phone2 || "",
+        landline_phone: client.landline_phone || "",
         manager: client.manager || "",
         main_contact: client.main_contact || "",
         accountant: client.accountant || "",
@@ -99,7 +103,7 @@ export default function UpdateClientDialog({
           <DialogTitle>Modifier le client</DialogTitle>
         </DialogHeader>
 
-        <form onSubmit={handleSubmit} className="space-y-4 mt-4">
+        <form onSubmit={handleSubmit} className="space-y-2">
           <input
             type="text"
             name="name"
@@ -128,6 +132,24 @@ export default function UpdateClientDialog({
           />
 
           <input
+            type="text"
+            name="phone2"
+            value={formData.phone2}
+            onChange={handleChange}
+            placeholder="Téléphone 2"
+            className="w-full border px-3 py-2 rounded"
+          />
+
+          <input
+            type="text"
+            name="landline_phone"
+            value={formData.landline_phone}
+            onChange={handleChange}
+            placeholder="Téléphone Fixe"
+            className="w-full border px-3 py-2 rounded"
+          />
+
+          <input
             type="email"
             name="email"
             value={formData.email}
@@ -141,7 +163,7 @@ export default function UpdateClientDialog({
             name="manager"
             value={formData.manager}
             onChange={handleChange}
-            placeholder="Manager"
+            placeholder="Gérant"
             className="w-full border px-3 py-2 rounded"
           />
 

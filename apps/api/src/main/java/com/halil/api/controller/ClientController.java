@@ -1,14 +1,8 @@
 package com.halil.api.controller;
 
 import com.halil.api.dto.OpeningHoursDTO;
-import com.halil.api.model.Appointment;
-import com.halil.api.model.Client;
-import com.halil.api.model.OpeningHours;
-import com.halil.api.model.Task;
-import com.halil.api.service.AppointmentService;
-import com.halil.api.service.ClientService;
-import com.halil.api.service.OpeningHoursService;
-import com.halil.api.service.TaskService;
+import com.halil.api.model.*;
+import com.halil.api.service.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
@@ -24,12 +18,14 @@ public class ClientController {
     private final AppointmentService appointmentService;
     private final TaskService taskService;
     private final OpeningHoursService openingHoursService;
+    private final BlockingPeriodService blockingPeriodService;
 
-    public ClientController(ClientService clientService, AppointmentService appointmentService, TaskService taskService, OpeningHoursService openingHoursService) {
+    public ClientController(ClientService clientService, AppointmentService appointmentService, TaskService taskService, OpeningHoursService openingHoursService, BlockingPeriodService blockingPeriodService) {
         this.clientService = clientService;
         this.appointmentService = appointmentService;
         this.taskService = taskService;
         this.openingHoursService = openingHoursService;
+        this.blockingPeriodService = blockingPeriodService;
     }
 
     @GetMapping
@@ -101,5 +97,26 @@ public class ClientController {
             @RequestBody List<OpeningHoursDTO> hoursList
     ) {
         return openingHoursService.updateOpeningHours(id, hoursList);
+    }
+
+    @GetMapping("/{id}/blocking-periods")
+    public List<BlockingPeriod> getBlockingPeriodsByClient(@PathVariable Long id) {
+        return blockingPeriodService.getBlockingPeriodsByClient(id);
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<?> searchClients(@RequestParam(name = "q", required = false) String query) {
+        try {
+            if (query == null || query.trim().isEmpty()) {
+                return ResponseEntity.ok(clientService.getAllClients());
+            }
+            List<Client> results = clientService.searchClientsByName(query.trim());
+            return ResponseEntity.ok(results);
+        } catch (Exception e) {
+            ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.INTERNAL_SERVER_ERROR);
+            problemDetail.setTitle("Error");
+            problemDetail.setDetail(e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(problemDetail);
+        }
     }
 }

@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import CreateAppointmentDialog from "../appointment/CreateAppointmentDialog";
+import CreateBlockingPeriodDialog from "../blocking-period/CreateBlockingPeriodDialog";
 import UpdateOpeningHoursDialog from "../opening-hour/UpdateOpeningHoursDialog";
 import CreateTaskDialog from "../task/CreateTaskDialog";
 import UpdateClientDialog from "./UpdateClientDialog";
@@ -263,6 +264,24 @@ const ClientDetail: React.FC = () => {
                 <CreateTaskDialog
                   clientId={client.id}
                   onTaskCreated={() => {
+                    alert("Tâche créée !");
+                  }}
+                />
+              </div>
+            </InfoSection>
+
+            <InfoSection
+              title="PERIODES DE BLOCAGE"
+              actionIcon={
+                <Link href={"/dashboard/blocking-periods"}>
+                  <Eye />
+                </Link>
+              }
+            >
+              <div className="flex justify-center">
+                <CreateBlockingPeriodDialog
+                  clientId={client.id}
+                  onBlockingPeriodCreated={() => {
                     alert("Tâche créée !");
                   }}
                 />

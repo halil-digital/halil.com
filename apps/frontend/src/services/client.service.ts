@@ -131,3 +131,44 @@ export async function updateOpeningHours(
 
   return res.json();
 }
+
+export async function searchClients(query: string): Promise<Client[]> {
+  const headers: HeadersInit = {
+    ...getAuthHeaders(),
+  };
+
+  const url = new URL(`${API_BASE_URL}/clients/search`);
+  if (query && query.trim() !== "") {
+    url.searchParams.append("q", query.trim());
+  }
+
+  const res = await fetch(url.toString(), {
+    method: "GET",
+    headers,
+  });
+
+  if (!res.ok) {
+    const text = await res.text();
+    let errorMessage = "Failed to search clients.";
+    try {
+      const errorBody = text ? JSON.parse(text) : null;
+      if (errorBody?.detail) {
+        errorMessage = errorBody.detail;
+      }
+    } catch {
+      if (text) errorMessage = text;
+    }
+    throw new Error(errorMessage);
+  }
+
+  const text = await res.text();
+  if (!text) {
+    return [];
+  }
+
+  try {
+    return JSON.parse(text);
+  } catch {
+    throw new Error("Invalid server response (not JSON).");
+  }
+}

@@ -1,40 +1,25 @@
 import { Client } from "@/models/client.model";
-import { getAllClients } from "@/services/client.service";
-import { useEffect, useState } from "react";
 import { columns } from "./columns";
 import { DataTable } from "./data-table";
 
 type Props = {
+  clients: Client[];
   onClientUpdated?: () => void;
 };
 
-export default function ClientTable({ onClientUpdated }: Props) {
-  const [clients, setClients] = useState<Client[]>([]);
-  const [loading, setLoading] = useState(true);
+export default function ClientTable({ clients, onClientUpdated }: Props) {
+  // Plus besoin d'état clients ni loading ici, on gère tout côté parent
 
-  const fetchClients = () => {
-    setLoading(true);
-    getAllClients()
-      .then(setClients)
-      .finally(() => setLoading(false));
-  };
+  // Afficher un message si pas de clients
+  if (!clients.length)
+    return <p className="text-sm text-gray-500 p-2">Aucun client trouvé.</p>;
 
-  useEffect(() => {
-    fetchClients();
-  }, []);
-
-  // Fonction pour recharger après update ou suppression
-  const handleClientUpdated = () => {
-    fetchClients();
-    if (onClientUpdated) onClientUpdated();
-  };
-
-  if (loading) return <p className="text-sm text-gray-500">Chargement...</p>;
+  // On pourrait ajouter un spinner via prop si besoin, mais ici on suppose que parent gère loading
 
   return (
     <div className="px-2">
-      {/* Bien appeler columns en passant handleClientUpdated */}
-      <DataTable columns={columns(handleClientUpdated)} data={clients} />
+      {/* columns reçoit handleClientUpdated pour actions sur les lignes */}
+      <DataTable columns={columns(onClientUpdated)} data={clients} />
     </div>
   );
 }

@@ -11,7 +11,7 @@ export default function TaskList() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [loadingTasks, setLoadingTasks] = useState(true);
   const [search, setSearch] = useState("");
-  const [searchActive, setSearchActive] = useState(false);
+  const [searchActive] = useState(false);
 
   // Chargement tâches
   const fetchTasks = () => {
@@ -29,16 +29,6 @@ export default function TaskList() {
   return (
     <div className="space-y-4">
       <div className="w-full border-b border-gray-400 flex justify-center gap-2 m-0">
-        <button
-          onClick={() => setSearchActive(!searchActive)}
-          className={`flex flex-col items-center px-4 py-2 text-sm font-medium transition cursor-pointer hover:text-[#dfca70] ${
-            searchActive ? "text-[#dfca70]" : ""
-          }`}
-        >
-          <Search />
-          <span>Rechercher</span>
-        </button>
-
         <CreateTaskDialog onTaskCreated={fetchTasks} />
       </div>
 

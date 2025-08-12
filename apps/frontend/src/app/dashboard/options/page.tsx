@@ -15,10 +15,8 @@ const SettingsPage: React.FC = () => {
     "Changer mot de passe",
   ]);
 
-  const [parametresVisites] = useState<string[]>([
-    "Réglages de visites",
-    "Reporting",
-  ]);
+  const [parametresVisites] = useState<string[]>(["Heures d'ouverture"]);
+  const [portatour] = useState<string[]>(["A propos de"]);
 
   const MenuSection: React.FC<MenuSectionProps> = ({
     title,
@@ -65,6 +63,13 @@ const SettingsPage: React.FC = () => {
             <MenuSection
               title="PARAMÈTRES DE VISITES"
               items={parametresVisites}
+              bgColor="bg-[#dfca70]"
+            />
+          </div>
+          <div className="space-y-6">
+            <MenuSection
+              title="PORTATOUR"
+              items={portatour}
               bgColor="bg-[#dfca70]"
             />
           </div>

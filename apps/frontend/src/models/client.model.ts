@@ -8,6 +8,8 @@ export interface Client {
   address: string;
   email?: string;
   phone?: string;
+  phone2?: string;
+  landline_phone?: string;
   manager?: string;
   main_contact?: string;
   accountant?: string;

@@ -25,6 +25,8 @@ export default function CreateClientDialog({ onClientCreated }: Props) {
     address: "",
     email: "",
     phone: "",
+    phone2: "",
+    landline_phone: "",
     manager: "",
     main_contact: "",
     accountant: "",
@@ -65,6 +67,8 @@ export default function CreateClientDialog({ onClientCreated }: Props) {
         address: "",
         email: "",
         phone: "",
+        phone2: "",
+        landline_phone: "",
         manager: "",
         main_contact: "",
         accountant: "",
@@ -96,7 +100,7 @@ export default function CreateClientDialog({ onClientCreated }: Props) {
           <DialogTitle>Ajouter un client</DialogTitle>
         </DialogHeader>
 
-        <form onSubmit={handleSubmit} className="space-y-4 mt-4">
+        <form onSubmit={handleSubmit} className="space-y-2">
           <input
             type="text"
             name="name"
@@ -125,6 +129,24 @@ export default function CreateClientDialog({ onClientCreated }: Props) {
           />
 
           <input
+            type="text"
+            name="phone2"
+            value={formData.phone2}
+            onChange={handleChange}
+            placeholder="Téléphone 2"
+            className="w-full border px-3 py-2 rounded"
+          />
+
+          <input
+            type="text"
+            name="landline_phone"
+            value={formData.landline_phone}
+            onChange={handleChange}
+            placeholder="Téléphone Fixe"
+            className="w-full border px-3 py-2 rounded"
+          />
+
+          <input
             type="email"
             name="email"
             value={formData.email}
@@ -138,7 +160,7 @@ export default function CreateClientDialog({ onClientCreated }: Props) {
             name="manager"
             value={formData.manager}
             onChange={handleChange}
-            placeholder="Manager"
+            placeholder="Gérant"
             className="w-full border px-3 py-2 rounded"
           />
 

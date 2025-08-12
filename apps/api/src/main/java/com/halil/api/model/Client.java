@@ -26,6 +26,10 @@ public class Client {
 
     private String phone;
 
+    private String phone2;
+
+    private String landline_phone;
+
     private String email;
 
     private String manager;
@@ -54,4 +58,8 @@ public class Client {
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnoreProperties("client")
     private List<OpeningHours> openingHours;
+
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnoreProperties("client")
+    private List<BlockingPeriod> blocking_periods;
 }

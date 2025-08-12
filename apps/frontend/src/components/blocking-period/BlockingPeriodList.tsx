@@ -1,35 +1,47 @@
 "use client";
 
-import { Appointment } from "@/models/appointment.model";
-import { getAllAppointments } from "@/services/appointment.service";
 import { Search } from "lucide-react";
 import { useEffect, useState } from "react";
-import AppointmentTable from "./AppointmentTable";
-import CreateAppointmentDialog from "./CreateAppointmentDialog";
 
-export default function AppointmentList() {
-  const [appointments, setAppointments] = useState<Appointment[]>([]);
+import { BlockingPeriod } from "@/models/blocking-period.model";
+import { getAllBlockingPeriods } from "@/services/blocking-period.service";
+import BlockingPeriodTable from "./BlockingPeriodTable";
+import CreateBlockingPeriodDialog from "./CreateBlockingPeriodDialog";
+
+export function BlockingPeriodList() {
+  const [blockingPeriods, setBlockingPeriods] = useState<BlockingPeriod[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
-  const [searchActive] = useState(false);
+  const [searchActive, setSearchActive] = useState(false);
 
-  // Chargement rendez-vous
-  const fetchAppointments = () => {
+  const fetchBlockingPeriods = () => {
     setLoading(true);
-    getAllAppointments()
-      .then(setAppointments)
-      .catch(() => setAppointments([]))
+    getAllBlockingPeriods()
+      .then(setBlockingPeriods)
+      .catch(() => setBlockingPeriods([]))
       .finally(() => setLoading(false));
   };
 
   useEffect(() => {
-    fetchAppointments();
+    fetchBlockingPeriods();
   }, []);
 
   return (
     <div className="space-y-4">
       <div className="w-full border-b border-gray-400 flex justify-center gap-2 m-0">
-        <CreateAppointmentDialog onAppointmentCreated={fetchAppointments} />
+        <button
+          onClick={() => setSearchActive(!searchActive)}
+          className={`flex flex-col items-center px-4 py-2 text-sm font-medium transition cursor-pointer hover:text-[#dfca70] ${
+            searchActive ? "text-[#dfca70]" : ""
+          }`}
+        >
+          <Search />
+          <span>Rechercher</span>
+        </button>
+
+        <CreateBlockingPeriodDialog
+          onBlockingPeriodCreated={fetchBlockingPeriods}
+        />
       </div>
 
       {searchActive && (
@@ -47,6 +59,7 @@ export default function AppointmentList() {
             <button
               className="h-10 px-3 bg-[#006680] text-white hover:bg-[#008099] transition-colors border border-[#006680]"
               title="Rechercher"
+              // Ici tu peux ajouter une fonction de recherche si tu veux
             >
               <Search size={16} />
             </button>
@@ -56,16 +69,16 @@ export default function AppointmentList() {
 
       <div className="flex justify-between items-center m-0 p-2">
         <div>
-          <span>Tous les {appointments.length} rendez-vous</span>
+          <span>Toutes les {blockingPeriods.length} périodes de blocage</span>
         </div>
       </div>
 
       {loading ? (
-        <p>Chargement des rendez-vous...</p>
+        <p>Chargement des périodes de blocage...</p>
       ) : (
-        <AppointmentTable
-          appointments={appointments}
-          onAppointmentUpdated={fetchAppointments}
+        <BlockingPeriodTable
+          blockingPeriods={blockingPeriods}
+          onBlockingPeriodUpdated={fetchBlockingPeriods}
         />
       )}
     </div>
