@@ -59,7 +59,7 @@ function Hero() {
       className="relative flex justify-center items-center bg-cover bg-center transition-all duration-1000"
       style={{
         backgroundImage: `url(${sliderImages[currentSlide]})`,
-        height: "calc(100vh - 20rem)",
+        height: "calc(100vh - 17rem)",
       }}
     >
       {/* Barre de progression */}
@@ -73,8 +73,8 @@ function Hero() {
         />
       </div>
 
-      <div className="container mx-auto z-10">
-        <div className="flex gap-8 items-center justify-center flex-col">
+      <div className="container mx-auto my-auto z-10">
+        <div className="flex gap-8 items-center mt-4 justify-center flex-col">
           <div>
             <Button variant="secondary" size="sm" className="gap-4">
               Bienvenue sur notre site
