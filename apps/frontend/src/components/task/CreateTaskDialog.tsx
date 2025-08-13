@@ -34,7 +34,7 @@ type FormData = {
   date: string; // ISO "YYYY-MM-DD"
   dateFr: string; // "dd/mm/yyyy"
   hour: string; // "HH:mm"
-  isDone: boolean;
+  done: boolean;
   clientId?: number;
 };
 
@@ -60,7 +60,7 @@ export default function CreateTaskDialog({ clientId, onTaskCreated }: Props) {
     date: "",
     dateFr: "",
     hour: "",
-    isDone: false,
+    done: false,
     clientId,
   });
 
@@ -128,7 +128,7 @@ export default function CreateTaskDialog({ clientId, onTaskCreated }: Props) {
           onSubmit={async (e) => {
             e.preventDefault();
 
-            const { title, date, hour, clientId, note, isDone } = formData;
+            const { title, date, hour, clientId, note, done } = formData;
 
             if (!date || !hour || !clientId) {
               alert("La date, l'heure et le client sont obligatoires.");
@@ -140,7 +140,7 @@ export default function CreateTaskDialog({ clientId, onTaskCreated }: Props) {
               note,
               date,
               hour: hour + ":00", // ajout des secondes pour respecter "hh:mm:ss"
-              isDone,
+              done,
               client: { id: clientId },
             };
 
@@ -152,7 +152,7 @@ export default function CreateTaskDialog({ clientId, onTaskCreated }: Props) {
                 date: "",
                 dateFr: "",
                 hour: "",
-                isDone: false,
+                done: false,
                 clientId,
               });
               setOpen(false);

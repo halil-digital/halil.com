@@ -54,7 +54,7 @@ export default function UpdateTaskDialog({
     date: "",
     dateFr: "",
     hour: "",
-    isDone: false,
+    done: false,
     clientId: 0,
   });
 
@@ -78,7 +78,7 @@ export default function UpdateTaskDialog({
         date: task.date || "",
         dateFr: task.date ? formatDateToFr(task.date) : "",
         hour: task.hour ? task.hour.substring(0, 5) : "",
-        isDone: task.isDone || false,
+        done: task.done || false,
         clientId: task.client?.id || 0, // <-- ici on prend bien task.client.id
       });
     }
@@ -113,7 +113,7 @@ export default function UpdateTaskDialog({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const { title, date, hour, clientId, note, isDone } = formData;
+    const { title, date, hour, clientId, note, done } = formData;
 
     if (!date || !hour || !clientId) {
       alert("La date, l'heure et le client sont obligatoires.");
@@ -125,7 +125,7 @@ export default function UpdateTaskDialog({
       note,
       date,
       hour: hour + ":00", // format hh:mm:ss
-      isDone,
+      done,
       client: { id: clientId }, // <-- objet client avec id ici
     };
 
