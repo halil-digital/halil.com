@@ -215,13 +215,27 @@ const ClientDetail: React.FC = () => {
               onActionClick={() => setIsUpdateDialogOpen(true)}
             >
               <div className="text-sm text-gray-600">
-                <div>
+                <div className="flex flex-col ">
+                  {client.manager ? (
+                    <span className="font-medium">
+                      Gérant: {client.manager}
+                    </span>
+                  ) : (
+                    <span className="font-medium">Gérant: aucun</span>
+                  )}
+                  {client.phone ? (
+                    <span className="font-medium">
+                      Téléphone: {client.phone}
+                    </span>
+                  ) : (
+                    <span className="font-medium">Téléphone: aucun</span>
+                  )}
                   {client.commercial ? (
                     <span className="font-medium">
                       Commercial: {client.commercial}
                     </span>
                   ) : (
-                    "aucun"
+                    <span className="font-medium">Commercial: aucun</span>
                   )}
                 </div>
               </div>

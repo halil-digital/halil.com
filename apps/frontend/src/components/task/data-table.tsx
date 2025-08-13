@@ -14,15 +14,13 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { useRouter } from "next/navigation";
 
-// On ne restreint pas TData ici
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
 }
 
-export function DataTable<TData extends { id: number }, TValue>({
+export function DataTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
@@ -31,8 +29,6 @@ export function DataTable<TData extends { id: number }, TValue>({
     columns,
     getCoreRowModel: getCoreRowModel(),
   });
-
-  const router = useRouter();
 
   return (
     <div className="overflow-hidden border">
@@ -56,15 +52,7 @@ export function DataTable<TData extends { id: number }, TValue>({
         <TableBody>
           {table.getRowModel().rows.length ? (
             table.getRowModel().rows.map((row) => (
-              <TableRow
-                key={row.id}
-                onClick={() =>
-                  router.push(
-                    `/dashboard/clients/${(row.original as { id: number }).id}`
-                  )
-                }
-                className="cursor-pointer hover:bg-gray-100 transition-colors"
-              >
+              <TableRow key={row.id}>
                 {row.getVisibleCells().map((cell) => (
                   <TableCell key={cell.id}>
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}

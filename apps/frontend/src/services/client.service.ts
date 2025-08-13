@@ -18,6 +18,7 @@ export async function getAllClients(): Promise<Client[]> {
 
   if (!res.ok) {
     const text = await res.text();
+    console.log(text);
     let errorMessage = "Failed to fetch clients from server.";
     try {
       const errorBody = text ? JSON.parse(text) : null;

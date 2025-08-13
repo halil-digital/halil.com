@@ -49,10 +49,12 @@ export default function UpdateTaskDialog({
 }: Props) {
   const [clients, setClients] = useState<Client[]>([]);
   const [formData, setFormData] = useState({
+    title: "",
     note: "",
     date: "",
     dateFr: "",
     hour: "",
+    isDone: false,
     clientId: 0,
   });
 
@@ -71,10 +73,12 @@ export default function UpdateTaskDialog({
   useEffect(() => {
     if (open) {
       setFormData({
+        title: task.title || "",
         note: task.note || "",
         date: task.date || "",
         dateFr: task.date ? formatDateToFr(task.date) : "",
         hour: task.hour ? task.hour.substring(0, 5) : "",
+        isDone: task.isDone || false,
         clientId: task.client?.id || 0, // <-- ici on prend bien task.client.id
       });
     }
@@ -109,7 +113,7 @@ export default function UpdateTaskDialog({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const { date, hour, clientId, note } = formData;
+    const { title, date, hour, clientId, note, isDone } = formData;
 
     if (!date || !hour || !clientId) {
       alert("La date, l'heure et le client sont obligatoires.");
@@ -117,9 +121,11 @@ export default function UpdateTaskDialog({
     }
 
     const sendData: SendTask = {
+      title,
       note,
       date,
       hour: hour + ":00", // format hh:mm:ss
+      isDone,
       client: { id: clientId }, // <-- objet client avec id ici
     };
 
@@ -158,6 +164,16 @@ export default function UpdateTaskDialog({
                 </option>
               ))}
             </select>
+          </label>
+
+          <label className="block text-sm font-medium text-gray-700">
+            Objet
+            <input
+              name="title"
+              value={formData.title}
+              onChange={handleChange}
+              className="w-full border px-3 py-2 rounded resize-y mt-1"
+            />
           </label>
 
           <label className="block text-sm font-medium text-gray-700">

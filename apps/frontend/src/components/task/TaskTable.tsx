@@ -1,6 +1,6 @@
 import { Task } from "@/models/task.model";
-import { DataTable } from "../client/data-table";
 import { columns } from "./columns";
+import { DataTable } from "./data-table";
 
 type Props = {
   tasks: Task[];

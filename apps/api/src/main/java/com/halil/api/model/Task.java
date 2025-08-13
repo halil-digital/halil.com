@@ -18,11 +18,15 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String title;
+
     private String note;
 
     private LocalDate date;
 
     private LocalTime hour;
+
+    private boolean isDone = false;
 
     @ManyToOne
     @JoinColumn(name = "client_id")

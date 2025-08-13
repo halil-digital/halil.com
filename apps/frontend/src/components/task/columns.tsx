@@ -11,6 +11,7 @@ import { deleteTask } from "@/services/task.service";
 import { ColumnDef } from "@tanstack/react-table";
 import { MoreHorizontal } from "lucide-react";
 import { useState } from "react";
+import MarkAsDoneDialog from "./MarkAsDoneDialog";
 import UpdateTaskDialog from "./UpdateTaskDialog";
 
 export function ActionsCell({
@@ -67,12 +68,33 @@ export function ActionsCell({
   );
 }
 
-export const columns = (onTasksChange: () => void): ColumnDef<Task>[] => [
+export const columns = (
+  onTasksChange: (updatedTask?: Task) => void
+): ColumnDef<Task>[] => [
+  {
+    id: "markAsDone",
+    header: "",
+    cell: ({ row }) => {
+      const task = row.original;
+      return (
+        <MarkAsDoneDialog
+          task={task}
+          onTaskUpdated={(updatedTask) => {
+            onTasksChange(updatedTask); // met à jour le state directement
+          }}
+        />
+      );
+    },
+  },
   {
     accessorFn: (row) => row.client?.name ?? "N/A",
     id: "client",
     header: "Client",
     cell: ({ getValue }) => getValue() ?? "",
+  },
+  {
+    accessorKey: "title",
+    header: "Objet",
   },
   {
     accessorKey: "date",
@@ -91,10 +113,6 @@ export const columns = (onTasksChange: () => void): ColumnDef<Task>[] => [
       const hourStr = getValue() as string;
       return hourStr ? hourStr.substring(0, 5) : "";
     },
-  },
-  {
-    accessorKey: "note",
-    header: "Note",
   },
   {
     id: "actions",

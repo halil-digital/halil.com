@@ -13,8 +13,8 @@ import { deleteAppointment } from "@/services/appointment.service";
 import { ColumnDef } from "@tanstack/react-table";
 import { MoreHorizontal } from "lucide-react";
 import { useState } from "react";
-import { DataTable } from "../client/data-table";
 import UpdateAppointmentDialog from "./UpdateAppointmentDialog";
+import { DataTable } from "./data-table";
 
 type Props = {
   appointments: Appointment[];

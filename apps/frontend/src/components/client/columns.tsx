@@ -10,7 +10,6 @@ import { Client } from "@/models/client.model";
 import { deleteClient } from "@/services/client.service";
 import { ColumnDef } from "@tanstack/react-table";
 import { MoreHorizontal } from "lucide-react";
-import Link from "next/link";
 import { useState } from "react";
 import UpdateClientDialog from "./UpdateClientDialog";
 
@@ -39,9 +38,6 @@ export function ActionsCell({ client, onClientUpdated }: ActionsCellProps) {
 
         <DropdownMenuContent align="end">
           <DropdownMenuLabel>Actions</DropdownMenuLabel>
-          <DropdownMenuItem className="cursor-pointer">
-            <Link href={`/dashboard/clients/${client.id}`}>Voir plus</Link>
-          </DropdownMenuItem>
           <DropdownMenuItem
             className="cursor-pointer"
             onClick={() => setIsDialogOpen(true)}

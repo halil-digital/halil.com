@@ -5,8 +5,16 @@ export const createClientIcon = async (client: Client) => {
 
   const color = client.name === "mohamed" ? "#22c55e" : "#ef4444"; // vert / rouge
 
+  const width = 100; // largeur du bloc
+  const height = 40; // hauteur du bloc
+  const triangleHeight = 6; // hauteur du triangle
+
   const html = `
     <div style="
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
       display: inline-block;
       background: ${color};
       color: white;
@@ -15,21 +23,20 @@ export const createClientIcon = async (client: Client) => {
       font-weight: bold;
       border-radius: 4px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-      position: relative;
       white-space: nowrap;
     ">
       ${client.name}
       <div style="
         content: '';
         position: absolute;
-        bottom: -6px;
+        bottom: -${triangleHeight}px;
         left: 50%;
         transform: translateX(-50%);
         width: 0;
         height: 0;
-        border-left: 6px solid transparent;
-        border-right: 6px solid transparent;
-        border-top: 6px solid ${color};
+        border-left: ${triangleHeight}px solid transparent;
+        border-right: ${triangleHeight}px solid transparent;
+        border-top: ${triangleHeight}px solid ${color};
       "></div>
     </div>
   `;
@@ -37,8 +44,8 @@ export const createClientIcon = async (client: Client) => {
   return L.divIcon({
     html,
     className: "",
-    iconSize: [100, 40], // taille du bloc global
-    iconAnchor: [65, 0], // la pointe du triangle
-    popupAnchor: [0, 0],
+    iconSize: [width, height + triangleHeight], // bloc + triangle
+    iconAnchor: [width / 2, height + triangleHeight], // pointe = ancre exacte
+    popupAnchor: [0, -height - triangleHeight], // popup juste au-dessus
   });
 };

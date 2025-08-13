@@ -19,7 +19,10 @@ export default function ClientTable({ clients, onClientUpdated }: Props) {
   return (
     <div className="px-2">
       {/* columns reçoit handleClientUpdated pour actions sur les lignes */}
-      <DataTable columns={columns(onClientUpdated)} data={clients} />
+      <DataTable<Client, unknown>
+        columns={columns(onClientUpdated)}
+        data={clients}
+      />
     </div>
   );
 }

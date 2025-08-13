@@ -79,7 +79,9 @@ export async function updateTask(id: number, payload: SendTask): Promise<Task> {
     throw new Error(errorMessage);
   }
 
-  return res.json();
+  const data = res.json();
+  console.log(data);
+  return data;
 }
 
 export async function deleteTask(id: number): Promise<void> {

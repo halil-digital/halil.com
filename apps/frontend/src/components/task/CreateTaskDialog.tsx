@@ -29,10 +29,12 @@ type Props = {
 };
 
 type FormData = {
+  title: string;
   note: string;
   date: string; // ISO "YYYY-MM-DD"
   dateFr: string; // "dd/mm/yyyy"
   hour: string; // "HH:mm"
+  isDone: boolean;
   clientId?: number;
 };
 
@@ -53,10 +55,12 @@ export default function CreateTaskDialog({ clientId, onTaskCreated }: Props) {
   const [open, setOpen] = useState(false);
   const [clients, setClients] = useState<Client[]>([]);
   const [formData, setFormData] = useState<FormData>({
+    title: "",
     note: "",
     date: "",
     dateFr: "",
     hour: "",
+    isDone: false,
     clientId,
   });
 
@@ -124,7 +128,7 @@ export default function CreateTaskDialog({ clientId, onTaskCreated }: Props) {
           onSubmit={async (e) => {
             e.preventDefault();
 
-            const { date, hour, clientId, note } = formData;
+            const { title, date, hour, clientId, note, isDone } = formData;
 
             if (!date || !hour || !clientId) {
               alert("La date, l'heure et le client sont obligatoires.");
@@ -132,19 +136,23 @@ export default function CreateTaskDialog({ clientId, onTaskCreated }: Props) {
             }
 
             const payload: SendTask = {
+              title,
               note,
               date,
               hour: hour + ":00", // ajout des secondes pour respecter "hh:mm:ss"
+              isDone,
               client: { id: clientId },
             };
 
             try {
               await createTask(payload);
               setFormData({
+                title: "",
                 note: "",
                 date: "",
                 dateFr: "",
                 hour: "",
+                isDone: false,
                 clientId,
               });
               setOpen(false);
@@ -186,6 +194,17 @@ export default function CreateTaskDialog({ clientId, onTaskCreated }: Props) {
               </span>
             </p>
           )}
+
+          <label className="block text-sm font-medium text-gray-700">
+            Objet
+            <input
+              name="title"
+              value={formData.title}
+              onChange={handleChange}
+              className="w-full border px-3 py-2 rounded resize-y mt-1"
+              required
+            />
+          </label>
 
           <label className="block text-sm font-medium text-gray-700">
             Date *

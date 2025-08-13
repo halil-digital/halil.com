@@ -63,7 +63,18 @@ export default function TaskList() {
       {loadingTasks ? (
         <p>Chargement des tâches...</p>
       ) : (
-        <TaskTable tasks={tasks} onTasksChange={fetchTasks} />
+        <TaskTable
+          tasks={tasks}
+          onTasksChange={(updatedTask?: Task) => {
+            if (updatedTask) {
+              setTasks((prev) =>
+                prev.map((t) => (t.id === updatedTask.id ? updatedTask : t))
+              );
+            } else {
+              fetchTasks(); // si pas de tâche précise, on recharge tout
+            }
+          }}
+        />
       )}
     </div>
   );

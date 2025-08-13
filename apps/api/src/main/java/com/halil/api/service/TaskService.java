@@ -25,9 +25,11 @@ public class TaskService {
     public Task updateTask(Long id, Task updatedTask) {
         return taskRepository.findById(id)
                 .map(existing -> {
+                    existing.setTitle(updatedTask.getTitle());
                     existing.setNote(updatedTask.getNote());
                     existing.setDate(updatedTask.getDate());
                     existing.setHour(updatedTask.getHour());
+                    existing.setDone(updatedTask.isDone());
                     return taskRepository.save(existing);
                 })
                 .orElseThrow(() -> new RuntimeException("Task not found"));

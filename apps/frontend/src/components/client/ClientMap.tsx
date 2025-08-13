@@ -3,6 +3,7 @@
 import { createClientIcon } from "@/lib/create-client-icon";
 import type { Client } from "@/models/client.model";
 import type { DivIcon } from "leaflet";
+import { useRouter } from "next/navigation"; // <- import du router
 import { useEffect, useState } from "react";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 
@@ -12,14 +13,15 @@ type Props = { clients: Client[] };
 
 export default function ClientMap({ clients }: Props) {
   const [geocodedClients, setGeocodedClients] = useState<GeocodedClient[]>([]);
-  const [icons, setIcons] = useState<Record<string, DivIcon>>({}); // stocke les icônes par client.id
+  const [icons, setIcons] = useState<Record<string, DivIcon>>({});
+  const router = useRouter(); // <- router
 
   useEffect(() => {
     const fetchCoords = async (
       client: Client
     ): Promise<GeocodedClient | null> => {
       const query = encodeURIComponent(client.address);
-      const url = `/api/searchAddress?q=${query}`; // <-- appel local à ton API Next.js
+      const url = `/api/searchAddress?q=${query}`;
       try {
         const res = await fetch(url);
         if (!res.ok) throw new Error("Erreur API interne");
@@ -45,7 +47,6 @@ export default function ClientMap({ clients }: Props) {
     geocodeAll();
   }, [clients]);
 
-  // Effet pour créer les icônes une fois que geocodedClients est prêt
   useEffect(() => {
     const loadIcons = async () => {
       const newIcons: Record<string, DivIcon> = {};
@@ -59,14 +60,13 @@ export default function ClientMap({ clients }: Props) {
     }
   }, [geocodedClients]);
 
-  const center: [number, number] = [48.8566, 2.3522]; // Paris lat,long
+  const center: [number, number] = [48.8566, 2.3522];
 
   return (
     <div className="w-full h-full rounded shadow border z-10">
       <MapContainer
         center={center}
-        zoom={11}
-        className="z-10"
+        zoom={11.5}
         style={{ height: "100%", width: "100%" }}
       >
         <TileLayer
@@ -82,9 +82,20 @@ export default function ClientMap({ clients }: Props) {
               icon={icons[client.id]}
             >
               <Popup>
-                <strong>{client.name}</strong>
-                <br />
-                {client.address}
+                <div>
+                  <strong>{client.name}</strong>
+                  <br />
+                  {client.address}
+                  <br />
+                  <span
+                    onClick={() =>
+                      router.push(`/dashboard/clients/${client.id}`)
+                    }
+                    className="text-blue-600 underline cursor-pointer"
+                  >
+                    Voir plus
+                  </span>
+                </div>
               </Popup>
             </Marker>
           ) : null
