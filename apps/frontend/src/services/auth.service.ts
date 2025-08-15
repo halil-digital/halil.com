@@ -16,11 +16,25 @@ export async function loginUser(
   });
 
   if (!res.ok) {
-    const errorData = await res.json();
-    if (errorData.detail == "Bad credentials") {
-      throw new Error("Email ou mot de passe invalide");
+    let errorMessage =
+      "Une erreur s'est produite. Veuillez réessayer plus tard";
+
+    // Récupère le type de contenu
+    const contentType = res.headers.get("content-type");
+
+    // Vérifie que c'est bien du JSON ou problem+json
+    if (
+      contentType?.includes("application/json") ||
+      contentType?.includes("application/problem+json")
+    ) {
+      const errorData = await res.json();
+      // Vérifie le détail pour Bad credentials
+      if (errorData?.detail?.trim().toLowerCase() === "bad credentials") {
+        errorMessage = "Email ou mot de passe invalide";
+      }
     }
-    throw new Error("Une erreur s'est produite. Veuillez réessayer plus tard");
+
+    throw new Error(errorMessage);
   }
 
   return res.json();

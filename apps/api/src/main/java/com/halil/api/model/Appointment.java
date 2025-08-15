@@ -18,6 +18,8 @@ public class Appointment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String title;
+
     private LocalDate date;
 
     private LocalTime startTime;
@@ -25,6 +27,8 @@ public class Appointment {
     private LocalTime endTime;
 
     private String note;
+
+    private boolean isDone = false;
 
     @ManyToOne
     @JoinColumn(name = "client_id")

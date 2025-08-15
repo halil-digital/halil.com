@@ -41,6 +41,8 @@ export default function UpdateAppointmentDialog({
 }: Props) {
   const [clients, setClients] = useState<Client[]>([]);
   const [formData, setFormData] = useState<{
+    title: string;
+    done: boolean;
     note: string;
     date: string;
     dateFr: string;
@@ -48,6 +50,8 @@ export default function UpdateAppointmentDialog({
     endTime: string;
     clientId: number;
   }>({
+    title: "",
+    done: false,
     note: "",
     date: "",
     dateFr: "",
@@ -71,6 +75,8 @@ export default function UpdateAppointmentDialog({
   useEffect(() => {
     if (appointment) {
       setFormData({
+        title: appointment.title || "",
+        done: appointment.done || false,
         note: appointment.note || "",
         date: appointment.date || "",
         dateFr: appointment.date ? formatDateToFr(appointment.date) : "",
@@ -110,7 +116,7 @@ export default function UpdateAppointmentDialog({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const { date, startTime, endTime, clientId, note } = formData;
+    const { date, startTime, endTime, clientId, note, title, done } = formData;
 
     if (!date || !startTime || !endTime || !clientId) {
       alert(
@@ -122,6 +128,8 @@ export default function UpdateAppointmentDialog({
     try {
       await updateAppointment(appointment.id, {
         id: appointment.id,
+        title,
+        done,
         note,
         date,
         startTime: startTime + ":00",
@@ -161,6 +169,17 @@ export default function UpdateAppointmentDialog({
                 </option>
               ))}
             </select>
+          </label>
+
+          <label className="block text-sm font-medium text-gray-700">
+            Objet *
+            <input
+              name="title"
+              value={formData.title}
+              onChange={handleChange}
+              className="w-full border px-3 py-2 rounded resize-y mt-1"
+              required
+            />
           </label>
 
           <label className="block text-sm font-medium text-gray-700">

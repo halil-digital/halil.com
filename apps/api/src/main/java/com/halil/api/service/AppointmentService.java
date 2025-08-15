@@ -26,6 +26,8 @@ public class AppointmentService {
                     existing.setStartTime(updatedAppointment.getStartTime());
                     existing.setEndTime(updatedAppointment.getEndTime());
                     existing.setNote(updatedAppointment.getNote());
+                    existing.setTitle(updatedAppointment.getTitle());
+                    existing.setDone(updatedAppointment.isDone());
                     return appointmentRepository.save(existing);
                 })
                 .orElseThrow(() -> new RuntimeException("Appointment not found"));

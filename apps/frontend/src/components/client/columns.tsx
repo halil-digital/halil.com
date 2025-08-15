@@ -40,7 +40,9 @@ export function ActionsCell({ client, onClientUpdated }: ActionsCellProps) {
           <DropdownMenuLabel>Actions</DropdownMenuLabel>
           <DropdownMenuItem
             className="cursor-pointer"
-            onClick={() => setIsDialogOpen(true)}
+            onClick={() => {
+              setIsDialogOpen(true);
+            }}
           >
             Modifier
           </DropdownMenuItem>
@@ -81,7 +83,9 @@ export const columns = (onClientUpdated?: () => void): ColumnDef<Client>[] => [
   {
     id: "actions",
     cell: ({ row }) => (
-      <ActionsCell client={row.original} onClientUpdated={onClientUpdated} />
+      <div onClick={(e) => e.stopPropagation()}>
+        <ActionsCell client={row.original} onClientUpdated={onClientUpdated} />
+      </div>
     ),
   },
 ];

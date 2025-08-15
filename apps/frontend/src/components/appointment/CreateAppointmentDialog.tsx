@@ -27,6 +27,8 @@ type Props = {
 };
 
 type FormData = {
+  title: string;
+  done: boolean;
   note: string;
   date: string; // ISO "YYYY-MM-DD"
   dateFr: string; // "dd/mm/yyyy"
@@ -55,6 +57,8 @@ export default function CreateAppointmentDialog({
   const [open, setOpen] = useState(false);
   const [clients, setClients] = useState<Client[]>([]);
   const [formData, setFormData] = useState<FormData>({
+    title: "",
+    done: false,
     note: "",
     date: "",
     dateFr: "",
@@ -123,6 +127,8 @@ export default function CreateAppointmentDialog({
 
     try {
       await createAppointment({
+        title: formData.title,
+        done: formData.done,
         note: formData.note,
         date,
         startTime: startTime + ":00",
@@ -130,6 +136,8 @@ export default function CreateAppointmentDialog({
         client: { id: clientId }, // important d’envoyer client comme objet avec id
       });
       setFormData({
+        title: "",
+        done: false,
         note: "",
         date: "",
         dateFr: "",
@@ -189,6 +197,17 @@ export default function CreateAppointmentDialog({
               </span>
             </p>
           )}
+
+          <label className="block text-sm font-medium text-gray-700">
+            Objet *
+            <input
+              name="title"
+              value={formData.title}
+              onChange={handleChange}
+              className="w-full border px-3 py-2 rounded resize-y mt-1"
+              required
+            />
+          </label>
 
           <label className="block text-sm font-medium text-gray-700">
             Date *

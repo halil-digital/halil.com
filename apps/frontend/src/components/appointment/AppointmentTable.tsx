@@ -13,8 +13,9 @@ import { deleteAppointment } from "@/services/appointment.service";
 import { ColumnDef } from "@tanstack/react-table";
 import { MoreHorizontal } from "lucide-react";
 import { useState } from "react";
-import UpdateAppointmentDialog from "./UpdateAppointmentDialog";
 import { DataTable } from "./data-table";
+import MarkAsDoneDialogAppointment from "./MarkAsDoneDialogAppointment";
+import UpdateAppointmentDialog from "./UpdateAppointmentDialog";
 
 type Props = {
   appointments: Appointment[];
@@ -78,6 +79,16 @@ function ActionsCell({
 const columns = (
   onAppointmentUpdated: () => void
 ): ColumnDef<Appointment>[] => [
+  {
+    id: "markAsDone",
+    header: "",
+    cell: ({ row }) => (
+      <MarkAsDoneDialogAppointment
+        appointment={row.original}
+        onAppointmentUpdated={onAppointmentUpdated}
+      />
+    ),
+  },
   {
     id: "client",
     header: "Client",

@@ -79,7 +79,7 @@ export default function ClientList() {
 
       {/* Barre de recherche visible uniquement si searchActive */}
       {searchActive && (
-        <div className="bg-gray-200 border-b border-gray-300 m-0 p-2">
+        <div className="bg-[#ededed] border-b border-gray-300 m-0 p-2">
           <div className="flex">
             <div className="relative bg-white">
               <input
@@ -87,12 +87,12 @@ export default function ClientList() {
                 placeholder="Rechercher par nom..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-80 h-10 pl-3 pr-3 border border-gray-400 border-r-0 text-sm focus:outline-none focus:ring-1 focus:ring-[#006680] focus:border-[#006680]"
+                className="w-60 h-8 pl-3 pr-3 border border-gray-400 border-r-0 text-sm focus:outline-none focus:ring-1 focus:ring-[#006680] focus:border-[#006680]"
               />
             </div>
             <button
               onClick={() => fetchClients(search)}
-              className="h-10 px-3 bg-[#006680] text-white hover:bg-[#008099] transition-colors border border-[#006680]"
+              className="h-8 px-3 bg-[#006680] text-white hover:bg-[#008099] transition-colors border border-[#006680]"
               title="Rechercher"
             >
               <Search size={16} />

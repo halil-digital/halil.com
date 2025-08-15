@@ -54,11 +54,16 @@ function formatDateToIso(dateStr: string): string {
 export default function CreateTaskDialog({ clientId, onTaskCreated }: Props) {
   const [open, setOpen] = useState(false);
   const [clients, setClients] = useState<Client[]>([]);
+  const today = new Date();
+  const isoToday = today.toISOString().split("T")[0]; // "YYYY-MM-DD"
+  const frToday = `${String(today.getDate()).padStart(2, "0")}/${String(
+    today.getMonth() + 1
+  ).padStart(2, "0")}/${today.getFullYear()}`;
   const [formData, setFormData] = useState<FormData>({
     title: "",
     note: "",
-    date: "",
-    dateFr: "",
+    date: isoToday,
+    dateFr: frToday,
     hour: "",
     done: false,
     clientId,
@@ -196,7 +201,7 @@ export default function CreateTaskDialog({ clientId, onTaskCreated }: Props) {
           )}
 
           <label className="block text-sm font-medium text-gray-700">
-            Objet
+            Objet *
             <input
               name="title"
               value={formData.title}

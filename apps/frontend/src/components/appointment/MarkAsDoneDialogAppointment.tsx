@@ -11,23 +11,26 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Task } from "@/models/task.model";
-import { deleteTask } from "@/services/task.service"; // ⬅️ plus que deleteTask
+import { Appointment } from "@/models/appointment.model";
+import { deleteAppointment } from "@/services/appointment.service";
 import { useState } from "react";
 
 type Props = {
-  task: Task;
-  onTaskUpdated: (updated?: Task) => void; // ⬅️ updated devient optionnel
+  appointment: Appointment;
+  onAppointmentUpdated: () => void;
 };
 
-export default function MarkAsDoneDialog({ task, onTaskUpdated }: Props) {
+export default function MarkAsDoneDialogAppointment({
+  appointment,
+  onAppointmentUpdated,
+}: Props) {
   const [loading, setLoading] = useState(false);
 
   const handleConfirm = async () => {
     try {
       setLoading(true);
-      await deleteTask(task.id); // ⬅️ suppression directe
-      onTaskUpdated(); // ⬅️ pas d’argument → le parent fera fetch
+      await deleteAppointment(appointment.id);
+      onAppointmentUpdated();
     } catch (error) {
       alert("Erreur : " + (error as Error).message);
     } finally {
@@ -39,18 +42,20 @@ export default function MarkAsDoneDialog({ task, onTaskUpdated }: Props) {
     <Dialog>
       <DialogTrigger asChild>
         <div className="flex justify-center">
-          <Checkbox checked={!!task.done} />
+          <Checkbox checked={false} />{" "}
+          {/* on ne gère pas de "done", juste la suppression */}
         </div>
       </DialogTrigger>
 
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Marquer comme achevée et supprimer ?</DialogTitle>
+          <DialogTitle>Marquer comme terminé et supprimer ?</DialogTitle>
         </DialogHeader>
 
         <p>
-          Voulez-vous achever et supprimer la tâche « {task.title} » du client{" "}
-          {task.client?.name} ? Cette action est définitive.
+          Voulez-vous marquer comme terminé et supprimer ce rendez-vous du{" "}
+          {new Date(appointment.date).toLocaleDateString("fr-FR")} pour{" "}
+          {appointment.client?.name} ? Cette action est définitive.
         </p>
 
         <DialogFooter>

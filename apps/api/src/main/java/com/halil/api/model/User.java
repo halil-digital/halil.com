@@ -1,5 +1,7 @@
 package com.halil.api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -34,6 +36,10 @@ public class User implements UserDetails {
 
     @Column(nullable = false)
     private String role;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @JsonIgnoreProperties("user")
+    private List<WorkingHours> workingHours;
 
     public User() {
     }

@@ -216,26 +216,70 @@ const ClientDetail: React.FC = () => {
             >
               <div className="text-sm text-gray-600">
                 <div className="flex flex-col ">
-                  {client.manager ? (
-                    <span className="font-medium">
-                      Gérant: {client.manager}
-                    </span>
+                  {client.manager ||
+                  client.email ||
+                  client.phone ||
+                  client.phone2 ||
+                  client.landline_phone ||
+                  client.main_contact ||
+                  client.accountant ||
+                  client.accountant_phone ||
+                  client.commercial ||
+                  client.note ? (
+                    <>
+                      {client.manager && (
+                        <span className="font-medium">
+                          Gérant : {client.manager}
+                        </span>
+                      )}
+                      {client.email && (
+                        <span className="font-medium">
+                          Email : {client.email}
+                        </span>
+                      )}
+                      {client.phone && (
+                        <span className="font-medium">
+                          Téléphone : {client.phone}
+                        </span>
+                      )}
+                      {client.phone2 && (
+                        <span className="font-medium">
+                          Téléphone 2 : {client.phone2}
+                        </span>
+                      )}
+                      {client.landline_phone && (
+                        <span className="font-medium">
+                          Téléphone Fixe : {client.landline_phone}
+                        </span>
+                      )}
+                      {client.main_contact && (
+                        <span className="font-medium">
+                          Contact Principal : {client.main_contact}
+                        </span>
+                      )}
+                      {client.accountant && (
+                        <span className="font-medium">
+                          Comptable : {client.accountant}
+                        </span>
+                      )}
+                      {client.accountant_phone && (
+                        <span className="font-medium">
+                          Téléphone Comptable : {client.accountant_phone}
+                        </span>
+                      )}
+                      {client.commercial && (
+                        <span className="font-medium">
+                          Commercial : {client.commercial}
+                        </span>
+                      )}
+                      {client.note && (
+                        <span className="font-medium">
+                          Note : {client.note}
+                        </span>
+                      )}
+                    </>
                   ) : (
-                    <span className="font-medium">Gérant: aucun</span>
-                  )}
-                  {client.phone ? (
-                    <span className="font-medium">
-                      Téléphone: {client.phone}
-                    </span>
-                  ) : (
-                    <span className="font-medium">Téléphone: aucun</span>
-                  )}
-                  {client.commercial ? (
-                    <span className="font-medium">
-                      Commercial: {client.commercial}
-                    </span>
-                  ) : (
-                    <span className="font-medium">Commercial: aucun</span>
+                    <span className="text-gray-500">Aucun</span>
                   )}
                 </div>
               </div>
@@ -329,7 +373,7 @@ const ClientDetail: React.FC = () => {
                       key={jour}
                       className="flex justify-between items-center"
                     >
-                      <span className="font-medium capitalize">{jour}:</span>
+                      <span className="font-medium capitalize">{jour} :</span>
                       <span className="text-gray-600">{horaires}</span>
                     </div>
                   )

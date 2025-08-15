@@ -83,18 +83,16 @@ export default function ClientMap({ clients }: Props) {
             >
               <Popup>
                 <div>
-                  <strong>{client.name}</strong>
-                  <br />
-                  {client.address}
-                  <br />
-                  <span
+                  <strong
                     onClick={() =>
                       router.push(`/dashboard/clients/${client.id}`)
                     }
-                    className="text-blue-600 underline cursor-pointer"
+                    className="cursor-pointer"
                   >
-                    Voir plus
-                  </span>
+                    {client.name}
+                  </strong>
+                  <br />
+                  {client.address}
                 </div>
               </Popup>
             </Marker>

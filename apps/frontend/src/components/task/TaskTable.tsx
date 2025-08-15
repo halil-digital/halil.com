@@ -4,7 +4,7 @@ import { DataTable } from "./data-table";
 
 type Props = {
   tasks: Task[];
-  onTasksChange: () => void;
+  onTasksChange: (updatedTask?: Task) => void; // ⬅️ accepte un param optionnel
 };
 
 export default function TaskTable({ tasks, onTasksChange }: Props) {

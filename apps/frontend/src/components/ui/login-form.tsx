@@ -33,8 +33,10 @@ export function LoginForm() {
       localStorage.setItem("token", response.token);
       localStorage.setItem("tokenExpiration", expirationTime.toString());
       router.push("/dashboard");
-    } catch {
-      setError("Une erreur s'est produite. Veuillez réessayer plus tard");
+    } catch (err) {
+      const error =
+        err instanceof Error ? err : new Error("Une erreur s'est produite");
+      setError(error.message);
     }
   };
 

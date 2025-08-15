@@ -66,7 +66,7 @@ export function DataTable<TData extends { id: number }, TValue>({
                 className="cursor-pointer hover:bg-gray-100 transition-colors"
               >
                 {row.getVisibleCells().map((cell) => (
-                  <TableCell key={cell.id}>
+                  <TableCell key={cell.id} className="text-lg">
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
                 ))}
