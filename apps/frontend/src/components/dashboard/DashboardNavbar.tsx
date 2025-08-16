@@ -21,40 +21,38 @@ export default function DashboardNavbar({ user, onLogout }: Props) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="border-b border-gray-400 bg-white">
-      <div className="flex justify-between items-center max-w-7xl mx-auto">
-        {/* NavLinks à gauche sur desktop */}
-        <div className="hidden md:flex items-center space-x-6">
-          <NavLinks />
-        </div>
-
-        {/* Mobile menu button */}
-        <div className="md:hidden">
-          <Button
-            variant="ghost"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            <Menu />
-          </Button>
-        </div>
-
-        {/* Menu burger rouge sur desktop avec DropdownMenu */}
-        <div className="hidden md:flex md:items-center md:gap-2">
-          <span>{user.email}</span>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <div className="bg-red-500 p-2 cursor-pointer">
-                <Menu className="text-white" />
-              </div>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="p-2">
-              <DesktopActionLinks onLogout={onLogout} />
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </div>
+    <nav className="relative border-b border-gray-400 bg-white flex items-center">
+      {/* NavLinks centrés absolument */}
+      <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 space-x-6">
+        <NavLinks />
       </div>
 
-      {/* Mobile menu: NavLinks + juste Déconnecter */}
+      {/* Mobile menu button (à gauche en mobile uniquement) */}
+      <div className="md:hidden">
+        <Button
+          variant="ghost"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          <Menu />
+        </Button>
+      </div>
+
+      {/* Email + Menu rouge à droite */}
+      <div className="hidden md:flex items-center gap-3 ml-auto">
+        <span>{user.email}</span>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <div className="bg-red-500 p-2 cursor-pointer">
+              <Menu className="text-white" />
+            </div>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end" className="p-2">
+            <DesktopActionLinks onLogout={onLogout} />
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
+
+      {/* Mobile menu: NavLinks + Déconnexion */}
       {isMobileMenuOpen && (
         <div className="flex flex-col md:hidden border-t border-gray-300 bg-white p-4 space-y-3">
           <NavLinks />

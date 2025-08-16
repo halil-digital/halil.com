@@ -41,6 +41,15 @@ public class User implements UserDetails {
     @JsonIgnoreProperties("user")
     private List<WorkingHours> workingHours;
 
+    @ManyToMany
+    @JoinTable(
+            name = "user_favorite_clients",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "client_id")
+    )
+    @JsonIgnore
+    private List<Client> favoriteClients;
+
     public User() {
     }
 

@@ -1,5 +1,6 @@
 package com.halil.api.controller;
 
+import com.halil.api.model.Client;
 import com.halil.api.model.User;
 import com.halil.api.service.UserService;
 import org.springframework.http.HttpStatus;
@@ -42,5 +43,36 @@ public class UserController {
         }
         User updated = userService.updateUser(id, user);
         return ResponseEntity.ok(updated);
+    }
+
+    @PostMapping("/{userId}/favorites/{clientId}")
+    public ResponseEntity<User> addFavoriteClient(
+            @PathVariable Long userId,
+            @PathVariable Long clientId) {
+
+        User updatedUser = userService.addFavoriteClient(userId, clientId);
+        return ResponseEntity.ok(updatedUser);
+    }
+
+    @GetMapping("/{userId}/favorites")
+    public ResponseEntity<List<Client>> getFavoriteClients(@PathVariable Long userId) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User currentUser = (User) auth.getPrincipal();
+
+        if (!currentUser.getRole().equals("ADMIN") && currentUser.getId() != userId) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+        }
+
+        List<Client> favorites = userService.getFavoriteClients(userId);
+        return ResponseEntity.ok(favorites);
+    }
+
+    @PostMapping("/{userId}/favorites/{clientId}/toggle")
+    public ResponseEntity<User> toggleFavoriteClient(
+            @PathVariable Long userId,
+            @PathVariable Long clientId) {
+
+        User updatedUser = userService.toggleFavoriteClient(userId, clientId);
+        return ResponseEntity.ok(updatedUser);
     }
 }

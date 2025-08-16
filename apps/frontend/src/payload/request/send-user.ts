@@ -1,3 +1,4 @@
+import { Client } from "@/models/client.model";
 import { SendWorkingHours } from "./send-working-hours";
 
 export interface SendUser {
@@ -7,4 +8,5 @@ export interface SendUser {
   email?: string;
   role?: string;
   workingHours?: SendWorkingHours[];
+  favoriteClients?: Client[];
 }

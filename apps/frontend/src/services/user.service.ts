@@ -1,3 +1,4 @@
+import { Client } from "@/models/client.model";
 import { User } from "@/models/user.model";
 import { SendUser } from "@/payload/request/send-user";
 
@@ -64,4 +65,54 @@ export async function updateUser(
   const text = await res.text();
   const data = text ? JSON.parse(text) : null;
   return data;
+}
+
+export async function addFavoriteClient(
+  userId: number,
+  clientId: number
+): Promise<User> {
+  const headers: HeadersInit = {
+    ...getAuthHeaders(),
+  };
+
+  const res = await fetch(
+    `${API_BASE_URL}/users/${userId}/favorites/${clientId}`,
+    {
+      method: "POST",
+      headers,
+    }
+  );
+
+  if (!res.ok) {
+    throw new Error("Impossible d’ajouter le client favori");
+  }
+
+  return res.json();
+}
+
+export async function toggleFavoriteClient(
+  userId: number,
+  clientId: number
+): Promise<void> {
+  const headers: HeadersInit = { ...getAuthHeaders() };
+
+  const res = await fetch(
+    `${API_BASE_URL}/users/${userId}/favorites/${clientId}/toggle`,
+    {
+      method: "POST",
+      headers,
+    }
+  );
+
+  if (!res.ok) throw new Error("Impossible de toggler le favori");
+}
+
+export async function getFavoriteClients(userId: number): Promise<Client[]> {
+  const headers: HeadersInit = { ...getAuthHeaders() };
+
+  const res = await fetch(`${API_BASE_URL}/users/${userId}/favorites`, {
+    headers,
+  });
+  if (!res.ok) throw new Error("Impossible de récupérer les favoris");
+  return res.json();
 }

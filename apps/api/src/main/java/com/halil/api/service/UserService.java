@@ -1,7 +1,9 @@
 package com.halil.api.service;
 
+import com.halil.api.model.Client;
 import com.halil.api.model.User;
 import com.halil.api.model.WorkingHours;
+import com.halil.api.repository.ClientRepository;
 import com.halil.api.repository.UserRepository;
 import com.halil.api.repository.WorkingHoursRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -14,11 +16,13 @@ import java.util.List;
 public class UserService {
     private final UserRepository userRepository;
     private final WorkingHoursRepository workingHoursRepository;
+    private final ClientRepository clientRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository, WorkingHoursRepository workingHoursRepository, PasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository, WorkingHoursRepository workingHoursRepository, ClientRepository clientRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.workingHoursRepository = workingHoursRepository;
+        this.clientRepository = clientRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -61,6 +65,36 @@ public class UserService {
                     return userRepository.save(existing);
                 })
                 .orElseThrow(() -> new RuntimeException("User not found"));
+    }
+
+    public User addFavoriteClient(Long userId, Long clientId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        Client client = clientRepository.findById(clientId)
+                .orElseThrow(() -> new RuntimeException("Client not found"));
+
+        user.getFavoriteClients().add(client);
+        return userRepository.save(user);
+    }
+
+    public List<Client> getFavoriteClients(Long userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("Utilisateur non trouvé"));
+        return user.getFavoriteClients(); // en supposant que tu as bien une relation ManyToMany avec Client
+    }
+
+    public User toggleFavoriteClient(Long userId, Long clientId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        Client client = clientRepository.findById(clientId)
+                .orElseThrow(() -> new RuntimeException("Client not found"));
+
+        if (user.getFavoriteClients().contains(client)) {
+            user.getFavoriteClients().remove(client);
+        } else {
+            user.getFavoriteClients().add(client);
+        }
+        return userRepository.save(user);
     }
 
 }

@@ -215,7 +215,7 @@ const ClientDetail: React.FC = () => {
               onActionClick={() => setIsUpdateDialogOpen(true)}
             >
               <div className="text-sm text-gray-600">
-                <div className="flex flex-col ">
+                <div className="flex flex-col">
                   {client.manager ||
                   client.email ||
                   client.phone ||
@@ -233,24 +233,36 @@ const ClientDetail: React.FC = () => {
                         </span>
                       )}
                       {client.email && (
-                        <span className="font-medium">
+                        <Link
+                          href={`mailto:${client.email}`}
+                          className="font-medium"
+                        >
                           Email : {client.email}
-                        </span>
+                        </Link>
                       )}
                       {client.phone && (
-                        <span className="font-medium">
+                        <Link
+                          href={`tel:${client.phone}`}
+                          className="font-medium"
+                        >
                           Téléphone : {client.phone}
-                        </span>
+                        </Link>
                       )}
                       {client.phone2 && (
-                        <span className="font-medium">
+                        <Link
+                          href={`tel:${client.phone2}`}
+                          className="font-medium"
+                        >
                           Téléphone 2 : {client.phone2}
-                        </span>
+                        </Link>
                       )}
                       {client.landline_phone && (
-                        <span className="font-medium">
+                        <Link
+                          href={`tel:${client.landline_phone}`}
+                          className="font-medium"
+                        >
                           Téléphone Fixe : {client.landline_phone}
-                        </span>
+                        </Link>
                       )}
                       {client.main_contact && (
                         <span className="font-medium">

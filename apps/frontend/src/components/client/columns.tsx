@@ -11,6 +11,7 @@ import { deleteClient } from "@/services/client.service";
 import { ColumnDef } from "@tanstack/react-table";
 import { MoreHorizontal } from "lucide-react";
 import { useState } from "react";
+import FavoriteCell from "./FavoriteCell";
 import UpdateClientDialog from "./UpdateClientDialog";
 
 type ActionsCellProps = {
@@ -36,8 +37,10 @@ export function ActionsCell({ client, onClientUpdated }: ActionsCellProps) {
           </Button>
         </DropdownMenuTrigger>
 
-        <DropdownMenuContent align="end">
-          <DropdownMenuLabel>Actions</DropdownMenuLabel>
+        <DropdownMenuContent align="end" className="p-0">
+          <DropdownMenuLabel className="bg-[#dfca70]">
+            Actions
+          </DropdownMenuLabel>
           <DropdownMenuItem
             className="cursor-pointer"
             onClick={() => {
@@ -72,6 +75,14 @@ export function ActionsCell({ client, onClientUpdated }: ActionsCellProps) {
 }
 
 export const columns = (onClientUpdated?: () => void): ColumnDef<Client>[] => [
+  {
+    id: "favorite",
+    cell: ({ row }) => (
+      <div onClick={(e) => e.stopPropagation()}>
+        <FavoriteCell client={row.original} onClientUpdated={onClientUpdated} />
+      </div>
+    ),
+  },
   {
     accessorKey: "name",
     header: "Nom",
