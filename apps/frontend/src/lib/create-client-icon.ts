@@ -3,7 +3,7 @@ import { Client } from "@/models/client.model";
 export const createClientIcon = async (client: Client) => {
   const L = await import("leaflet");
 
-  const color = client.name === "mohamed" ? "#22c55e" : "#ef4444"; // vert / rouge
+  const color = client.color || "#000";
 
   const width = 100; // largeur du bloc
   const height = 40; // hauteur du bloc

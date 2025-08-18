@@ -12,6 +12,7 @@ import CreateBlockingPeriodDialog from "../blocking-period/CreateBlockingPeriodD
 import UpdateOpeningHoursDialog from "../opening-hour/UpdateOpeningHoursDialog";
 import CreateTaskDialog from "../task/CreateTaskDialog";
 import UpdateClientDialog from "./UpdateClientDialog";
+import UpdateColorDialog from "./UpdateColorDialog";
 
 function formatTime(time: string) {
   // time format "HH:mm:ss" -> on garde "HH:mm"
@@ -205,6 +206,7 @@ const ClientDetail: React.FC = () => {
                   <Navigation />
                   <span className="text-xs">Navigation</span>
                 </Link>
+                <UpdateColorDialog client={client} />
               </div>
             </InfoSection>
 

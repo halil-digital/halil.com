@@ -20,4 +20,5 @@ export interface Client {
   tasks?: Task[];
   appointments?: Appointment[];
   openingHours?: OpeningHours[];
+  color?: string;
 }

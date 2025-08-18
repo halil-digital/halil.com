@@ -9,4 +9,5 @@ export interface SendUser {
   role?: string;
   workingHours?: SendWorkingHours[];
   favoriteClients?: Client[];
+  color?: string;
 }

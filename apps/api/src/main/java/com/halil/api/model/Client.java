@@ -44,6 +44,8 @@ public class Client {
 
     private String note;
 
+    private String color;
+
     @Column(nullable = false)
     private boolean isOpen = false;
 

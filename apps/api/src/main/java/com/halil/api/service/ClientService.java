@@ -45,6 +45,7 @@ public class ClientService {
             existingClient.setCommercial(updatedClient.getCommercial());
             existingClient.setNote(updatedClient.getNote());
             existingClient.setOpen(updatedClient.isOpen());
+            existingClient.setColor(updatedClient.getColor());
             return clientRepository.save(existingClient);
         }).orElseThrow(() -> new RuntimeException("Cannot found the client with this id : " + id));
     }
