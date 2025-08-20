@@ -1,4 +1,5 @@
 import AdBar from "@/components/adbar";
+import CategoriesSection from "@/components/CategoriesSection";
 import { Faq } from "@/components/faq";
 import FeatureHighlights from "@/components/feature-highlights";
 import { Footer } from "@/components/footer-section";
@@ -15,6 +16,7 @@ export default function Home() {
       <Hero />
       <ProductSlider />
       <div className="flex flex-col items-center justify-center mx-10 md:mx-20">
+        <CategoriesSection />
         <Feature />
         <FeatureHighlights />
         <Faq />
