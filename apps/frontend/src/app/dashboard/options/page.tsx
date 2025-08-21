@@ -1,5 +1,6 @@
 "use client";
 
+import AddressDialog from "@/components/user/AddressDialog";
 import UpdatePasswordDialog from "@/components/user/UpdatePasswordDialog";
 import UpdateWorkingHoursDialog from "@/components/working-hours/UpdateWorkingHoursDialog";
 import { useAuth } from "@/context/AuthContext";
@@ -52,6 +53,15 @@ const SettingsPage: React.FC = () => {
                 key={index}
                 userId={user.id}
                 onPasswordChanged={() => console.log("Mot de passe changé")}
+              />
+            );
+          }
+
+          if (item === "Domicile") {
+            return (
+              <AddressDialog
+                key={index}
+                address={"65 Rue Blaise Pascal, 93600 Aulnay-sous-Bois"}
               />
             );
           }

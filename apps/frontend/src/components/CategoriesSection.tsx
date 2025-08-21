@@ -57,7 +57,7 @@ const categoriesRight: Category[] = [
 
 export default function CategoriesSection() {
   return (
-    <section className="w-full pt-12 bg-white">
+    <section className="w-full py-12 bg-[url('/images/bg-category.png')] bg-center bg-cover">
       <div className="container mx-auto flex flex-col items-center gap-8">
         {/* Titre */}
         <Link href="/products">
@@ -81,13 +81,9 @@ export default function CategoriesSection() {
                   alt={cat.name}
                   width={400}
                   height={300}
-                  className="object-cover w-full h-40 group-hover:scale-105 transition-transform"
+                  className="w-full h-40 group-hover:scale-105 transition-transform"
                 />
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition flex items-center justify-center">
-                  <span className="text-white font-semibold text-lg">
-                    {cat.name}
-                  </span>
-                </div>
+                <div className="absolute inset-0 bg-black/10 transition flex items-center justify-center"></div>
               </Link>
             ))}
           </div>
@@ -105,13 +101,9 @@ export default function CategoriesSection() {
                   alt={cat.name}
                   width={400}
                   height={300}
-                  className="object-cover w-full h-40 group-hover:scale-105 transition-transform"
+                  className="w-full h-40 group-hover:scale-105 transition-transform"
                 />
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition flex items-center justify-center">
-                  <span className="text-white font-semibold text-lg">
-                    {cat.name}
-                  </span>
-                </div>
+                <div className="absolute inset-0 bg-black/10 transition flex items-center justify-center"></div>
               </Link>
             ))}
           </div>
