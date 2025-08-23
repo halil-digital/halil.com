@@ -19,6 +19,20 @@ import {
 } from "@/components/ui/breadcrumb";
 import { useSearchParams } from "next/navigation";
 
+const categoryOrder = [
+  "Frites",
+  "Sauces",
+  "Viandes",
+  "Volailles",
+  "Tortillas et Pains",
+  "Dessert",
+  "Emballages",
+  "Produits Laitiers",
+  "Huile",
+  "Conserve",
+  "Autres",
+];
+
 function extractCategories(selectedBrand: string | null) {
   const categorySet = new Set<string>();
   const filteredProducts = selectedBrand
@@ -34,7 +48,15 @@ function extractCategories(selectedBrand: string | null) {
     categorySet.add(product.category);
   }
 
-  return Array.from(categorySet).sort();
+  return Array.from(categorySet).sort((a, b) => {
+    const idxA = categoryOrder.indexOf(a);
+    const idxB = categoryOrder.indexOf(b);
+
+    const finalIdxA = idxA === -1 ? categoryOrder.length : idxA;
+    const finalIdxB = idxB === -1 ? categoryOrder.length : idxB;
+
+    return finalIdxA - finalIdxB;
+  });
 }
 
 function extractBrands(selectedCategories: string[]) {
@@ -74,21 +96,6 @@ export default function ProductsPage() {
     () => extractBrands(selectedCategories),
     [selectedCategories]
   );
-
-  const categoryOrder = [
-    "Frites",
-    "Sauces",
-    "Viandes",
-    "Volailles",
-    "Tortillas et Pains",
-    "Appetizers",
-    "Spécialités",
-    "Dessert",
-    "Emballages",
-    "Produits Laitiers",
-    "Huile",
-    "Conserve",
-  ];
 
   const filteredProductsSorted = useMemo(() => {
     // Filtrer selon les catégories/brand sélectionnées
