@@ -57,12 +57,12 @@ const categoriesRight: Category[] = [
 
 export default function CategoriesSection() {
   return (
-    <section className="w-full py-12 bg-[#ebc834] bg-center bg-cover">
+    <section className="w-full py-12 bg-gray-100 bg-center bg-cover">
       <div className="container mx-auto flex flex-col items-center gap-8">
         {/* Titre */}
         <Link href="/products">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 hover:text-[#a08f42] transition cursor-pointer">
-            Nos Produits
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 hover:text-[#ebc834] transition cursor-pointer">
+            NOS PRODUITS
           </h2>
         </Link>
 
