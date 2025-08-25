@@ -25,11 +25,11 @@ const categoryOrder = [
   "Viandes",
   "Volailles",
   "Tortillas et Pains",
-  "Dessert",
+  "Desserts",
   "Emballages",
   "Produits Laitiers",
   "Huile",
-  "Conserve",
+  "Conserves",
   "Autres",
 ];
 
