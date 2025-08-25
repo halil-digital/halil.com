@@ -81,7 +81,7 @@ export default function CategoriesSection() {
                   alt={cat.name}
                   width={400}
                   height={300}
-                  className="w-full h-60 group-hover:scale-105 transition-transform"
+                  className="w-full h-50 group-hover:scale-105 transition-transform"
                 />
                 <div className="absolute inset-0 bg-black/10 transition flex items-center justify-center"></div>
               </Link>
@@ -101,7 +101,7 @@ export default function CategoriesSection() {
                   alt={cat.name}
                   width={400}
                   height={300}
-                  className="w-full h-60 group-hover:scale-105 transition-transform"
+                  className="w-full h-50 group-hover:scale-105 transition-transform"
                 />
                 <div className="absolute inset-0 bg-black/10 transition flex items-center justify-center"></div>
               </Link>
