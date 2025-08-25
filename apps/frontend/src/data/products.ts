@@ -55,7 +55,10 @@ export const products: Product[] = [
     name: "Lamb Weston, Frites 6/6 mm",
     slug: "lamb-weston-frites-6-6-mm",
     category: "Frites et Appetiziers",
-    images: ["/images/products/lamb-weston-frites-6-6-mm.png"],
+    images: [
+      "/images/products/lamb-weston-frites-6-6-mm.png",
+      "/images/products/lamb-weston-frites-6-6-mm-package.png",
+    ],
     description: "Prête à l’emploi, nappante & gourmande",
     certificate: "",
     storage_conditions: "-18°C",
