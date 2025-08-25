@@ -234,6 +234,18 @@ export const products: Product[] = [
     package: "",
   },
   {
+    id: "192",
+    name: "Tomato Ketchup",
+    slug: "tomato-ketchup",
+    category: "Sauces",
+    images: ["/images/products/altin-tomato-ketchup-5-kg.png"],
+    description: "",
+    certificate: "",
+    storage_conditions: "Ambiante",
+    weight: "5 KG",
+    package: "",
+  },
+  {
     id: "12",
     name: "Ulaş, Frites Pré-salées 9/9 mm",
     slug: "ulas-frites-pre-salees-9-9-mm",
@@ -978,18 +990,7 @@ export const products: Product[] = [
     weight: "2,4 KG",
     package: "2 x 2,4 KG",
   },
-  {
-    id: "192",
-    name: "Tomato Ketchup",
-    slug: "tomato-ketchup",
-    category: "Sauces",
-    images: ["/images/products/altin-tomato-ketchup-5-kg.png"],
-    description: "",
-    certificate: "",
-    storage_conditions: "Ambiante",
-    weight: "5 KG",
-    package: "",
-  },
+
   {
     id: "193",
     name: "Ekin, Crispy Strips Tenders",
