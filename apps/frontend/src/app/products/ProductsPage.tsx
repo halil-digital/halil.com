@@ -20,7 +20,7 @@ import {
 import { useSearchParams } from "next/navigation";
 
 const categoryOrder = [
-  "Frites",
+  "Frites et Appetiziers",
   "Sauces",
   "Viandes",
   "Volailles",
