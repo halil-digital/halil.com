@@ -498,18 +498,6 @@ export const products: Product[] = [
     package: "14X0.75 KG",
   },
   {
-    id: "71",
-    name: "Filet de Poulet Roti (Nature)",
-    slug: "filet-de-poulet-roti-nature",
-    category: "Volailles",
-    images: ["/images/products/filet-de-poulet-roti-nature-600x555.jpg"],
-    description: "",
-    certificate: "Halal, certifié par Achahada",
-    storage_conditions: "-18°C",
-    weight: "1 KG",
-    package: "10x1 KG",
-  },
-  {
     id: "72",
     name: "Filets de Poulet (Frais)",
     slug: "filets-de-poulet-frais",

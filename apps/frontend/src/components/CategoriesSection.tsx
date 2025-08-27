@@ -67,9 +67,9 @@ export default function CategoriesSection() {
         </Link>
 
         {/* Flex gauche/droite */}
-        <div className="flex flex-col md:flex-row gap-8 w-full">
+        <div className="flex flex-col md:flex-row gap-8 w-full px-2">
           {/* Colonne gauche */}
-          <div className="flex-1 grid grid-cols-2 gap-4">
+          <div className="flex-1 grid grid-cols-2 gap-2">
             {categoriesLeft.map((cat, idx) => (
               <Link
                 key={idx}
@@ -80,7 +80,7 @@ export default function CategoriesSection() {
                   src={cat.image}
                   alt={cat.name}
                   width={400}
-                  height={300}
+                  height={400}
                   className="w-full h-50 group-hover:scale-105 transition-transform"
                 />
                 <div className="absolute inset-0 bg-black/10 transition flex items-center justify-center"></div>
@@ -89,7 +89,7 @@ export default function CategoriesSection() {
           </div>
 
           {/* Colonne droite */}
-          <div className="flex-1 grid grid-cols-2 gap-4">
+          <div className="flex-1 grid grid-cols-2 gap-2">
             {categoriesRight.map((cat, idx) => (
               <Link
                 key={idx}
@@ -100,7 +100,7 @@ export default function CategoriesSection() {
                   src={cat.image}
                   alt={cat.name}
                   width={400}
-                  height={300}
+                  height={400}
                   className="w-full h-50 group-hover:scale-105 transition-transform"
                 />
                 <div className="absolute inset-0 bg-black/10 transition flex items-center justify-center"></div>

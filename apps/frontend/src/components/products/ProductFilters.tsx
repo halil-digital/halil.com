@@ -1,3 +1,10 @@
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
 interface Props {
   categories: string[];
   selectedCategories: string[];
@@ -28,7 +35,9 @@ export function ProductFilters({
       {/* Catégories */}
       <div>
         <h2 className="text-lg font-semibold mb-2">Catégories</h2>
-        <div className="grid grid-cols-2 md:grid-cols-1 gap-2">
+
+        {/* Version Desktop : checkboxes */}
+        <div className="hidden md:grid grid-cols-2 gap-2">
           {categories.map((cat) => (
             <label key={cat} className="flex items-center gap-2">
               <input
@@ -40,6 +49,28 @@ export function ProductFilters({
               <span>{cat}</span>
             </label>
           ))}
+        </div>
+
+        {/* Version Mobile : dropdown */}
+        <div className="md:hidden">
+          <DropdownMenu>
+            <DropdownMenuTrigger className="w-full p-2 border rounded text-left">
+              {selectedCategories.length > 0
+                ? selectedCategories.join(", ")
+                : "Toutes les catégories"}
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              {categories.map((cat) => (
+                <DropdownMenuCheckboxItem
+                  key={cat}
+                  checked={selectedCategories.includes(cat)}
+                  onCheckedChange={() => toggleCategory(cat)}
+                >
+                  {cat}
+                </DropdownMenuCheckboxItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </div>
 
