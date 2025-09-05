@@ -7,11 +7,11 @@ export function ProductCard({ product }: { product: Product }) {
     <Link href={`/products/${product.slug}`}>
       <div className="group bg-white text-white rounded-2xl p-4 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col items-center w-full h-full">
         {/* Zone image */}
-        <div className="bg-white rounded-xl w-full md:p-4 flex items-center justify-center overflow-hidden">
+        <div className="bg-white rounded-xl w-full md:p-4 flex items-center justify-center md:h-[250px] overflow-hidden">
           <img
             src={product.images[0]}
             alt={product.name}
-            className="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-105"
+            className="max-w-full max-h-full md:max-w-[90%] md:max-h-[90%] object-contain transition-transform duration-300 group-hover:scale-105"
           />
         </div>
 
