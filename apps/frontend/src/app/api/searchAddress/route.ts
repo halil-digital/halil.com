@@ -40,7 +40,6 @@ export async function GET(request: NextRequest) {
 
   const data = await res.json();
 
-  // On transforme chaque item pour ne garder que ce qui nous intéresse
   const filtered = data.map((item: NominatimItem) => {
     const addr = item.address || {};
     const city = addr.city || addr.town || addr.village || "";

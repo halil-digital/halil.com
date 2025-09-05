@@ -15,7 +15,7 @@ export function ProductList({ products }: Props) {
   }
 
   return (
-    <div className="grid grid-cols-3 xl:grid-cols-4 gap-6">
+    <div className="grid grid-cols-3 xl:grid-cols-4 gap-3 items-stretch">
       {products.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}

@@ -59,7 +59,7 @@ const faqItems = [
     question:
       "Quels sont les modes de paiement acceptés et les délais de règlement ?",
     answer: [
-      "Nous acceptons les paiements par virement bancaire, chèque ou en espèces. Le règlement peut être effectué dans un délai maximum de 45 jours.",
+      "Nous acceptons les paiements par virement bancaire, chèque ou en espèces. Le règlement peut être effectué dans un délai maximum de 30 jours.",
     ],
   },
   {

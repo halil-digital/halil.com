@@ -14,7 +14,7 @@ type Props = { clients: Client[] };
 export default function ClientMap({ clients }: Props) {
   const [geocodedClients, setGeocodedClients] = useState<GeocodedClient[]>([]);
   const [icons, setIcons] = useState<Record<string, DivIcon>>({});
-  const router = useRouter(); // <- router
+  const router = useRouter();
 
   useEffect(() => {
     const fetchCoords = async (

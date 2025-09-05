@@ -82,9 +82,9 @@ const Navbar = ({
 }: Navbar1Props) => {
   return (
     <section className=" bg-[#ebc834]">
-      <div className="container max-w-none w-full py-2 px-10 md:px-20">
+      <div className="container max-w-none w-full py-1 px-10 md:px-20">
         <nav className="hidden justify-between lg:flex ">
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-6 ">
             <a href={logo.url} className="flex items-center gap-2">
               {logo.src && (
                 <img src={logo.src} className="w-17" alt={logo.alt} />
@@ -116,7 +116,11 @@ const Navbar = ({
           <div className="flex items-center justify-between">
             <a href={logo.url} className="flex items-center gap-2">
               {logo.src && (
-                <img src={logo.src} className="w-12" alt={logo.alt} />
+                <img
+                  src={logo.src}
+                  className="w-17 bg-[#e4c84d] p-1 rounded"
+                  alt={logo.alt}
+                />
               )}
               <span className="text-lg font-semibold">{logo.title}</span>
             </a>
