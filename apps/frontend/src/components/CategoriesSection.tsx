@@ -18,7 +18,7 @@ const categoriesLeft: Category[] = [
   {
     name: "Frites et Appetizers",
     image: "/images/categories/frites-et-appetizers.png",
-    href: "/products?category=Frites,Appetizers,Spécialités,Huile",
+    href: `/products?category=${encodeURIComponent("Frites et Appetiziers")}`,
   },
   {
     name: "Pain et Tortillas",
@@ -36,7 +36,7 @@ const categoriesRight: Category[] = [
   {
     name: "Tartes et Desserts",
     image: "/images/categories/tartes-et-desserts.png",
-    href: "/products?category=Dessert",
+    href: "/products?category=Desserts",
   },
   {
     name: "Sauces",
@@ -51,7 +51,7 @@ const categoriesRight: Category[] = [
   {
     name: "Conserves et Legumes",
     image: "/images/categories/conserves-et-legumes.png",
-    href: "/products?category=Conserve",
+    href: "/products?category=Conserves",
   },
 ];
 

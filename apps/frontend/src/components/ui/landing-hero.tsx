@@ -8,7 +8,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 
 const sliderImages = [
   "/images/landing-image-3.png",
-  "/images/landing-image-4.png",
+  "/images/landing-image-1.png",
 ];
 
 function Hero() {
