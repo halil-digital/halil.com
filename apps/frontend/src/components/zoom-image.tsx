@@ -31,7 +31,7 @@ export default function ZoomImage({ src, alt }: { src: string; alt: string }) {
       <img
         src={src}
         alt={alt}
-        className={`w-full max-h-[400px] min-h-[400px] object-contain rounded-lg shadow-lg transition-opacity duration-300 ${
+        className={`w-full max-h-[300px] min-h-[300px] object-contain rounded-lg shadow-lg transition-opacity duration-300 ${
           isHovering ? "opacity-0" : "opacity-100"
         }`}
       />

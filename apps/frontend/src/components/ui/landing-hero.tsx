@@ -102,9 +102,8 @@ function Hero() {
             </h1>
 
             <p className="text-lg md:text-xl leading-relaxed tracking-tight max-w-2xl text-center text-white">
-              HALIL, commerce de gros de produits alimentaire, aide les
-              professionnels à simplifier leur approvisionnement avec une
-              distribution efficace et adaptée à leurs besoins en Île‑de‑France
+              Votre satisfaction, au cœur de notre métier de distribution
+              alimentaire
             </p>
           </div>
 

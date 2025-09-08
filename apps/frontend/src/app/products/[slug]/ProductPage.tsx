@@ -178,8 +178,9 @@ export default function ProductPage({ slug }: { slug: string }) {
 
           {/* Infos produit */}
           <div className="md:w-1/2 w-full space-y-6">
-            <h1 className="flex items-center text-2xl font-bold text-[#ebc834] gap-3">
-              {activeProduct.name}
+            <h1 className="flex flex-col items-start text-2xl font-bold text-[#ebc834] gap-3">
+              <div>{activeProduct.name}</div>
+
               <span className="inline-flex whitespace-nowrap items-center gap-2 px-3 py-1 text-green-600 bg-green-100 rounded-md font-semibold text-sm select-none">
                 <span className="w-2 h-2 rounded-full bg-green-600" />
                 En stock
