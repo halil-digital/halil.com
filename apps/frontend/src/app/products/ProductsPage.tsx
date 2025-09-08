@@ -136,7 +136,7 @@ export default function ProductsPage() {
 
       <main className="flex-1">
         <div className=" bg-[#faf4ee]">
-          <div className="px-4 md:px-20 py-20 bg-[url('/images/banniere-catalogue.png')] bg-cover bg-center text-white">
+          <div className="px-4 py-4 md:px-20 md:py-20 bg-[url('/images/banniere-catalogue.png')] bg-cover bg-center text-white">
             <h1 className="text-5xl font-bold text-center mb-4">
               Notre catalogue
             </h1>

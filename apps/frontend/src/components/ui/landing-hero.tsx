@@ -75,11 +75,6 @@ function Hero() {
 
       <div className="container mx-auto my-auto z-10">
         <div className="flex gap-8 items-center mt-4 justify-center flex-col">
-          <div>
-            <Button variant="secondary" size="sm" className="gap-4">
-              Bienvenue sur notre site
-            </Button>
-          </div>
           <div className="flex gap-4 flex-col px-4">
             <h1 className="text-5xl md:text-7xl max-w-2xl tracking-tighter text-center font-regular">
               <span className="text-spektr-cyan-50">
