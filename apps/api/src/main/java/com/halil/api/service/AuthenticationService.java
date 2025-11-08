@@ -5,7 +5,6 @@ import com.halil.api.dto.RegisterUserDto;
 import com.halil.api.dto.VerifyUserDto;
 import com.halil.api.model.User;
 import com.halil.api.repository.UserRepository;
-import jakarta.mail.MessagingException;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

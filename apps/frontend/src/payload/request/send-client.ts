@@ -12,4 +12,5 @@ export interface SendClient {
   commercial?: string;
   note?: string;
   open?: boolean;
+  color?: string;
 }

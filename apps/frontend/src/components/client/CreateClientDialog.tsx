@@ -34,6 +34,7 @@ export default function CreateClientDialog({ onClientCreated }: Props) {
     commercial: "",
     note: "",
     open: true,
+    color: "#000000",
   });
 
   const handleChange = (
@@ -76,6 +77,7 @@ export default function CreateClientDialog({ onClientCreated }: Props) {
         commercial: "",
         note: "",
         open: true,
+        color: "#000000",
       });
       setOpen(false);
       onClientCreated();
@@ -225,6 +227,39 @@ export default function CreateClientDialog({ onClientCreated }: Props) {
               <option value="true">Oui</option>
               <option value="false">Non</option>
             </select>
+          </div>
+
+          <div className="flex flex-col gap-1">
+            <span className="text-sm text-muted-foreground">Couleur</span>
+
+            <div className="flex items-center gap-3">
+              <input
+                type="color"
+                name="color"
+                value={formData.color}
+                onChange={(e) =>
+                  setFormData((prev) => ({ ...prev, color: e.target.value }))
+                }
+                className="h-10 w-20 p-1 cursor-pointer border rounded"
+              />
+
+              <div className="flex gap-2">
+                {["#EF4444", "#ffda6e", "#9dfc71"].map((preset, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() =>
+                      setFormData((prev) => ({ ...prev, color: preset }))
+                    }
+                    className="h-8 w-8 rounded-full border shadow-sm transition hover:scale-110"
+                    style={{
+                      backgroundColor: preset,
+                      borderColor: "#d1d5db",
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
 
           <div className="flex justify-center">
