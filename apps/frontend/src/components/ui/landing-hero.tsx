@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { MoveRight } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 
@@ -108,17 +107,11 @@ function Hero() {
           </div>
 
           <div className="flex flex-row gap-3">
-            <Button size="lg" variant="outline">
-              <Link href={"about"} className="flex items-center gap-2">
-                En savoir plus
-                <MoveRight className="w-4 h-4" />
-              </Link>
-            </Button>
             <Button
               size="lg"
               className="bg-[#ebc834] hover:bg-[#dfca70] text-black"
             >
-              <Link href={"products"}>Voir nos produits</Link>
+              <Link href={"products"}>Voir nos produits / Catalogue</Link>
             </Button>
           </div>
 
