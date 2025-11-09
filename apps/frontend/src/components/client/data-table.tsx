@@ -1,5 +1,6 @@
 "use client";
 
+import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Table,
   TableBody,
@@ -16,7 +17,6 @@ import {
 } from "@tanstack/react-table";
 import { useRouter } from "next/navigation";
 
-// On ne restreint pas TData ici
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
@@ -35,13 +35,15 @@ export function DataTable<TData extends { id: number }, TValue>({
   const router = useRouter();
 
   return (
-    <div className="overflow-hidden border">
-      <Table>
-        <TableHeader>
+    // Hauteur contrôlée ici; adapte selon ton layout (vh / parent flex, etc.)
+    <ScrollArea className="h-[calc(100vh-15rem)] rounded-md border">
+      <Table className="w-full">
+        {/* Header sticky */}
+        <TableHeader className="sticky top-0 z-10 bg-background">
           {table.getHeaderGroups().map((headerGroup) => (
-            <TableRow key={headerGroup.id}>
+            <TableRow key={headerGroup.id} className="hover:bg-transparent">
               {headerGroup.headers.map((header) => (
-                <TableHead key={header.id}>
+                <TableHead key={header.id} className="whitespace-nowrap">
                   {header.isPlaceholder
                     ? null
                     : flexRender(
@@ -53,6 +55,8 @@ export function DataTable<TData extends { id: number }, TValue>({
             </TableRow>
           ))}
         </TableHeader>
+
+        {/* Corps scrollable (via le ScrollArea parent) */}
         <TableBody>
           {table.getRowModel().rows.length ? (
             table.getRowModel().rows.map((row) => (
@@ -63,10 +67,10 @@ export function DataTable<TData extends { id: number }, TValue>({
                     `/dashboard/clients/${(row.original as { id: number }).id}`
                   )
                 }
-                className="cursor-pointer hover:bg-gray-100 transition-colors"
+                className="cursor-pointer hover:bg-muted/40 transition-colors"
               >
                 {row.getVisibleCells().map((cell) => (
-                  <TableCell key={cell.id} className="text-lg">
+                  <TableCell key={cell.id} className="text-base">
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
                 ))}
@@ -81,6 +85,6 @@ export function DataTable<TData extends { id: number }, TValue>({
           )}
         </TableBody>
       </Table>
-    </div>
+    </ScrollArea>
   );
 }
